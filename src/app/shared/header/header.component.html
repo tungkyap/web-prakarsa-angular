@@ -1,4 +1,4 @@
-<div class="fixed w-full bg-white font-[800] top-0 left-0 z-50 p-5 pb-0 pt-0 bg-w border-b-[#ebebeb3d]-1 shadow-md">
+<main class="fixed w-full bg-white font-[800] top-0 left-0 z-50 p-5 pb-0 pt-0 bg-w border-b-[#ebebeb3d]-1 shadow-md">
   <header class="max-w-[1280px] mx-auto">
     <nav class="flex items-center justify-between h-16 sm:h20">
       <div class="sm:text-3xl">
@@ -6,7 +6,29 @@
           <img class="w-32 sm:w-40 md:w-48" src="images/prakarsa-logo-long.png" alt="logo">
         </a>
       </div>
-      <div class="absolute top-0 left-0 min-h-[80vh] w-full flex items-center justify-center duration-300 overflow-hidden lg:static lg:min-h-fit: lg:bg-transparent lg:w-auto">
+      <button class="lg:hidden text-2xl text-[#c5a751]">
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="hidden lg:block">
+        <ul class="flex items-center gap-8 text-[#c5a751]">
+          <li class="transition delay-100 duration-200 ease-in-out hover:text-[#334d42]">
+            <a routerLink="/our-services" routerLinkActive="text-[#334d42]" [routerLinkActiveOptions]="{exact: true}">Our Services</a>
+          </li>
+          <li class="transition delay-100 duration-200 ease-in-out hover:text-[#334d42]">
+            <a routerLink="/team-member" routerLinkActive="text-[#334d42]" [routerLinkActiveOptions]="{exact: true}">Team Member</a>
+          </li>
+          <li class="transition delay-100 duration-200 ease-in-out hover:text-[#334d42]">
+            <a routerLink="/project-portfolio" routerLinkActive="text-[#334d42]" [routerLinkActiveOptions]="{exact: true}">Project Portfolio</a>
+          </li>
+          <li class="transition delay-100 duration-200 ease-in-out hover:text-[#334d42]">
+            <a routerLink="/about-us" routerLinkActive="text-[#334d42]" [routerLinkActiveOptions]="{exact: true}">About Us</a>
+          </li>
+          <li class="transition delay-100 duration-200 ease-in-out hover:text-[#334d42]">
+            <a routerLink="/contact-us" routerLinkActive="text-[#334d42]" [routerLinkActiveOptions]="{exact: true}">Contact Us</a>
+          </li>
+        </ul>
+      </div>
+      <!-- <div class="absolute top-0 left-0 min-h-[80vh] w-full flex items-center justify-center duration-300 overflow-hidden lg:static lg:min-h-fit: lg:bg-transparent lg:w-auto">
         <ul class="flex flex-col items-center gap-8 lg:flex-row text-[#c5a751]">
           <li class="transition delay-100 duration-200 ease-in-out hover:text-[#334d42]">
             <a routerLink="/our-services" routerLinkActive="text-[#334d42]">Our Services</a>
@@ -24,7 +46,7 @@
             <a routerLink="/contact-us" routerLinkActive="text-[#334d42]">Contact Us</a>
           </li>
         </ul>
-      </div>
+      </div> -->
     </nav>
   </header>
-</div>
+</main>
