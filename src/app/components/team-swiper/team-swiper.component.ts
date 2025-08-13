@@ -131,7 +131,7 @@ export class TeamSwiperComponent implements OnInit, AfterViewInit {
     {
       id: 6,
       name: 'Irkhas Bayu Faveryan',
-      position: 'Academic Partner | Research & Development',
+      position: 'Academic Engineering Partner | Research & Development',
       description: '5+ years of experience in structural engineering, numerical analysis & modeling, building information modeling (BIM).',
       image: '/images/team-member-profile/irkhas_bayu_faveryan_zoom.png',
       social: {
