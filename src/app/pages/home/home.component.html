@@ -1,0 +1,241 @@
+<app-header></app-header>
+
+<main>
+  <!-- Hero section -->
+  <section class="relative h-screen w-full bg-cover bg-center bg-no-repeat hero-bg" aria-label="Hero section with company introduction">
+      <div class="absolute inset-0 bg-[#334d42] opacity-80"></div>
+      <div class="relative p-4 sm:p-8 lg:p-16 z-10 flex flex-col items-start justify-center h-full text-left text-white">
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-4 max-w-4xl">
+              PT. PRAKARSA MAHAKARYA ABADI
+          </h1>
+          <p class="text-lg sm:text-xl lg:text-2xl mb-8 max-w-2xl text-[#c5a751] font-extrabold">
+              You dream it, we build it.
+          </p>
+          <a href="#our-services" class="inline-block bg-[#c5a751] hover:bg-[#d8c48a] text-white font-bold py-3 px-8 rounded-md transition duration-300">
+              Explore Our services
+          </a>
+      </div>
+  </section>
+
+  <!-- Who we are section -->
+  <section class="mb-[20px] py-16 sm:py-24 lg:py-32 bg-white" aria-label="About the company">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#c5a751] mb-6 sm:mb-8">
+        Who We Are
+      </h2>
+      <p class="text-base sm:text-lg text-gray-700 leading-relaxed mb-8 sm:mb-10 max-w-3xl mx-auto">
+        <strong class="text-[#334d42]">Prakarsa</strong> (PT Prakarsa Mahakarya Abadi) is an engineering firm based in Yogyakarta, Indonesia that provides civil engineering consulting and construction services.
+      </p>
+      <a routerLink="/about-us" class="inline-block bg-[#c5a751] hover:bg-[#d8c48a] text-white font-bold py-3 px-8 rounded-md transition duration-300 shadow-lg">
+        See Details
+      </a>
+    </div>
+  </section>
+
+  <!-- Our services section -->
+  <section id="our-services" class="relative" aria-label="Our services overview">
+
+    <!-- Header Box - Improved Responsive Version -->
+    <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 bg-[#334d42] px-4 sm:px-6 md:px-8 py-4 sm:py-6 rounded-xl shadow-2xl border-2 sm:border-3 border-[#c5a751] max-w-[95vw] sm:max-w-none">
+        <h2 class="text-lg sm:text-2xl md:text-3xl lg:text-4xl text-[#c5a751] text-center leading-tight">
+            <span class="font-bold">We Offer Our Services</span>
+            <br class="sm:hidden"> <!-- Line break on mobile only -->
+            <span class="sm:inline"> for Your </span>
+            <span class="font-bold">Business</span>
+        </h2>
+    </div>
+
+    <!-- Split Section: Engineering Consulting & Construction Services -->
+    <div class="grid grid-cols-1 lg:grid-cols-2">
+      <!-- Left Side: Engineering Consulting -->
+      <div class="pt-[50px] relative bg-consulting min-h-[80vh] lg:min-h-screen">
+        <div class="consulting-overlay absolute inset-0"></div>
+        <div class="relative z-10 h-full flex items-center justify-center p-8 lg:p-16">
+          <div class="max-w-lg">
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
+              Engineering consulting
+            </h2>
+            <p class="text-white/90 text-lg mb-8 leading-relaxed">
+              We offer civil engineering consulting services ranging from <span class="text-[#c5a751] font-bold">feasibility studies, financing, planning, basic design, detailed-design, project management, supervision, research, and functional worthiness assessments.</span>
+            </p>
+            <a routerLink="/our-services" class="inline-block bg-[#c5a751] hover:bg-[#d8c48a] text-white font-bold py-3 px-8 rounded-md transition duration-300 shadow-lg">
+              See Details
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Side: Construction Services -->
+      <div class="relative bg-construction min-h-[80vh] lg:min-h-screen">
+        <div class="best-practices-overlay absolute inset-0"></div>
+        <div class="relative z-10 h-full flex items-center justify-center p-8 lg:p-16">
+          <div class="max-w-lg">
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-primary-dark mb-6 leading-tight">
+              Construction services
+            </h2>
+            <p class="text-lg mb-8 leading-relaxed">
+              In addition to construction service, we are more than capable of executing <span class="text-[#334d42] font-bold">small to medium scale construction</span> projects.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our team member -->
+  <section class="relative min-h-[60vh] w-full" aria-label="Our team members carousel">
+    <app-team-swiper></app-team-swiper>
+    <div class="flex justify-center mb-5">
+      <a routerLink="/team-member" class="inline-block bg-[#c5a751] hover:bg-[#d8c48a] text-white font-bold py-3 px-8 rounded-md transition duration-300 shadow-lg">
+        See Details
+      </a>
+    </div>
+  </section>
+
+  <!-- Portfolio section -->
+  <section class="py-12 sm:py-16 lg:py-20 text-[#334d42] bg-[#c5a751]" aria-label="Our project portfolio">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Section Header -->
+      <div class="flex flex-col sm:flex-row justify-between items-center mb-8 sm:mb-12">
+        <div>
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold">Our Project Portfolio</h2>
+        </div>
+        <a routerLink="/project-portfolio" class="inline-block bg-[#334d42] hover:bg-[#456d5a] text-white font-bold py-3 px-8 rounded-md transition duration-300 shadow-lg">
+          View Projects
+        </a>
+      </div>
+
+      <!-- Portfolio Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 text-white">
+        @for (project of projectPortfolio; track project.id) {
+          <div class="relative bg-cover bg-center h-72 sm:h-120 rounded-none overflow-hidden border-r border-b sm:border-b-0 sm:border-r border-[#334d42]"
+            [style]="{'background-image': 'url('+ project.image +')' }">
+            <div class="absolute inset-0 bg-black/30 flex items-end p-4">
+              <div>
+                <h3 class="text-xl sm:text-2xl font-bold">{{project.projectName}}</h3>
+                <p class="text-sm">{{project.projectDuration}}</p>
+                <p class="text-sm">{{project.projectLocation}}</p>
+              </div>
+            </div>
+          </div>
+        } @empty {
+          <p>Project Portfolio not available</p>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Us Section -->
+  <section class="mb-[20px] py-16 sm:py-24 lg:py-32 bg-white" aria-label="Get in touch with the company">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="max-w-7xl mx-auto">
+        <!-- Main Contact Banner with Background Image -->
+        <div class="relative bg-gradient-to-r from-[oklch(40%_0.1_135)] via-[oklch(50%_0.1_135)] to-[oklch(30%_0.1_135)] rounded-2xl lg:rounded-3xl overflow-hidden shadow-2xl">
+          <!-- Background Image with Overlay -->
+          <div class="absolute inset-0">
+            <div class="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                [style.background-image]="backgroundImageUrl"></div>
+            <div class="absolute inset-0 bg-gradient-to-r from-[#334d42]/80 via-[#466a5c]/75 to-[#253e33]/80"></div>
+          </div>
+          <!-- Background Pattern -->
+          <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-0 left-0 w-full h-full bg-repeat"
+                [style.background-image]="gridPatternUrl"></div>
+
+            <!-- Abstract architectural shapes -->
+            <div class="absolute top-4 left-8 w-24 h-24 bg-white opacity-5 transform rotate-45 rounded-lg"></div>
+            <div class="absolute bottom-8 left-16 w-16 h-16 bg-white opacity-5 transform -rotate-12 rounded-lg"></div>
+            <div class="absolute top-12 right-24 w-20 h-20 bg-white opacity-5 transform rotate-12 rounded-full"></div>
+
+            <!-- Building silhouettes -->
+            <div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-blue-900/20 to-transparent">
+              <div class="absolute bottom-0 left-8 w-4 h-16 bg-white opacity-10"></div>
+              <div class="absolute bottom-0 left-16 w-6 h-20 bg-white opacity-10"></div>
+              <div class="absolute bottom-0 left-26 w-4 h-12 bg-white opacity-10"></div>
+              <div class="absolute bottom-0 left-34 w-5 h-24 bg-white opacity-10"></div>
+            </div>
+          </div>
+
+          <div class="relative z-10 flex flex-col lg:flex-row items-center justify-between p-6 sm:p-8 lg:p-12">
+            <!-- Left Content -->
+            <div class="flex-1 text-center lg:text-left mb-8 lg:mb-0 lg:pr-8 pr-0">
+              <div>
+              <app-typewriter [config]="{
+                phrases: ['Hubungi Kami', 'Get In Touch'],
+                typingSpeed: 100,
+                deletingSpeed: 50,
+                delayBeforeDelete: 1500
+              }"></app-typewriter>
+              </div>
+              <div>
+                <button
+                  (click)="handleContactClick()"
+                  class="bg-[#c5a751] text-white cursor-pointer font-semibold px-8 py-4 rounded-lg hover:bg-[#d8c48a] transition-all duration-300 transform hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-white/30"
+                  [class.animate-pulse]="isLoading()"
+                  [disabled]="isLoading()">
+                  {{ buttonText() }}
+                </button>
+              </div>
+            </div>
+
+            <!-- Right Content - Person with Phone -->
+            <div class="flex-shrink-0 relative">
+              <!-- Phone Screen -->
+              <div class="relative z-20 mb-4 lg:mb-0">
+                <div class="bg-gray-900 rounded-2xl p-1 shadow-2xl transform -rotate-12 hover:rotate-0 transition-transform duration-500">
+                  <div class="bg-white rounded-xl p-4 w-48 sm:w-56">
+                    <!-- Phone Header -->
+                    <div class="flex items-center justify-between mb-4">
+                      <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                      <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                      <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                    </div>
+
+                    <!-- Contact Info List -->
+                    <div class="space-y-3">
+                      <div *ngFor="let contact of contactInfoList(); trackBy: trackByFn"
+                           class="flex items-center space-x-3 p-2 bg-gray-50 rounded-lg">
+                        <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                          <span class="text-blue-600 text-xs">{{ contact.icon }}</span>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                          <p class="text-xs font-medium text-gray-900 truncate">{{ contact.title }}</p>
+                          <p class="text-xs text-gray-500 truncate">{{ contact.subtitle }}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Person Avatar Placeholder -->
+              <div class="absolute -bottom-4 -right-4 w-24 h-24 bg-gradient-to-br from-green-400 to-green-600 rounded-full shadow-lg flex items-center justify-center">
+                <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center">
+                  <svg class="w-8 h-8 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Animated dots -->
+          <div class="absolute top-8 right-8 hidden lg:block">
+            <div class="flex space-x-1">
+              <div *ngFor="let dot of dots(); let i = index"
+                   class="w-2 h-2 bg-white rounded-full opacity-30"
+                   [style.animation-delay]="i * 0.2 + 's'"
+                   style="animation: pulse 2s infinite"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="w-full py-8 px-4 bg-gray-50">
+
+  </section>
+</main>
+
+<app-footer></app-footer>
