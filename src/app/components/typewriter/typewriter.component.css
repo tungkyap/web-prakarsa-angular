@@ -1,0 +1,32 @@
+.typewriter-container {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* .typewriter-text {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+  display: inline-block;
+} */
+
+.cursor {
+  display: inline-block;
+  width: 2px;
+  height: 2.8rem;
+  background-color: #fff;
+  margin-left: 5px;
+  vertical-align: middle;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  from, to {
+    background-color: transparent;
+  }
+  50% {
+    background-color: #fff;
+  }
+}

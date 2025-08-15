@@ -1,0 +1,105 @@
+:root {
+  --primary-dark: #334d42;
+  --primary-gold: #c5a751;
+}
+
+.text-primary-dark {
+  color: var(--primary-dark);
+}
+
+.text-primary-gold {
+  color: var(--primary-gold);
+}
+
+.hero-bg {
+  background-image: url('/images/hero-image-min.png');
+  background-size: cover;
+}
+
+.consulting-overlay {
+  background: linear-gradient(135deg, rgba(51, 77, 66, 0.9), rgba(51, 77, 66, 0.7));
+}
+
+.best-practices-overlay {
+  background: linear-gradient(135deg, rgba(197, 167, 81, 0.9), rgba(197, 167, 81, 0.7));
+}
+
+.bg-consulting {
+  background-image: url('/images/engineering_consulting.jpeg');
+  background-size: cover;
+  background-position: center;
+  /* background-attachment: fixed; */
+}
+
+.bg-construction {
+  background-image: url('/images/construction_services.jpeg');
+  background-size: cover;
+  background-position: center;
+}
+
+.btn-primary {
+  background-color: var(--primary-gold);
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #d4b461;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(197, 167, 81, 0.4);
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.8; }
+}
+
+.animate-bounce-slow {
+  animation: bounce 3s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes typing {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.typing-container {
+  transition: all 0.5s ease-in-out;
+}
+
+.typing {
+  animation: typing 0.8s ease-out;
+}
+
+.fade-in {
+  animation: typing 0.5s ease-out;
+}
+
+.typing-cursor {
+  animation: blink 1s infinite;
+  font-weight: normal;
+}
+
+.animate-bounce-slow {
+  animation: bounce 3s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
