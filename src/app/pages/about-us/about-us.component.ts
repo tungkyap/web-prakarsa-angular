@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HeaderComponent } from '../../shared/header/header.component';
 import { FooterComponent } from '../../shared/footer/footer.component';
 
@@ -11,6 +11,9 @@ import { FooterComponent } from '../../shared/footer/footer.component';
   templateUrl: './about-us.component.html',
   styleUrl: './about-us.component.css'
 })
-export class AboutUsComponent {
+export class AboutUsComponent implements OnInit {
 
+  ngOnInit(): void {
+    window.scroll(0,0);
+  }
 }
