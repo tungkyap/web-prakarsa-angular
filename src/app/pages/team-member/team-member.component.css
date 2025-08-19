@@ -2,3 +2,123 @@
   background-image: url('/images/hero-image-min.jpg');
   background-size: cover;
 }
+
+/* From Claude */
+
+/* team.component.css */
+
+/* Custom line clamp utility for text truncation */
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Smooth transitions for card hover effects */
+.group:hover .group-hover\:scale-105 {
+  transform: scale(1.05);
+}
+
+.group:hover .group-hover\:bg-opacity-80 {
+  background-opacity: 0.8;
+}
+
+.group:hover .group-hover\:translate-y-0 {
+  transform: translateY(0);
+}
+
+.group:hover .group-hover\:opacity-100 {
+  opacity: 1;
+}
+
+/* Custom scrollbar for overflow areas */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #334d42;
+  border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #2a3f35;
+}
+
+/* Animation for filter buttons */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Hover effects for team member cards */
+.team-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.team-card:hover {
+  transform: translateY(-8px);
+}
+
+/* Custom focus styles for accessibility */
+button:focus-visible {
+  outline: 2px solid #334d42;
+  outline-offset: 2px;
+}
+
+/* Loading skeleton animation (for future use) */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.skeleton {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Mobile responsive improvements */
+@media (max-width: 640px) {
+  .team-member-card {
+    margin-bottom: 1.5rem;
+  }
+
+  .specialty-tag {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+  }
+}
+
+/* Print styles */
+@media print {
+  .team-card {
+    break-inside: avoid;
+    box-shadow: none;
+    border: 1px solid #e5e5e5;
+  }
+
+  .hover\:shadow-2xl:hover {
+    box-shadow: none;
+  }
+}
+
+/* End Claude */
