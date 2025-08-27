@@ -11,5 +11,191 @@
   </div>
 </section>
 
+<!-- Claude -->
+<!-- Filter Section -->
+<section class="py-8 bg-white border-b border-gray-200">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+      <!-- Filter Buttons -->
+      <div class="flex flex-wrap gap-2">
+        <button
+          *ngFor="let category of categories()"
+          (click)="setActiveFilter(category)"
+          class="px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 hover:scale-105"
+          [class]="activeFilter() === category ?
+            'bg-[#334d42] text-white shadow-lg' :
+            'bg-gray-100 text-gray-700 hover:bg-gray-200'">
+          {{ category }}
+        </button>
+      </div>
+
+      <!-- Search & Sort -->
+      <div class="flex items-center gap-4">
+        <div class="relative">
+          <input
+            type="text"
+            placeholder="Search projects..."
+            class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#334d42] focus:border-transparent"
+            (input)="onSearchChange($event)">
+          <svg class="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+          </svg>
+        </div>
+
+        <select
+          class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#334d42] focus:border-transparent"
+          (change)="onSortChange($event)">
+          <option value="newest">Newest First</option>
+          <option value="oldest">Oldest First</option>
+          <option value="alphabetical">A-Z</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Results Count -->
+    <div class="mt-6 text-gray-600">
+      Showing {{ filteredProjects2().length }} of {{ projects().length }} projects
+    </div>
+  </div>
+</section>
+
+<!-- Projects Grid -->
+<section class="py-12 sm:py-16 lg:py-20 bg-white">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+
+    <!-- Projects Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8" *ngIf="filteredProjects2().length > 0; else noResults">
+      <div
+        *ngFor="let project of filteredProjects2(); trackBy: trackByProjectId2"
+        class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 group">
+
+        <!-- Project Image -->
+        <div class="relative h-64 overflow-hidden">
+          <img
+            [src]="project.image"
+            [alt]="project.title"
+            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+
+          <!-- Status Badge -->
+          <div class="absolute top-4 left-4">
+            <span
+              class="px-3 py-1 text-xs font-semibold rounded-full"
+              [class]="getStatusClass(project.status)">
+              {{ project.status | titlecase }}
+            </span>
+          </div>
+
+          <!-- Category Badge -->
+          <div class="absolute top-4 right-4">
+            <span class="bg-[#334d42]/90 text-white px-3 py-1 text-xs font-medium rounded-full">
+              {{ project.category }}
+            </span>
+          </div>
+
+          <!-- Overlay on Hover -->
+          <div class="absolute inset-0 bg-[#334d42]/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+            <button
+              (click)="openProjectModal(project)"
+              class="bg-[#c5a751] text-white px-6 py-2 rounded-lg font-medium hover:bg-[#b8984a] transition-colors">
+              View Details
+            </button>
+          </div>
+        </div>
+
+        <!-- Project Info -->
+        <div class="p-6">
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="text-xl font-bold text-gray-900 line-clamp-1">{{ project.title }}</h3>
+            <span class="text-[#c5a751] font-semibold text-sm">{{ project.year }}</span>
+          </div>
+
+          <div class="flex items-center text-gray-600 mb-3">
+            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+            </svg>
+            <span class="text-sm">{{ project.location }}</span>
+          </div>
+
+          <p class="text-gray-700 text-sm mb-4 line-clamp-3">{{ project.description }}</p>
+
+          <!-- Project Tags -->
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span
+              *ngFor="let tag of project.tags.slice(0, 3)"
+              class="bg-gray-100 text-gray-600 px-2 py-1 text-xs rounded-full">
+              {{ tag }}
+            </span>
+            <span
+              *ngIf="project.tags.length > 3"
+              class="text-gray-500 text-xs py-1">
+              +{{ project.tags.length - 3 }} more
+            </span>
+          </div>
+
+          <!-- Project Details -->
+          <div class="border-t pt-4">
+            <div class="grid grid-cols-2 gap-4 text-sm">
+              <div>
+                <span class="text-gray-500">Value:</span>
+                <p class="font-semibold text-[#334d42]">{{ project.value }}</p>
+              </div>
+              <div>
+                <span class="text-gray-500">Duration:</span>
+                <p class="font-semibold text-[#334d42]">{{ project.duration }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- No Results -->
+    <ng-template #noResults>
+      <div class="text-center py-20">
+        <svg class="w-20 h-20 text-gray-300 mx-auto mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+        </svg>
+        <h3 class="text-xl font-semibold text-gray-900 mb-2">No Projects Found</h3>
+        <p class="text-gray-600 mb-6">Try adjusting your search criteria or filters.</p>
+        <button
+          (click)="resetFilters()"
+          class="bg-[#334d42] text-white px-6 py-2 rounded-lg hover:bg-[#2a3f35] transition-colors">
+          Reset Filters
+        </button>
+      </div>
+    </ng-template>
+
+    <!-- Load More Button -->
+    <div class="text-center mt-12" *ngIf="filteredProjects2().length > 0 && hasMoreProjects()">
+      <button
+        (click)="loadMoreProjects()"
+        class="bg-[#334d42] text-white px-8 py-3 rounded-lg font-medium hover:bg-[#2a3f35] transition-colors transform hover:scale-105">
+        Load More Projects
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<!-- <section class="py-16 bg-gray-50">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h2 class="text-3xl sm:text-4xl font-bold text-[#c5a751] mb-6">
+      Ready to Start Your Next Project?
+    </h2>
+    <p class="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
+      Let's discuss how we can bring your construction vision to life with our expertise and experience.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <button class="bg-[#c5a751] text-[#334d42] px-8 py-3 rounded-lg font-bold hover:bg-[#b8984a] transition-colors transform hover:scale-105">
+        Get Quote
+      </button>
+      <button class="border-2 border-white text-white px-8 py-3 rounded-lg font-bold hover:bg-white hover:text-[#334d42] transition-all transform hover:scale-105">
+        View Services
+      </button>
+    </div>
+  </div>
+</section> -->
+
 
 <app-footer></app-footer>
