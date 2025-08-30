@@ -1,9 +1,5 @@
-<app-header></app-header>
-
-<!-- Claude -->
-
 <!-- Hero Section -->
-<section class="relative py-5 sm:py-10 lg:py-15 bg-[#334d42] hero-bg">
+<section class="relative py-16 sm:py-20 lg:py-24 bg-[#334d42] hero-bg overflow-hidden">
 <!-- Background Pattern -->
 <div class="absolute inset-0 opacity-10">
   <div class="absolute inset-0 bg-repeat" [style.background-image]="heroPatternUrl"></div>
@@ -15,14 +11,39 @@
 <!-- Content -->
 <div class="relative container mx-auto px-4 sm:px-6 lg:px-8 text-center">
   <div class="max-w-4xl mx-auto">
-    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-6 leading-tight">
+    <!-- Breadcrumb -->
+    <nav class="mb-8 text-sm">
+      <ol class="flex justify-center space-x-2 text-gray-300">
+        <li><a href="/" class="hover:text-[#c5a751] transition-colors">Home</a></li>
+        <li class="text-gray-500">•</li>
+        <li class="text-[#c5a751] font-medium">About Us</li>
+      </ol>
+    </nav>
+
+    <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white mb-6 leading-tight">
       About <span class="text-[#c5a751]">Prakarsa</span>
     </h1>
 
-    <p class="text-base sm:text-lg text-gray-200 leading-relaxed mb-8 max-w-3xl mx-auto">
+    <p class="text-lg sm:text-xl text-gray-200 leading-relaxed mb-8 max-w-3xl mx-auto">
       From <span class="text-[#c5a751] font-semibold">CERTC to Prakarsa</span> - A journey of growth, innovation, and excellence in
       <span class="text-[#c5a751] font-semibold">civil engineering</span> and construction services.
     </p>
+
+    <!-- Key Highlights -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+      <div class="bg-white/10 backdrop-blur-sm rounded-lg p-6 text-center">
+        <div class="text-3xl font-bold text-[#c5a751] mb-2">25+</div>
+        <div class="text-white text-sm">Years of Excellence</div>
+      </div>
+      <div class="bg-white/10 backdrop-blur-sm rounded-lg p-6 text-center">
+        <div class="text-3xl font-bold text-[#c5a751] mb-2">150+</div>
+        <div class="text-white text-sm">Projects Completed</div>
+      </div>
+      <div class="bg-white/10 backdrop-blur-sm rounded-lg p-6 text-center">
+        <div class="text-3xl font-bold text-[#c5a751] mb-2">50+</div>
+        <div class="text-white text-sm">Satisfied Clients</div>
+      </div>
+    </div>
   </div>
 </div>
 </section>
@@ -100,7 +121,7 @@
             alt="Construction site"
             class="rounded-lg shadow-lg w-full h-48 object-cover">
           <img
-            src="https://images.unsplash.com/photo-1462206092226-f46025ffe607?auto=format&fit=crop&w=600&q=80"
+            src="https://images.unsplash.com/photo-1590736969955-71cc94901144?auto=format&fit=crop&w=600&q=80"
             alt="Modern building"
             class="rounded-lg shadow-lg w-full h-64 object-cover">
         </div>
@@ -319,6 +340,24 @@
       <p class="text-gray-300 text-sm leading-relaxed">{{ stat.description }}</p>
     </div>
   </div>
+
+  <!-- Leadership Team Preview -->
+  <div class="mt-20 text-center">
+    <h3 class="text-2xl font-bold mb-8">Meet Our <span class="text-[#c5a751]">Leadership Team</span></h3>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-4xl mx-auto">
+      <div *ngFor="let member of leadershipTeam(); trackBy: trackByMemberName"
+            class="group">
+        <div class="bg-white/10 rounded-2xl p-6 backdrop-blur-sm hover:bg-white/20 transition-all duration-300">
+          <div class="w-24 h-24 bg-[#c5a751] rounded-full mx-auto mb-4 flex items-center justify-center text-2xl font-bold text-white">
+            {{ getInitials(member.name) }}
+          </div>
+          <h4 class="text-xl font-bold mb-2">{{ member.name }}</h4>
+          <p class="text-[#c5a751] font-medium mb-3">{{ member.position }}</p>
+          <p class="text-gray-300 text-sm">{{ member.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 </section>
 
@@ -341,5 +380,3 @@
   </div>
 </div>
 </section>
-
-<app-footer></app-footer>
