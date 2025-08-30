@@ -42,7 +42,6 @@ interface ProjectFilter {
     HeaderComponent,
     FooterComponent,
     CommonModule,
-    RouterLink
   ],
   templateUrl: './project-portfolio.component.html',
   styleUrl: './project-portfolio.component.css',
@@ -209,7 +208,7 @@ export class ProjectPortfolioComponent implements OnInit {
       category: 'Infrastructure',
       year: '2023',
       description: 'Cable-stayed bridge connecting two major districts, designed to reduce traffic congestion.',
-      image: 'https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?auto=format&fit=crop&w=800&q=80',
+      image: 'https://images.unsplash.com/photo-1569925457326-59b1c3611227?auto=format&fit=crop&w=800&q=80',
       status: 'ongoing',
       value: 'Rp 1.2 Trillion',
       duration: '48 months',

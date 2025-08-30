@@ -1,0 +1,48 @@
+<section class="relative py-16 sm:py-20 lg:py-24 bg-[#334d42] hero-bg-2 overflow-hidden">
+    <!-- Background Pattern -->
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute inset-0 bg-repeat" [style.background-image]="heroPatternUrl"></div>
+    </div>
+
+    <!-- Overlay -->
+    <div class="absolute inset-0 bg-gradient-to-b from-[#334d42]/90 via-[#334d42]/80 to-[#334d42]/90"></div>
+
+    <!-- Content -->
+    <div class="relative container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="max-w-4xl mx-auto">
+        <!-- Breadcrumb -->
+        <nav class="mb-8 text-sm">
+          <ol class="flex justify-center space-x-2 text-gray-300">
+            <li><a href="/" class="hover:text-[#c5a751] transition-colors">Home</a></li>
+            <li class="text-gray-500">•</li>
+            <li class="text-[#c5a751] font-medium">Portfolio</li>
+          </ol>
+        </nav>
+
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white mb-6 leading-tight">
+          Our Project <span class="text-[#c5a751]">Portfolio</span>
+        </h1>
+
+        <p class="text-lg sm:text-xl text-gray-200 leading-relaxed mb-8 max-w-3xl mx-auto">
+          Showcasing our successful projects across Indonesia, demonstrating our expertise in
+          <span class="text-[#c5a751] font-semibold">civil engineering</span> and
+          <span class="text-[#c5a751] font-semibold">construction excellence</span>.
+        </p>
+
+        <!-- Stats -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12">
+          <div class="text-center" *ngFor="let stat of portfolioStats()">
+            <div class="text-3xl sm:text-4xl font-bold text-[#c5a751] mb-2">{{ stat.value }}</div>
+            <div class="text-sm sm:text-base text-gray-300">{{ stat.label }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <svg class="w-6 h-6 text-[#c5a751]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+      </svg>
+    </div>
+  </section>
