@@ -18,7 +18,7 @@
   </section>
 
   <!-- Who we are section -->
-  <section class="mb-[20px] py-16 sm:py-24 lg:py-32 bg-white" aria-label="About the company">
+  <section class="py-16 sm:py-24 lg:py-32 bg-white" aria-label="About the company">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#c5a751] mb-6 sm:mb-8">
         Who We Are
@@ -33,7 +33,7 @@
   </section>
 
   <!-- Our services section -->
-  <section id="our-services" class="relative" aria-label="Our services overview">
+  <section id="our-services" class="relative mb-[20px]" aria-label="Our services overview">
 
     <!-- Header Box - Improved Responsive Version -->
     <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 bg-[#334d42] px-4 sm:px-6 md:px-8 py-4 sm:py-6 rounded-xl shadow-2xl border-2 sm:border-3 border-[#c5a751] max-w-[95vw] sm:max-w-none">
@@ -82,12 +82,8 @@
   <!-- Our team member -->
   <section class="relative min-h-[60vh] w-full" aria-label="Our team members carousel">
     <app-team-swiper></app-team-swiper>
-    <div class="flex justify-center mb-5">
-      <a routerLink="/team-member" class="inline-block bg-[#c5a751] hover:bg-[#d8c48a] text-white font-bold py-3 px-8 rounded-md transition duration-300 shadow-lg">
-        See Details
-      </a>
-    </div>
   </section>
+
 
   <!-- Portfolio section -->
   <section class="py-12 sm:py-16 lg:py-20 text-[#334d42] bg-[#c5a751]" aria-label="Our project portfolio">
@@ -96,6 +92,9 @@
       <div class="flex flex-col sm:flex-row justify-between items-center mb-8 sm:mb-12">
         <div>
           <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold">Our Project Portfolio</h2>
+          <p class="mt-2 text-base sm:text-lg text-gray-700 max-w-2xl">
+            Discover our diverse range of civil engineering and construction projects, showcasing innovation and excellence.
+          </p>
         </div>
         <a routerLink="/project-portfolio" class="inline-block bg-[#334d42] hover:bg-[#456d5a] text-white font-bold py-3 px-8 rounded-md transition duration-300 shadow-lg">
           View Projects
@@ -105,9 +104,15 @@
       <!-- Portfolio Grid -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 text-white">
         @for (project of projectPortfolio; track project.id) {
-          <div class="relative bg-cover bg-center h-72 sm:h-120 rounded-none overflow-hidden border-r border-b sm:border-b-0 sm:border-r border-[#334d42]"
+          <!-- <div class="relative bg-cover bg-center h-72 sm:h-120 rounded-none overflow-hidden border-r border-b sm:border-b-0 sm:border-r border-[#334d42]" -->
+          <div class="relative bg-cover bg-center h-72 sm:h-120 rounded-none overflow-hidden shadow-lg group border-r border-b sm:border-b-0 sm:border-r border-[#334d42]"
             [style]="{'background-image': 'url('+ project.image +')' }">
-            <div class="absolute inset-0 bg-black/30 flex items-end p-4">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-6 transition-opacity duration-300 group-hover:bg-black/50 group-hover:cursor-pointer">
+              <div class="w-full mb-2">
+                <a [routerLink]="['/project', project.id]" class="opacity-0 group-hover:opacity-100 inline-block bg-[#334d42] hover:bg-[#456d5a] text-white text-sm font-semibold py-2 px-4 rounded-md transition duration-300">
+                  View Details
+                </a>
+              </div>
               <div>
                 <h3 class="text-xl sm:text-2xl font-bold">{{project.projectName}}</h3>
                 <p class="text-sm">{{project.projectDuration}}</p>
@@ -121,9 +126,8 @@
       </div>
     </div>
   </section>
-
   <!-- Contact Us Section -->
-  <section class="mb-[20px] py-16 sm:py-24 lg:py-32 bg-white" aria-label="Get in touch with the company">
+  <section class="py-16 sm:py-24 lg:py-32 bg-white" aria-label="Get in touch with the company">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <div class="max-w-7xl mx-auto">
         <!-- Main Contact Banner with Background Image -->
@@ -228,10 +232,6 @@
         </div>
       </div>
     </div>
-  </section>
-
-  <section class="w-full py-8 px-4 bg-gray-50">
-
   </section>
 </main>
 

@@ -28,10 +28,10 @@ export interface ContactInfo {
     RouterLink,
     TeamSwiperComponent,
     CommonModule,
-    TypewriterComponent
+    TypewriterComponent,
 ],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  styleUrl: './home.component.css',
 })
 export class HomeComponent {
 
