@@ -34,79 +34,105 @@ export class TeamMemberComponent implements OnInit {
     window.scroll(0,0);
   }
 
+  juniorMembers = [
+    { id: 1, name: 'Komang Ari Switara', role: 'Construction engineering & supervision, logistics planning & management', level: 'Junior', position: 'Logistic', image: '/images/team-member-profile/komang.jpeg'  },
+    // { id: 2, name: 'Andhika Pratama', role: 'Construction engineering & supervision, drafting', level: 'Junior', position: 'Engineer' },
+    { id: 4, name: 'Muhammad Luqmanul Hakim', role: 'Civil engineering & architectural drafting', level: 'Junior', position: 'Drafter', image: '/images/team-member-profile/muhammad.jpeg' },
+    { id: 2, name: 'Achmat Syakur Nuranto', role: 'Construction logistics & support', level: 'Junior', position: 'Logistic', image: '/images/team-member-profile/achmat.jpeg' },
+    { id: 5, name: 'Ripki Aji Permana', role: 'Civil engineering & architectural drafting', level: 'Junior', position: 'Drafter', image: '/images/team-member-profile/ripki.jpeg' },
+    { id: 3, name: 'Ryan Muhammad Fajar', role: 'Construction logistics & support', level: 'Junior', position: 'Logistic', image: '/images/team-member-profile/ryan.jpeg' },
+  ];
+
+  deliveryPartners = [
+    { id: 1, name: 'Fariz Rachmana Putra', specialty: 'Architect' },
+    { id: 2, name: 'I Made Sudirawan', specialty: 'Mechanical, Electrical, & Plumbing Engineer' },
+    { id: 3, name: 'Holly Bilowo', specialty: 'Hydrologic engineering' }
+  ];
+
   // From Claude
   teamMembers: TeamMember[] = [
     {
       id: 1,
-      name: 'John Smith',
-      position: 'Senior Civil Engineer',
-      department: 'Engineering',
-      image: 'assets/images/team/john-smith.jpg',
-      bio: 'John brings over 15 years of experience in infrastructure development and has led numerous high-profile construction projects.',
+      name: 'Joko Sumiyanto',
+      position: 'Founder | Director of Engineering',
+      department: 'Technical',
+      image: '/images/team-member-profile/joko_sumiyanto.jpeg',
+      bio: 'Joko Sumiyanto is the founder of Prakarsa and brings over 30 years of experience in structural engineering, forensic engineering, construction supervision, concrete materials.',
       email: 'john.smith@prakarsa.com',
       linkedin: 'https://linkedin.com/in/johnsmith',
-      experience: '15+ Years',
-      specialties: ['Infrastructure Design', 'Project Management', 'Structural Analysis']
+      experience: '30+ Years',
+      specialties: ['Structural Engineering', 'Forensic Engineering', 'Construction Supervision', 'Concrete Materials']
     },
     {
       id: 2,
-      name: 'Sarah Johnson',
-      position: 'Project Manager',
-      department: 'Management',
-      image: 'assets/images/team/sarah-johnson.jpg',
-      bio: 'Sarah specializes in coordinating complex construction projects and ensuring timely delivery while maintaining quality standards.',
+      name: 'Kemal Fardianto',
+      position: 'Engineer | Director of Operations & Business Development',
+      department: 'Technical',
+      image: '/images/team-member-profile/kemal_fardianto_zoom.png',
+      bio: 'Kemal Fardianto specializes in in transportation engineering, planning & financing engineering economics.',
       email: 'sarah.johnson@prakarsa.com',
-      linkedin: 'https://linkedin.com/in/sarahjohnson',
-      experience: '12+ Years',
-      specialties: ['Project Coordination', 'Quality Control', 'Team Leadership']
+      linkedin: '/images/team-member-profile/kemal_fardianto_zoom.png',
+      experience: '5+ Years',
+      specialties: ['Transportation Engineering', 'Planning & Financing Engineering', 'Planning & Financing Engineering Economics']
     },
     {
       id: 3,
-      name: 'Michael Chen',
-      position: 'Structural Engineer',
-      department: 'Engineering',
-      image: 'assets/images/team/michael-chen.jpg',
-      bio: 'Michael is an expert in structural design and analysis with a focus on sustainable construction practices.',
+      name: 'Gatra Dewa Oktananda',
+      position: 'Engineer | Head of Research & Development',
+      department: 'Technical',
+      image: '/images/team-member-profile/gatra_dewa_oktananda.jpeg',
+      bio: 'Gatra Dewa Oktananda is an expert in structural engineering, construction engineering & supervision, concrete materials, project logistics & planning.',
       email: 'michael.chen@prakarsa.com',
-      experience: '10+ Years',
-      specialties: ['Structural Design', 'Sustainability', 'CAD Modeling']
+      experience: '5+ Years',
+      specialties: ['Structural Engineering', 'Construction Engineering', 'Supervision', 'Concrete Materials', 'Project Logistics & Planning']
     },
     {
       id: 4,
-      name: 'Emily Rodriguez',
-      position: 'Environmental Consultant',
-      department: 'Consulting',
-      image: 'assets/images/team/emily-rodriguez.jpg',
-      bio: 'Emily ensures all projects meet environmental regulations and implements eco-friendly construction solutions.',
+      name: 'Mochammad Murtadlo Najib',
+      position: 'Engineer | Head of Construction',
+      department: 'Technical',
+      image: '/images/team-member-profile/mochammad_murtadlo_najib_zoom.png',
+      bio: 'Mochammad Murtadlo Najib is an expert in construction engineering & supervision, project management, logistics & supervision, cost estimator.',
       email: 'emily.rodriguez@prakarsa.com',
-      experience: '8+ Years',
-      specialties: ['Environmental Impact', 'Regulatory Compliance', 'Green Building']
+      experience: '10+ Years',
+      specialties: ['Construction Engineering', 'Supervision', 'Project Management', 'Logistics', 'Cost Estimator']
     },
     {
       id: 5,
-      name: 'David Wilson',
-      position: 'Site Supervisor',
-      department: 'Operations',
-      image: 'assets/images/team/david-wilson.jpg',
-      bio: 'David oversees on-site operations and ensures safety protocols are followed throughout the construction process.',
+      name: 'Arif Tri Wijayanto',
+      position: 'Engineer | Head of Drafting',
+      department: 'Technical',
+      image: '/images/team-member-profile/arif_tri_wijayanto_zoom.png',
+      bio: 'Arif Tri Wijayanto is an expert in engineering drafting, construction engineering, project management, cost estimator.',
       email: 'david.wilson@prakarsa.com',
-      experience: '18+ Years',
-      specialties: ['Site Management', 'Safety Compliance', 'Quality Assurance']
+      experience: '10+ Years',
+      specialties: ['Engineering Drafting', 'Construction Engineering', 'Project Management', 'Cost Estimator']
     },
     {
       id: 6,
-      name: 'Lisa Thompson',
-      position: 'Design Architect',
-      department: 'Design',
-      image: 'assets/images/team/lisa-thompson.jpg',
-      bio: 'Lisa creates innovative architectural designs that blend functionality with aesthetic appeal.',
+      name: 'Irkhas Bayu Faveryan',
+      position: 'Academic Engineering Partner | Research & Development',
+      department: 'Support',
+      image: '/images/team-member-profile/irkhas_bayu_faveryan_zoom2.png',
+      bio: 'Irkhas Bayu Faveryan is an expert in structural engineering, numerical analysis & modeling, building information modeling (BIM).',
       email: 'lisa.thompson@prakarsa.com',
-      experience: '11+ Years',
+      experience: '5+ Years',
       specialties: ['Architectural Design', '3D Modeling', 'Urban Planning']
+    },
+    {
+      id: 6,
+      name: 'Tsalitsatul Husna',
+      position: 'Engineer | Research & Development',
+      department: 'Support',
+      image: '/images/team-member-profile/tsalitsatul_husna_zoom.png',
+      bio: 'Tsalitastul Husna is an expert in hydrologic engineering, administrator',
+      email: 'lisa.thompson@prakarsa.com',
+      experience: '10+ Years',
+      specialties: ['Hydrologic Engineering', 'Administrator']
     }
   ];
 
-  departments: string[] = ['All', 'Engineering', 'Management', 'Consulting', 'Operations', 'Design'];
+  departments: string[] = ['All', 'Technical', 'Support', 'Logistic'];
   selectedDepartment: string = 'All';
 
   get filteredMembers(): TeamMember[] {
