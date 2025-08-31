@@ -86,17 +86,17 @@
 
 
   <!-- Portfolio section -->
-  <section class="py-12 sm:py-16 lg:py-20 text-[#334d42] bg-[#c5a751]" aria-label="Our project portfolio">
+  <section class="py-12 sm:py-16 lg:py-20 text-white bg-[#334d42]" aria-label="Our project portfolio">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Section Header -->
       <div class="flex flex-col sm:flex-row justify-between items-center mb-8 sm:mb-12">
         <div>
-          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold">Our Project Portfolio</h2>
-          <p class="mt-2 text-base sm:text-lg text-gray-700 max-w-2xl">
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold">Our Project <span class="text-[#c5a751]">Portfolio</span></h2>
+          <p class="mt-2 text-base sm:text-lg text-white max-w-2xl">
             Discover our diverse range of civil engineering and construction projects, showcasing innovation and excellence.
           </p>
         </div>
-        <a routerLink="/project-portfolio" class="inline-block bg-[#334d42] hover:bg-[#456d5a] text-white font-bold py-3 px-8 rounded-md transition duration-300 shadow-lg">
+        <a routerLink="/project-portfolio" class="inline-block bg-[#c5a751] hover:bg-[#d8c48a] text-white font-bold py-3 px-8 rounded-md transition duration-300 shadow-lg">
           View Projects
         </a>
       </div>
@@ -109,9 +109,9 @@
             [style]="{'background-image': 'url('+ project.image +')' }">
             <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-6 transition-opacity duration-300 group-hover:bg-black/50 group-hover:cursor-pointer">
               <div class="w-full mb-2">
-                <a [routerLink]="['/project', project.id]" class="opacity-0 group-hover:opacity-100 inline-block bg-[#334d42] hover:bg-[#456d5a] text-white text-sm font-semibold py-2 px-4 rounded-md transition duration-300">
+                <button (click)="openProjectModal(project)" class="opacity-0 group-hover:opacity-100 inline-block bg-[#c5a751] hover:bg-[#d8c48a] text-white text-sm font-semibold py-2 px-4 rounded-md transition duration-300">
                   View Details
-                </a>
+                </button>
               </div>
               <div>
                 <h3 class="text-xl sm:text-2xl font-bold">{{project.projectName}}</h3>
@@ -126,6 +126,13 @@
       </div>
     </div>
   </section>
+  <!-- Project Modal Component -->
+  <app-project-modal
+    [isOpen]="isProjectModalOpen"
+    [project]="selectedProject"
+    (closeModal)="closeProjectModal()"
+    (viewFullProject)="onViewFullProject($event)">
+  </app-project-modal>
   <!-- Contact Us Section -->
   <section class="py-16 sm:py-24 lg:py-32 bg-white" aria-label="Get in touch with the company">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">

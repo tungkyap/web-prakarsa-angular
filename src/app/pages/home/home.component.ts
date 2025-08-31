@@ -5,6 +5,7 @@ import { FooterComponent } from '../../shared/footer/footer.component';
 import { TeamSwiperComponent } from '../../components/team-swiper/team-swiper.component';
 import { CommonModule } from '@angular/common';
 import { TypewriterComponent } from "../../components/typewriter/typewriter.component";
+import { ProjectModalComponent } from '../../shared/project-modal/project-modal.component';
 
 export interface ProjectPortfolio {
   id: number;
@@ -29,6 +30,7 @@ export interface ContactInfo {
     TeamSwiperComponent,
     CommonModule,
     TypewriterComponent,
+    ProjectModalComponent
 ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
@@ -42,6 +44,9 @@ export class HomeComponent {
   isLoading = signal(false);
   dots = signal(Array(5).fill(0));
   isTyping = signal(false);
+
+  isProjectModalOpen = signal(false);
+  selectedProject = signal<ProjectPortfolio | undefined>(undefined);
 
   // Computed signal for button text
   buttonText = computed(() =>
@@ -121,6 +126,23 @@ export class HomeComponent {
       this.isLoading.set(false);
       // this.openContactModal();
     }, 2000);
+  }
+
+  // Modal management methods - simplified!
+  openProjectModal(project: ProjectPortfolio): void {
+    console.log(project);
+    this.selectedProject.set(project);
+    this.isProjectModalOpen.set(true);
+  }
+
+  closeProjectModal(): void {
+    this.isProjectModalOpen.set(false);
+    this.selectedProject.set(undefined);
+  }
+
+  onViewFullProject(projectId: number): void {
+    this.closeProjectModal();
+    this.router.navigate(['/project', projectId]);
   }
 
   // TrackBy function for *ngFor optimization
