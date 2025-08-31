@@ -2,6 +2,7 @@ import { AfterViewInit, Component, ElementRef, OnInit, ViewChild, ViewEncapsulat
 import { SwiperOptions } from 'swiper/types';
 import Swiper from 'swiper';
 import { Pagination, Navigation, Autoplay, EffectFade } from 'swiper/modules';
+import { RouterLink } from '@angular/router';
 Swiper.use([Pagination, Navigation, Autoplay, EffectFade])
 
 
@@ -19,7 +20,7 @@ export interface TeamMember {
 
 @Component({
   selector: 'app-team-swiper',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './team-swiper.component.html',
   styleUrl: './team-swiper.component.css',
   encapsulation: ViewEncapsulation.None
