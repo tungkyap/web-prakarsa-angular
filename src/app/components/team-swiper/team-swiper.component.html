@@ -36,7 +36,7 @@
                   <p class="team-description">{{ member.description }}</p>
 
                   <!-- Social Links -->
-                  <div class="team-social">
+                  <!-- <div class="team-social">
                     @if (member.social.linkedin) {
                       <a (click)="$event.stopPropagation(); onSocialClick('linkedin', member.social.linkedin)"
                       class="social-link"
@@ -52,7 +52,7 @@
                         <i class="fas fa-envelope"></i>
                       </a>
                     }
-                  </div>
+                  </div> -->
                 </div>
               </div>
             </div>
@@ -74,7 +74,7 @@
     </div>
 
     <div class="flex justify-center m-5">
-      <a routerLink="/team-member" class="inline-block bg-[#c5a751] hover:bg-[#d8c48a] text-white font-bold py-3 px-8 rounded-md transition duration-300 shadow-lg">
+      <a routerLink="/team-member" class="inline-block bg-[#c5a751] hover:bg-[#d8c48a] text-white font-bold py-3 px-8 rounded-md transition duration-300 shadow-lg hover:cursor-pointer">
         See Details
       </a>
     </div>
