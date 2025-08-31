@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, computed, effect, EventEmitter, HostListener, Input, OnDestroy, OnInit, Output, signal } from '@angular/core';
+import { Component, computed, effect, EventEmitter, HostListener, Input, OnDestroy, OnInit, Output, signal, WritableSignal } from '@angular/core';
 
 export interface ModalConfig {
   size?: 'sm' | 'md' | 'lg' | 'xl' | 'full';
@@ -21,7 +21,18 @@ export interface ModalConfig {
 })
 export class DetailModalComponent implements OnInit, OnDestroy {
   @Input() isOpen = signal(false);
-  @Input() title = signal('');
+  // @Input() title: string = '';
+  // Create a private signal to hold the title's state
+  private titleSignal: WritableSignal<string> = signal('');
+  // Use a setter to react to changes on the title input
+  @Input() set title(value: string) {
+    if (value) {
+      this.titleSignal.set(value);
+    }
+  }
+    // Create a public computed signal for the template
+  // This is what the template will use
+  public computedTitle = computed(() => this.titleSignal());
   @Input() config = signal<ModalConfig>({
     size: 'lg',
     closable: true,
