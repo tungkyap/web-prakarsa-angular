@@ -132,7 +132,7 @@ export class TeamMemberComponent implements OnInit {
     }
   ];
 
-  departments: string[] = ['All', 'Technical', 'Support', 'Logistic'];
+  departments: string[] = ['All', 'Technical', 'Support'];
   selectedDepartment: string = 'All';
 
   get filteredMembers(): TeamMember[] {
