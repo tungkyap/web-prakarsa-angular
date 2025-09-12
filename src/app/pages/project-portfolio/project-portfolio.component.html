@@ -3,7 +3,7 @@
   <div class="absolute inset-0 bg-[#334d42] opacity-80"></div>
   <div class="relative container mx-auto px-4 sm:px-6 lg:px-8 text-center">
     <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mt-10 mb-6 sm:mb-8">
-      Our Project Portfolio
+      Our Project <span class="text-[#c5a751]">Portfolio</span>
     </h2>
     <p class="text-base sm:text-lg text-white leading-relaxed mb-8 sm:mb-10 max-w-3xl mx-auto">
       Showcasing our successful projects across Indonesia, demonstrating our expertise in civil engineering and construction excellence.
@@ -104,9 +104,9 @@
 
         <!-- Project Info -->
         <div class="p-6">
-          <div class="flex items-center justify-between mb-3">
-            <h3 class="text-xl font-bold text-gray-900 line-clamp-1">{{ project.title }}</h3>
-            <span class="text-[#c5a751] font-semibold text-sm">{{ project.year }}</span>
+          <div class="mb-3">
+            <h3 class="text-lg font-bold text-gray-900">{{ project.title }}</h3>
+            <p class="text-[#c5a751] font-semibold text-sm">{{ project.year }}</p>
           </div>
 
           <div class="flex items-center text-gray-600 mb-3">
@@ -117,10 +117,10 @@
             <span class="text-sm">{{ project.location }}</span>
           </div>
 
-          <p class="text-gray-700 text-sm mb-4 line-clamp-3">{{ project.description }}</p>
+          <p class="text-gray-700 text-sm mb-4">{{ project.description }}</p>
 
           <!-- Project Tags -->
-          <div class="flex flex-wrap gap-2 mb-4">
+          <!-- <div class="flex flex-wrap gap-2 mb-4">
             <span
               *ngFor="let tag of project.tags.slice(0, 3)"
               class="bg-gray-100 text-gray-600 px-2 py-1 text-xs rounded-full">
@@ -131,10 +131,10 @@
               class="text-gray-500 text-xs py-1">
               +{{ project.tags.length - 3 }} more
             </span>
-          </div>
+          </div> -->
 
           <!-- Project Details -->
-          <div class="border-t pt-4">
+          <!-- <div class="border-t pt-4">
             <div class="grid grid-cols-2 gap-4 text-sm">
               <div>
                 <span class="text-gray-500">Value:</span>
@@ -145,7 +145,7 @@
                 <p class="font-semibold text-[#334d42]">{{ project.duration }}</p>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>

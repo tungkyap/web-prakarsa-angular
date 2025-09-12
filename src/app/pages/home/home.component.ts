@@ -92,7 +92,7 @@ export class HomeComponent {
       projectName: 'Bespoke Residential Unit, Renovation Project Construction',
       projectDuration: '2023',
       projectLocation: 'Yogyakarta, Indonesia',
-      image: '/images/project-portfolio/bespoke_residential_unit.jpeg'
+      image: '/images/project-portfolio/bespoke_residential_unit_3.jpeg'
     },
     {
       id: 4,

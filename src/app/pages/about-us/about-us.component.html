@@ -37,27 +37,23 @@
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
       <div>
         <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#334d42] mb-6 leading-tight">
-          Building Indonesia's Future,
-          <span class="text-[#c5a751]">One Project at a Time</span>
+          You dream it, we build it.<br>
+          <span class="text-[#c5a751]">Introduction</span>
         </h2>
         <div class="space-y-6 text-gray-700 text-lg leading-relaxed">
           <p>
-            <span class="font-semibold text-[#334d42]">PT Prakarsa</span> stands as one of Indonesia's premier construction and civil engineering companies,
-            with over two decades of experience in delivering exceptional infrastructure solutions across the archipelago.
+            <span class="font-semibold text-[#334d42]">Prakarsa (PT Prakarsa Mahakarya Abadi)</span> is an engineering firm based in Yogyakarta, Indonesia that provides civil engineering consulting and construction services.
           </p>
           <p>
-            What began as CERTC (Civil Engineering Research and Technology Center) has evolved into Prakarsa,
-            a company that embodies innovation, reliability, and sustainable development practices. Our transformation
-            reflects our commitment to growing alongside Indonesia's dynamic infrastructure needs.
+            Initially founded as CERTC (Civil Engineering Research and Training Center) for developing skills of civil engineering students in Yogyakarta under the guidance  of Joko Sumiyanto,  CERTC has grown into a capable and highly-competent engineering firm. Over the past 10 years, we have executed numerous projects ranging from buildings, bridges, roads, docks, and other civil structures.
           </p>
           <p>
-            Today, we specialize in large-scale construction projects, from residential complexes and commercial buildings
-            to critical infrastructure that connects communities and drives economic growth.
+            As of 2021, CERTC has been legalized (AHU-0041435.AH.01.01.Tahun 2021) and rebranded as Prakarsa.
           </p>
         </div>
 
         <!-- Key Features -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
+        <!-- <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
           <div class="flex items-center space-x-3">
             <div class="bg-[#c5a751] text-white w-10 h-10 rounded-full flex items-center justify-center">
               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -90,7 +86,7 @@
             </div>
             <span class="font-medium text-[#334d42]">24/7 Project Support</span>
           </div>
-        </div>
+        </div> -->
       </div>
 
       <!-- Image Grid -->
@@ -147,9 +143,7 @@
             <h3 class="text-2xl font-bold">Our Vision</h3>
           </div>
           <p class="text-lg leading-relaxed">
-            To be Indonesia's leading construction company, recognized for delivering innovative, sustainable, and
-            high-quality infrastructure solutions that contribute to the nation's development and improve the
-            quality of life for all Indonesians.
+            We believe that our purpose in this life is to play our role in making the world a better place. Our goal is to contribute and do our part to bettering society, through innovative, efficient, and sustainable engineering.
           </p>
         </div>
       </div>
@@ -166,7 +160,10 @@
             </div>
             <h3 class="text-2xl font-bold text-[#334d42]">Our Mission</h3>
           </div>
-          <ul class="space-y-4 text-gray-700">
+          <p class="text-lg leading-relaxed">
+            Innovation, efficiency and sustainability are the core principles of engineering. We will work tirelessly to ensure our designs and our products implement these principles to provide value - for our clients, for society, and for the environment. We aim to be highly capable and trustworthy professionals who understand how to implement these principles to the needs of our clients.
+          </p>
+          <!-- <ul class="space-y-4 text-gray-700">
             <li class="flex items-start space-x-3">
               <div class="bg-[#c5a751] w-2 h-2 rounded-full mt-2 flex-shrink-0"></div>
               <span>Deliver exceptional construction services with uncompromising quality and safety standards</span>
@@ -183,82 +180,16 @@
               <div class="bg-[#c5a751] w-2 h-2 rounded-full mt-2 flex-shrink-0"></div>
               <span>Continuously develop our team's expertise and professional capabilities</span>
             </li>
-          </ul>
+          </ul> -->
         </div>
       </div>
     </div>
   </div>
 </section>
-</section>
-
-<!-- Timeline History -->
-<section class="py-16 sm:py-20 lg:py-24 bg-gray-50">
-<div class="container mx-auto px-4 sm:px-6 lg:px-8">
-  <div class="text-center mb-16">
-    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#334d42] mb-6">
-      Our <span class="text-[#c5a751]">Journey</span>
-    </h2>
-    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-      From humble beginnings to becoming a trusted leader in Indonesia's construction industry
-    </p>
-  </div>
-
-  <!-- Timeline -->
-  <div class="relative">
-    <!-- Timeline Line -->
-    <div class="absolute left-1/2 transform -translate-x-1/2 w-1 bg-[#c5a751] h-full hidden lg:block"></div>
-
-    <!-- Timeline Events -->
-    <div class="space-y-12 lg:space-y-16">
-      <div *ngFor="let event of timelineEvents(); let i = index; trackBy: trackByYear"
-            class="relative">
-
-        <!-- Mobile Timeline -->
-        <div class="lg:hidden">
-          <div class="flex items-start space-x-4">
-            <div class="bg-[#c5a751] text-white w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 text-xl font-bold">
-              {{ event.icon }}
-            </div>
-            <div class="flex-1">
-              <div class="bg-white rounded-lg p-6 shadow-lg">
-                <div class="text-[#c5a751] font-bold text-lg mb-2">{{ event.year }}</div>
-                <h3 class="font-bold text-xl text-[#334d42] mb-3">{{ event.title }}</h3>
-                <p class="text-gray-700">{{ event.description }}</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Desktop Timeline -->
-        <div class="hidden lg:grid lg:grid-cols-2 lg:gap-8 lg:items-center">
-          <!-- Left Side (odd index) -->
-          <div [class]="i % 2 === 0 ? 'lg:text-right lg:pr-8' : 'lg:order-2 lg:pl-8'">
-            <div class="bg-white rounded-lg p-8 shadow-lg"
-                  [class]="event.isHighlight ? 'border-2 border-[#c5a751]' : ''">
-              <div class="text-[#c5a751] font-bold text-xl mb-2">{{ event.year }}</div>
-              <h3 class="font-bold text-2xl text-[#334d42] mb-4">{{ event.title }}</h3>
-              <p class="text-gray-700 text-lg">{{ event.description }}</p>
-            </div>
-          </div>
-
-          <!-- Center Icon -->
-          <div class="absolute left-1/2 transform -translate-x-1/2 bg-[#c5a751] text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold shadow-lg border-4 border-white z-10">
-            {{ event.icon }}
-          </div>
-
-          <!-- Right Side (even index) -->
-          <div [class]="i % 2 === 1 ? 'lg:text-left lg:pl-8' : 'lg:order-1 lg:pr-8'">
-            <!-- Empty space for alternating layout -->
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 </section>
 
 <!-- Company Values -->
-<section class="py-16 sm:py-20 lg:py-24">
+<!-- <section class="py-16 sm:py-20 lg:py-24">
 <div class="container mx-auto px-4 sm:px-6 lg:px-8">
   <div class="text-center mb-16">
     <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#334d42] mb-6">
@@ -289,10 +220,10 @@
     </div>
   </div>
 </div>
-</section>
+</section> -->
 
 <!-- Company Summary Stats -->
-<section class="py-16 sm:py-20 lg:py-24 bg-[#334d42] text-white">
+<!-- <section class="py-16 sm:py-20 lg:py-24 bg-[#334d42] text-white">
 <div class="container mx-auto px-4 sm:px-6 lg:px-8">
   <div class="text-center mb-16">
     <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
@@ -321,26 +252,26 @@
     </div>
   </div>
 </div>
-</section>
+</section> -->
 
 <!-- CTA Section -->
 <section class="py-16 bg-gray-50">
-<div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-  <h2 class="text-3xl sm:text-4xl font-bold text-[#334d42] mb-6">
-    Ready to Build the Future Together?
-  </h2>
-  <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-    Partner with Prakarsa for your next construction project and experience excellence in every detail.
-  </p>
-  <div class="flex flex-col sm:flex-row gap-4 justify-center">
-    <button class="bg-[#334d42] text-white px-8 py-4 rounded-lg font-bold hover:bg-[#2a3f35] transition-colors transform hover:scale-105">
-      Start Your Project
-    </button>
-    <button class="border-2 border-[#334d42] text-[#334d42] px-8 py-4 rounded-lg font-bold hover:bg-[#334d42] hover:text-white transition-all transform hover:scale-105">
-      <a href="/docs/Company Profile - Prakarsa_General_compressed.pdf" target="_blank">Download Company Profile</a>
-    </button>
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h2 class="text-3xl sm:text-4xl font-bold text-[#334d42] mb-6">
+      Ready to Build the Future Together?
+    </h2>
+    <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+      Partner with Prakarsa for your next construction project and experience excellence in every detail.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <button class="bg-[#334d42] text-white px-8 py-4 rounded-lg font-bold hover:bg-[#2a3f35] transition-colors transform hover:scale-105">
+        <a routerLink="/contact-us">Start Your Project</a>
+      </button>
+      <button class="border-2 border-[#334d42] text-[#334d42] px-8 py-4 rounded-lg font-bold hover:bg-[#334d42] hover:text-white transition-all transform hover:scale-105">
+        <a href="/docs/Company Profile - Prakarsa_General_compressed.pdf" target="_blank">Download Company Profile</a>
+      </button>
+    </div>
   </div>
-</div>
 </section>
 
 <app-footer></app-footer>
