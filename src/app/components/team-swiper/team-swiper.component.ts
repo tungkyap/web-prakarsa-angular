@@ -3,6 +3,8 @@ import { SwiperOptions } from 'swiper/types';
 import Swiper from 'swiper';
 import { Pagination, Navigation, Autoplay, EffectFade } from 'swiper/modules';
 import { RouterLink } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { MemberModalComponent } from '../../shared/member-modal/member-modal.component';
 Swiper.use([Pagination, Navigation, Autoplay, EffectFade])
 
 
@@ -10,6 +12,7 @@ export interface TeamMember {
   id: number;
   name: string;
   position: string;
+  department: string;
   description: string;
   image: string;
   social: {
@@ -77,7 +80,8 @@ export class TeamSwiperComponent implements OnInit, AfterViewInit {
     {
       id: 1,
       name: 'Joko Sumiyanto',
-      position: 'Founder | Director of Engineering',
+      position: 'Founder',
+      department: 'Director of Engineering',
       description: '30+ years of experience in structural engineering, forensic engineering, construction supervision, concrete materials.',
       image: '/images/team-member-profile/joko_sumiyanto_zoom.png',
       social: {
@@ -88,7 +92,8 @@ export class TeamSwiperComponent implements OnInit, AfterViewInit {
     {
       id: 2,
       name: 'Kemal Fardianto',
-      position: 'Engineer | Director of Operations & Business Development',
+      position: 'Engineer',
+      department: 'Director of Operations & Business Development',
       description: '5+ years of experience in transportation engineering, planning & financing engineering economics.',
       image: '/images/team-member-profile/kemal_fardianto_zoom.png',
       social: {
@@ -99,7 +104,8 @@ export class TeamSwiperComponent implements OnInit, AfterViewInit {
     {
       id: 3,
       name: 'Gatra Dewa Oktananda',
-      position: 'Engineer | Head of Research & Development',
+      position: 'Engineer',
+      department: 'Head of Research & Development',
       description: '5+ years of experience in structural engineering, construction engineering & supervision, concrete materials, project logistics & planning.',
       image: '/images/team-member-profile/gatra_dewa_oktananda_zoom.png',
       social: {
@@ -110,7 +116,8 @@ export class TeamSwiperComponent implements OnInit, AfterViewInit {
     {
       id: 4,
       name: 'Mochammad Murtadlo Najib',
-      position: 'Engineer | Head of Construction',
+      position: 'Engineer',
+      department: 'Head of Construction',
       description: '10+ years of experience in construction engineering & supervision, project management, logistics & supervision, cost estimator.',
       image: '/images/team-member-profile/mochammad_murtadlo_najib_zoom.png',
       social: {
@@ -121,7 +128,8 @@ export class TeamSwiperComponent implements OnInit, AfterViewInit {
     {
       id: 5,
       name: 'Arif Tri Wijayanto',
-      position: 'Engineer | Head of Drafting',
+      position: 'Engineer',
+      department: 'Head of Drafting',
       description: '10+ years of experience in engineering drafting, construction engineering, project management, cost estimator.',
       image: '/images/team-member-profile/arif_tri_wijayanto_zoom.png',
       social: {
@@ -132,7 +140,8 @@ export class TeamSwiperComponent implements OnInit, AfterViewInit {
     {
       id: 6,
       name: 'Irkhas Bayu Faveryan',
-      position: 'Academic Engineering Partner | Research & Development',
+      position: 'Academic Engineering Partner',
+      department: 'Research & Development',
       description: '5+ years of experience in structural engineering, numerical analysis & modeling, building information modeling (BIM).',
       image: '/images/team-member-profile/irkhas_bayu_faveryan_zoom.png',
       social: {
@@ -143,7 +152,8 @@ export class TeamSwiperComponent implements OnInit, AfterViewInit {
     {
       id: 7,
       name: 'Tsalitsatul Husna',
-      position: 'Engineer | Research & Development',
+      position: 'Engineer',
+      department: 'Research & Development',
       description: '10+ years of experience in hydrologic engineering, admin.',
       image: '/images/team-member-profile/tsalitsatul_husna_zoom.png',
       social: {
@@ -152,6 +162,8 @@ export class TeamSwiperComponent implements OnInit, AfterViewInit {
       }
     },
   ];
+
+  constructor(private dialog: MatDialog) {}
 
   ngOnInit(): void {}
 
@@ -180,6 +192,21 @@ export class TeamSwiperComponent implements OnInit, AfterViewInit {
   onMemberClick(member: TeamMember): void {
     console.log('Member clicked:', member);
     // Add your logic here (e.g., open modal, navigate to detail page)
+    const dialogRef = this.dialog.open(MemberModalComponent, {
+      data: member,
+      width: '100%',
+      maxWidth: '600px',
+      maxHeight: '90vh',
+      panelClass: 'member-detail-dialog',
+      autoFocus: false,
+      restoreFocus: false,
+      hasBackdrop: true,
+      disableClose: false
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('Dialog closed:', result);
+    });
   }
 
 }
