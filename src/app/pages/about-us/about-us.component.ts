@@ -2,7 +2,7 @@ import { Component, OnInit, signal } from '@angular/core';
 import { HeaderComponent } from '../../shared/header/header.component';
 import { FooterComponent } from '../../shared/footer/footer.component';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 interface TimelineEvent {
   year: string;
@@ -46,6 +46,8 @@ interface TeamMember {
   styleUrl: './about-us.component.css'
 })
 export class AboutUsComponent implements OnInit {
+
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
     window.scroll(0,0);
@@ -226,10 +228,13 @@ export class AboutUsComponent implements OnInit {
   startProject(): void {
     console.log('Start project clicked');
     // Navigate to contact form or project inquiry page
+    this.router.navigateByUrl('/contact-us');
   }
 
   downloadProfile(): void {
     console.log('Download company profile clicked');
     // Trigger download of company profile PDF
+    const fileUrl = '/docs/Company Profile - Prakarsa_General_compressed.pdf';
+    window.open(fileUrl, '_blank');
   }
 }

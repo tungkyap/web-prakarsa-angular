@@ -36,7 +36,7 @@
   <div class="container mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
       <div>
-        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#334d42] mb-6 leading-tight">
+        <h2 class="text-4xl sm:text-4xl font-bold text-[#334d42] mb-6 leading-tight">
           You dream it, we build it.<br>
           <span class="text-[#c5a751]">Introduction</span>
         </h2>
@@ -93,21 +93,21 @@
       <div class="grid grid-cols-2 gap-4">
         <div class="space-y-4">
           <img
-            src="https://images.unsplash.com/photo-1541976590-713941681591?auto=format&fit=crop&w=600&q=80"
+            src="/images/hero-image-min.png"
             alt="Construction site"
             class="rounded-lg shadow-lg w-full h-48 object-cover">
           <img
-            src="https://images.unsplash.com/photo-1462206092226-f46025ffe607?auto=format&fit=crop&w=600&q=80"
+            src="/images/project-portfolio/stmm_mmtc_2.jpeg"
             alt="Modern building"
             class="rounded-lg shadow-lg w-full h-64 object-cover">
         </div>
         <div class="space-y-4 mt-8">
           <img
-            src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=600&q=80"
-            alt="Team meeting"
+            src="/images/drone-shoot-building.jpg"
+            alt="Build"
             class="rounded-lg shadow-lg w-full h-64 object-cover">
           <img
-            src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=600&q=80"
+            src="/images/tunnel.jpg"
             alt="Infrastructure"
             class="rounded-lg shadow-lg w-full h-48 object-cover">
         </div>
@@ -264,10 +264,10 @@
       Partner with Prakarsa for your next construction project and experience excellence in every detail.
     </p>
     <div class="flex flex-col sm:flex-row gap-4 justify-center">
-      <button class="bg-[#334d42] text-white px-8 py-4 rounded-lg font-bold hover:bg-[#2a3f35] transition-colors transform hover:scale-105">
+      <button class="bg-[#334d42] text-white px-8 py-4 rounded-lg font-bold hover:bg-[#2a3f35] transition-colors transform hover:scale-105 cursor-pointer" (click)="startProject()">
         <a routerLink="/contact-us">Start Your Project</a>
       </button>
-      <button class="border-2 border-[#334d42] text-[#334d42] px-8 py-4 rounded-lg font-bold hover:bg-[#334d42] hover:text-white transition-all transform hover:scale-105">
+      <button class="border-2 border-[#334d42] text-[#334d42] px-8 py-4 rounded-lg font-bold hover:bg-[#334d42] hover:text-white transition-all transform hover:scale-105 cursor-pointer" (click)="downloadProfile()">
         <a href="/docs/Company Profile - Prakarsa_General_compressed.pdf" target="_blank">Download Company Profile</a>
       </button>
     </div>
