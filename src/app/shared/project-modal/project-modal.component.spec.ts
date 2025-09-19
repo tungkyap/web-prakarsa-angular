@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CommonModalComponent } from './common-modal.component';
+import { ProjectModalComponent } from './project-modal.component';
 
-describe('CommonModalComponent', () => {
-  let component: CommonModalComponent;
-  let fixture: ComponentFixture<CommonModalComponent>;
+describe('ProjectModalComponent', () => {
+  let component: ProjectModalComponent;
+  let fixture: ComponentFixture<ProjectModalComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CommonModalComponent]
+      imports: [ProjectModalComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(CommonModalComponent);
+    fixture = TestBed.createComponent(ProjectModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
