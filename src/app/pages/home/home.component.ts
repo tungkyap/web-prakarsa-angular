@@ -1,13 +1,16 @@
-import { Component, computed, HostListener, inject, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { HeaderComponent } from '../../shared/header/header.component';
 import { Router, RouterLink } from '@angular/router';
 import { FooterComponent } from '../../shared/footer/footer.component';
 import { TeamSwiperComponent } from '../../components/team-swiper/team-swiper.component';
 import { CommonModule } from '@angular/common';
 import { TypewriterComponent } from "../../components/typewriter/typewriter.component";
-import { ProjectModalComponent } from '../../shared/project-modal/project-modal.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
+import { Dialog } from '@angular/cdk/dialog';
+import { ContactModalComponent } from '../../shared/contact-modal/contact-modal.component';
+import { ProjectModalComponent } from '../../shared/project-modal/project-modal.component';
+import { LogoCarouselComponent } from '../../components/logo-carousel/logo-carousel.component';
 
 export interface ProjectPortfolio {
   id: number;
@@ -54,11 +57,19 @@ export interface QuickStat {
     TypewriterComponent,
     MatDialogModule,
     MatIconModule,
+    LogoCarouselComponent
 ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
 export class HomeComponent {
+  private cdkDialog = inject(Dialog);
+  protected openContactModal() {
+    this.cdkDialog.open(ContactModalComponent);
+  }
+  protected openProjectModal(project: ProjectPortfolio) {
+    this.cdkDialog.open(ProjectModalComponent, {data: project});
+  }
 
   // Signals for reactive state management (Angular 17+ feature)
   private titleTexts = ['Get In Touch', 'Hubungi Kami'];
@@ -207,53 +218,15 @@ export class HomeComponent {
   handleContactClick(): void {
     if (this.isLoading()) return;
 
-    this.isLoading.set(true);
-    this.router.navigateByUrl('/contact-us');
+    this.isLoading.set(false);
+    this.openContactModal();
 
     // Simulate API call or navigation
-    setTimeout(() => {
-      this.isLoading.set(false);
-      // this.openContactModal();
-    }, 2000);
-  }
-
-  // Modal management methods - simplified!
-  openProjectModal(project: ProjectPortfolio): void {
-    const dialogRef = this.dialog.open(ProjectModalComponent, {
-      width: '100%',
-      maxWidth: '600px',
-      maxHeight: '90vh',
-      // panelClass: 'member-detail-dialog',
-      autoFocus: false,
-      restoreFocus: false,
-      hasBackdrop: true,
-      disableClose: false,
-      // width: '90vw',
-      // maxWidth: '90vw',
-      height: '90vh',
-      // maxHeight: '90vh',
-      data: project,
-      // panelClass: 'full-screen-dialog', // Add this class
-      // autoFocus: true,
-      // restoreFocus: true,
-      position: { top: '50px' },
-      // disableClose: false,
-    });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result?.viewFull) {
-        this.router.navigate(['/project', project.id]);
-      }
-    });
-  }
-
-  closeProjectModal(): void {
-    this.isProjectModalOpen.set(false);
-    this.selectedProject.set(undefined);
+    // setTimeout(() => {
+    // }, 2000);
   }
 
   onViewFullProject(projectId: number): void {
-    this.closeProjectModal();
     this.router.navigate(['/project', projectId]);
   }
 
