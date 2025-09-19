@@ -20,7 +20,6 @@
 /* Team Swiper Container */
 .team-swiper-container {
   position: relative;
-  padding-bottom: 4rem;
 
   .team-swiper {
     overflow: visible;
@@ -52,6 +51,11 @@
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
     border-color: var(--primary-gold);
   }
+}
+
+.flex.justify-center.m-5 {
+  margin-top: 1.5rem;  /* Reduce gap */
+  margin-bottom: 0;    /* Keep consistent */
 }
 
 /* Team Image */
@@ -263,6 +267,6 @@
 }
 
 .swiper-slide {
-  min-height: 500px;
+  min-height: 400px;
   margin-top: 50px;
 }
