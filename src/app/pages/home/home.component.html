@@ -1,89 +1,105 @@
 <app-header></app-header>
 
 <main>
-  <!-- Hero section -->
+  <!-- Combined Hero + Who We Are Section -->
   <section class="relative h-screen w-full bg-cover bg-center bg-no-repeat hero-bg" aria-label="Hero section with company introduction">
-      <div class="absolute inset-0 bg-[#334d42] opacity-80"></div>
-      <div class="relative p-4 sm:p-8 lg:p-16 z-10 flex flex-col items-start justify-center h-full text-left text-white">
-          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-4 max-w-4xl">
-              PT. PRAKARSA MAHAKARYA ABADI
-          </h1>
-          <p class="text-lg sm:text-xl lg:text-2xl mb-8 max-w-2xl text-[#c5a751] font-extrabold">
-              You dream it, we build it.
-          </p>
-          <a href="#our-services" class="inline-block bg-[#c5a751] hover:bg-[#d8c48a] text-white font-bold py-3 px-8 rounded-md transition duration-300">
-              Explore Our services
-          </a>
-      </div>
-  </section>
+    <!-- Dark overlay -->
+    <div class="absolute inset-0 bg-[#334d42] opacity-80"></div>
 
-  <!-- Who we are section -->
-  <section class="py-16 sm:py-24 lg:py-32 bg-white" aria-label="About the company">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#c5a751] mb-6 sm:mb-8">
-        Who We Are
-      </h2>
-      <p class="text-base sm:text-lg text-gray-700 leading-relaxed mb-8 sm:mb-10 max-w-3xl mx-auto">
-        <strong class="text-[#334d42]">Prakarsa</strong> (PT Prakarsa Mahakarya Abadi) is an engineering firm based in Yogyakarta, Indonesia that provides civil engineering consulting and construction services.
+    <!-- Content -->
+    <div class="relative p-4 sm:p-8 lg:p-16 z-10 flex flex-col items-start justify-center h-full text-left text-white max-w-5xl">
+      <!-- Company Title -->
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-4">
+        PT PRAKARSA MAHAKARYA ABADI
+      </h1>
+
+      <!-- Tagline -->
+      <p class="text-lg sm:text-xl lg:text-2xl mb-8 text-[#c5a751] font-extrabold">
+        You dream it, we build it.
       </p>
-      <a routerLink="/about-us" class="inline-block bg-[#c5a751] hover:bg-[#d8c48a] text-white font-bold py-3 px-8 rounded-md transition duration-300 shadow-lg">
-        See Details
-      </a>
-    </div>
-  </section>
 
-  <!-- Our services section -->
-  <section id="our-services" class="relative mb-[20px]" aria-label="Our services overview">
+      <!-- Who We Are -->
+      <div class="mt-6">
+        <h2 class="text-2xl sm:text-xl lg:text-4xl font-extrabold text-[#c5a751] mb-4">
+          Who We Are ?
+        </h2>
+        <p class="text-xl sm:text-lg text-gray-200 leading-relaxed mb-6">
+          <strong class="text-[#c5a751]">Prakarsa</strong> is an engineering firm based in Yogyakarta, Indonesia that provides civil engineering consulting and construction services.
+        </p>
 
-    <!-- Header Box - Improved Responsive Version -->
-    <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 bg-[#334d42] px-4 sm:px-6 md:px-8 py-4 sm:py-6 rounded-xl shadow-2xl border-2 sm:border-3 border-[#c5a751] max-w-[95vw] sm:max-w-none">
-        <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-3xl text-[#c5a751] text-center leading-tight">
-          <span class="font-bold">We Offer Our Services for Your Business</span>
-      </h2>
-    </div>
-
-    <!-- Split Section: Engineering Consulting & Construction Services -->
-    <div class="grid grid-cols-1 lg:grid-cols-2">
-      <!-- Left Side: Engineering Consulting -->
-      <div class="pt-[50px] relative bg-consulting min-h-[80vh] lg:min-h-screen">
-        <div class="consulting-overlay absolute inset-0"></div>
-        <div class="relative z-10 h-full flex items-center justify-center p-8 lg:p-16">
-          <div class="max-w-lg">
-            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
-              Engineering consulting
-            </h2>
-            <p class="text-white/90 text-lg mb-8 leading-relaxed">
-              We offer civil engineering consulting services ranging from <span class="text-[#c5a751] font-bold">feasibility studies, financing, planning, basic design, detailed-design, project management, supervision, research, and functional worthiness assessments.</span>
-            </p>
-            <a routerLink="/our-services" class="inline-block bg-[#c5a751] hover:bg-[#d8c48a] text-white font-bold py-3 px-8 rounded-md transition duration-300 shadow-lg">
-              See Details
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Right Side: Construction Services -->
-      <div class="relative bg-construction min-h-[80vh] lg:min-h-screen">
-        <div class="best-practices-overlay absolute inset-0"></div>
-        <div class="relative z-10 h-full flex items-center justify-center p-8 lg:p-16">
-          <div class="max-w-lg">
-            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-primary-dark mb-6 leading-tight">
-              Construction services
-            </h2>
-            <p class="text-lg mb-8 leading-relaxed">
-              In addition to construction service, we are more than capable of executing <span class="text-[#334d42] font-bold">small to medium scale construction</span> projects.
-            </p>
-          </div>
+        <!-- Buttons -->
+        <div class="flex flex-wrap gap-4">
+          <a href="#our-services" class="inline-block bg-[#c5a751] hover:bg-[#d8c48a] text-white font-bold py-3 px-8 rounded-md transition duration-300">
+            Explore Our Services
+          </a>
+          <a routerLink="/about-us" class="inline-block bg-transparent border-2 border-[#c5a751] hover:bg-[#c5a751] text-white font-bold py-3 px-8 rounded-md transition duration-300">
+            See Details
+          </a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Our team member -->
-  <section class="relative min-h-[60vh] w-full" aria-label="Our team members carousel">
-    <app-team-swiper></app-team-swiper>
-  </section>
 
+  <!-- Our Services Section -->
+  <section id="our-services" class="relative py-20 bg-gray-50" aria-label="Our services overview">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Header -->
+      <div class="text-center mb-16">
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#c5a751]">
+          <span class="text-[#334d42]">We Offer</span> Our Services <span class="text-[#334d42]">for Your Business</span>
+        </h2>
+      </div>
+
+      <!-- Services Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+
+        <!-- Service 1: Engineering Consultant -->
+        <div class="bg-white rounded-2xl shadow-lg overflow-hidden relative">
+          <div class="bg-consulting h-48 bg-cover bg-center"></div>
+          <div class="p-6">
+            <h3 class="text-2xl font-bold text-[#334d42] mb-4">Engineering Consultant</h3>
+            <p class="text-gray-700 leading-relaxed mb-4">
+              We provide <span class="text-[#c5a751] font-semibold">civil engineering consulting</span> services including feasibility studies, financing, planning, design, project management, supervision, and worthiness assessments.
+            </p>
+          </div>
+        </div>
+
+        <!-- Service 2: Construction Service -->
+        <div class="bg-white rounded-2xl shadow-lg overflow-hidden relative">
+          <div class="bg-construction h-48 bg-cover bg-center"></div>
+          <div class="p-6">
+            <h3 class="text-2xl font-bold text-[#334d42] mb-4">Construction Service</h3>
+            <p class="text-gray-700 leading-relaxed mb-4">
+              We are capable of executing <span class="text-[#c5a751] font-semibold">small to medium scale construction</span> projects with professional practices and reliable results.
+            </p>
+          </div>
+        </div>
+
+        <!-- Service 3: Assessment & Building Certification -->
+        <div class="bg-white rounded-2xl shadow-lg overflow-hidden relative">
+          <div class="bg-assessment h-48 bg-cover bg-center"></div>
+          <div class="p-6">
+            <h3 class="text-2xl font-bold text-[#334d42] mb-4">Assessment & Building Certification</h3>
+            <p class="text-gray-700 leading-relaxed mb-4">
+              We assist in <span class="text-[#c5a751] font-semibold">technical assessments</span> and provide certification for building compliance and functionality according to national standards.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Global Button -->
+      <div class="text-center mt-12">
+        <a routerLink="/our-services"
+          class="inline-block bg-[#c5a751] hover:bg-[#d8c48a] text-white font-bold py-3 px-10 rounded-md shadow-lg transition duration-300">
+          Explore All Services
+        </a>
+      </div>
+
+    </div>
+  </section>
 
   <!-- Portfolio section -->
   <section class="py-12 sm:py-16 lg:py-20 text-white bg-[#334d42]" aria-label="Our project portfolio">
@@ -126,13 +142,55 @@
       </div>
     </div>
   </section>
-  <!-- Project Modal Component -->
-  <app-project-modal
-    [isOpen]="isProjectModalOpen"
-    [project]="selectedProject"
-    (closeModal)="closeProjectModal()"
-    (viewFullProject)="onViewFullProject($event)">
-  </app-project-modal>
+
+  <!-- Our Clients Section -->
+  <section class="py-16 sm:py-20 bg-gray-50" aria-label="Our trusted clients">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Section Header -->
+      <div class="text-center mb-12">
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-[#334d42] mb-4">
+          Our Trusted <span class="text-[#c5a751]">Clients</span>
+        </h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+          We are proud to partner with leading organizations across Indonesia
+        </p>
+      </div>
+
+      <!-- Client Logos Grid -->
+      <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 mb-12">
+        @for (client of clients(); track client.id) {
+          <div
+            class="bg-white rounded-lg shadow-md p-6 flex items-center justify-center hover:shadow-lg transition-shadow duration-300 grayscale hover:grayscale-0"
+          >
+            <div class="text-center">
+              <div class="text-lg font-bold" [ngClass]="{'text-[#c5a751]': client.isHighlighted, 'text-[#334d42]': !client.isHighlighted}">
+                {{ client.name }}
+              </div>
+              <div class="text-xs text-gray-500">{{ client.subtext }}</div>
+            </div>
+          </div>
+        }
+      </div>
+
+      <!-- Quick Stats -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+        @for (stat of quickStats(); track stat.id) {
+          <div class="bg-white rounded-lg p-6 shadow-md">
+            <div class="text-3xl font-extrabold text-[#c5a751] mb-1">{{ stat.value }}</div>
+            <div class="text-gray-600 text-sm">{{ stat.label }}</div>
+          </div>
+        }
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Our team member -->
+  <section class="relative min-h-[30vh] w-full" aria-label="Our team members carousel">
+    <app-team-swiper></app-team-swiper>
+  </section>
+
   <!-- Contact Us Section -->
   <section class="py-16 sm:py-24 lg:py-32 bg-white" aria-label="Get in touch with the company">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">

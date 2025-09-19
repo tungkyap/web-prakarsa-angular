@@ -37,6 +37,12 @@
   background-position: center;
 }
 
+.bg-assessment {
+  background-image: url('/images/engineering_assessment.png');
+  background-size: cover;
+  background-position: center;
+}
+
 .btn-primary {
   background-color: var(--primary-gold);
   color: white;
@@ -102,4 +108,21 @@
 @keyframes bounce {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-10px); }
+}
+
+/* In styles.scss or styles.css */
+.my-custom-fab {
+  /* Override default size */
+  width: 50px !important;
+  height: 50px !important;
+
+  /* Ensure a perfect circle with the correct border-radius */
+  border-radius: 50% !important;
+}
+
+/* Optional: Adjust icon size if needed */
+.my-custom-fab mat-icon {
+  font-size: 25px;
+  width: 25px;
+  height: 25px;
 }

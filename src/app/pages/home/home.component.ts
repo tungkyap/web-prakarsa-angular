@@ -1,4 +1,4 @@
-import { Component, computed, signal } from '@angular/core';
+import { Component, computed, HostListener, inject, signal } from '@angular/core';
 import { HeaderComponent } from '../../shared/header/header.component';
 import { Router, RouterLink } from '@angular/router';
 import { FooterComponent } from '../../shared/footer/footer.component';
@@ -6,6 +6,8 @@ import { TeamSwiperComponent } from '../../components/team-swiper/team-swiper.co
 import { CommonModule } from '@angular/common';
 import { TypewriterComponent } from "../../components/typewriter/typewriter.component";
 import { ProjectModalComponent } from '../../shared/project-modal/project-modal.component';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
 
 export interface ProjectPortfolio {
   id: number;
@@ -13,12 +15,32 @@ export interface ProjectPortfolio {
   projectDuration: string;
   projectLocation: string;
   image: string;
+  description?: string;
+  status?: 'Completed' | 'Ongoing';
+  client?: string;
+  technologies?: string[];
+  progress?: number;
+  images?: string[]; // Support multiple images
 }
 
 export interface ContactInfo {
   icon: string;
   title: string;
   subtitle: string;
+}
+
+// New interfaces for Clients and Stats
+export interface Client {
+  id: number;
+  name: string;
+  subtext: string;
+  isHighlighted: boolean; // To toggle between #c5a751 and #334d42
+}
+
+export interface QuickStat {
+  id: number;
+  value: string;
+  label: string;
 }
 
 @Component({
@@ -30,7 +52,8 @@ export interface ContactInfo {
     TeamSwiperComponent,
     CommonModule,
     TypewriterComponent,
-    ProjectModalComponent
+    MatDialogModule,
+    MatIconModule,
 ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
@@ -78,32 +101,98 @@ export class HomeComponent {
       projectName: 'STMM - MMTC Construction',
       projectDuration: '2023 - 2024',
       projectLocation: 'Yogyakarta, Indonesia',
-      image: '/images/project-portfolio/stmm_mmtc_1.png'
+      image: '/images/project-portfolio/stmm_mmtc_1.png',
+      description: 'In the construction project of the STMM - MMTC Building (November 2023 – October 2024), Prakarsa served as a site engineer, responsible for managing work schedules, ensuring smooth construction progress, conducting daily evaluations, and preparing both shop drawings and as-built drawings.',
+      status: 'Completed',
+      client: 'STMM University',
+      technologies: ['Concrete Framework', 'Green Building Tech'],
+      progress: 100,
+      images: [
+        '/images/project-portfolio/stmm_mmtc_1.png',
+        '/images/project-portfolio/stmm_mmtc_2.jpeg',
+        '/images/project-portfolio/stmm_mmtc_3.png',
+        '/images/project-portfolio/stmm_mmtc_4.png',
+        '/images/project-portfolio/stmm_mmtc_5.png',
+      ],
     },
     {
       id: 2,
-      projectName: 'Railway Station Infrastructure Structure Design',
-      projectDuration: '2023 - 2024',
-      projectLocation: 'Jakarta, Indonesia',
-      image: '/images/project-portfolio/railway_station_infrastructure_design.png'
+      projectName: "Railway Station Infrastructure Structure Design",
+      projectDuration: "2023 - 2024",
+      projectLocation: "Jakarta, Indonesia",
+      image: "/images/project-portfolio/railway_station_infrastructure_design.png",
+      description: "Prakarsa is an experienced structural engineering consultant specializing in building design, including strategic projects such as the new building development at Tanah Abang Station, Jakarta. From October 2023 to March 2024, Prakarsa was entrusted with the structural planning, which included structural calculations based on the architectural design and the preparation of efficient and economical Detailed Engineering Design (DED) drawings for both the superstructure and substructure.",
+      status: "Completed",
+      client: "PT. Kereta Api Indonesia",
+      technologies: ["Steel Framing", "Structural Analysis Software", "BIM"],
+      progress: 85,
+      images: [
+        "/images/project-portfolio/railway_station_infrastructure_design.png",
+        "/images/project-portfolio/railway_station_infrastructure_design_2.png",
+        "/images/project-portfolio/railway_station_infrastructure_design_3.png",
+        "/images/project-portfolio/railway_station_infrastructure_design_4.png",
+        "/images/project-portfolio/railway_station_infrastructure_design_5.png",
+        "/images/project-portfolio/railway_station_infrastructure_design_6.png",
+      ]
     },
     {
       id: 3,
-      projectName: 'Bespoke Residential Unit, Renovation Project Construction',
-      projectDuration: '2023',
-      projectLocation: 'Yogyakarta, Indonesia',
-      image: '/images/project-portfolio/bespoke_residential_unit_3.jpeg'
+      projectName: "Bespoke Residential Unit, Renovation Project Construction",
+      projectDuration: "2023",
+      projectLocation: "Yogyakarta, Indonesia",
+      image: "/images/project-portfolio/bespoke_residential_unit_3.jpeg",
+      description: "Complete renovation of a residential unit, focusing on modern aesthetics and efficient use of space.",
+      status: "Completed",
+      client: "Private Client",
+      technologies: ["Interior Design", "Custom Cabinetry", "Smart Home Integration"],
+      progress: 100,
+      images: [
+        "/images/project-portfolio/bespoke_residential_unit_3.jpeg",
+        "/images/project-portfolio/bespoke_residential_unit_1.jpeg",
+        "/images/project-portfolio/bespoke_residential_unit_2.jpeg",
+      ]
     },
     {
       id: 4,
-      projectName: 'Front One Hotel Pamekasan Construction',
-      projectDuration: '2018',
-      projectLocation: 'Gresik, Indonesia',
-      image: '/images/project-portfolio/front_one_hotel.png'
-    },
+      projectName: "Front One Hotel Pamekasan Construction",
+      projectDuration: "2018",
+      projectLocation: "Gresik, Indonesia",
+      image: "/images/project-portfolio/front_one_hotel.png",
+      description: "Construction of a modern hotel facility, including guest rooms, common areas, and dining facilities.",
+      status: "Completed",
+      client: "Front One Hotels",
+      technologies: ["Reinforced Concrete", "HVAC Systems", "Facade Installation"],
+      progress: 100,
+      images: [
+        "/images/project-portfolio/front_one_hotel.png"
+      ]
+    }
   ];
 
-  constructor(private router: Router) {}
+  // Dynamic Clients Data
+  clients = signal<Client[]>([
+    { id: 1, name: 'KEMPU', subtext: 'Kementerian PUPR', isHighlighted: false },
+    { id: 2, name: 'PEMDA', subtext: 'Yogyakarta', isHighlighted: false },
+    { id: 3, name: 'PT ADHI', subtext: 'Karya', isHighlighted: true },
+    { id: 4, name: 'WIKA', subtext: 'Construction', isHighlighted: false },
+    { id: 5, name: 'UGM', subtext: 'Universitas', isHighlighted: false },
+    { id: 6, name: 'UII', subtext: 'Yogyakarta', isHighlighted: true },
+  ]);
+
+  // Dynamic Quick Stats Data
+  quickStats = signal<QuickStat[]>([
+    { id: 1, value: '50+', label: 'Happy Clients' },
+    { id: 2, value: '50+', label: 'Projects Done' },
+    { id: 3, value: '30+', label: 'Years Experience' },
+    { id: 4, value: '10+', label: 'Team Members' },
+  ]);
+
+  constructor(
+    private router: Router,
+    private dialog: MatDialog,
+  ) {
+    window.scroll(0,0);
+  }
 
   trackByProjectId(index: number, project: ProjectPortfolio): number {
     return project.id;
@@ -130,9 +219,32 @@ export class HomeComponent {
 
   // Modal management methods - simplified!
   openProjectModal(project: ProjectPortfolio): void {
-    console.log(project);
-    this.selectedProject.set(project);
-    this.isProjectModalOpen.set(true);
+    const dialogRef = this.dialog.open(ProjectModalComponent, {
+      width: '100%',
+      maxWidth: '600px',
+      maxHeight: '90vh',
+      // panelClass: 'member-detail-dialog',
+      autoFocus: false,
+      restoreFocus: false,
+      hasBackdrop: true,
+      disableClose: false,
+      // width: '90vw',
+      // maxWidth: '90vw',
+      height: '90vh',
+      // maxHeight: '90vh',
+      data: project,
+      // panelClass: 'full-screen-dialog', // Add this class
+      // autoFocus: true,
+      // restoreFocus: true,
+      position: { top: '50px' },
+      // disableClose: false,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result?.viewFull) {
+        this.router.navigate(['/project', project.id]);
+      }
+    });
   }
 
   closeProjectModal(): void {
