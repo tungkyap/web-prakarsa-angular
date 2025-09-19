@@ -1,0 +1,301 @@
+/* Dialog Container */
+.dialog-container {
+  position: relative;
+  max-width: 600px;
+  width: 100%;
+  max-height: 80vh;
+  overflow-y: auto;
+  background: white;
+  border-radius: 16px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Close Button */
+.close-button {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.9) !important;
+  color: #666 !important;
+  width: 40px !important;
+  height: 40px !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+  &:hover {
+    background: rgba(255, 255, 255, 1) !important;
+    color: #c5a751 !important;
+  }
+}
+
+/* Member Photo Section */
+.member-photo-section {
+  background: linear-gradient(135deg, #334d42 0%, #4a6b5a 100%);
+  padding: 2rem;
+  text-align: center;
+  position: relative;
+}
+
+.photo-container {
+  display: inline-block;
+  position: relative;
+}
+
+.member-photo {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 6px solid #c5a751;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+/* Member Information Section */
+.member-info-section {
+  padding: 2rem;
+  flex: 1;
+}
+
+.member-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 1.5rem;
+}
+
+.member-name {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #334d42;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.2;
+}
+
+.member-department {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #c5a751;
+  margin: 0 0 0.25rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.member-position {
+  font-size: 1rem;
+  color: #6b7280;
+  margin: 0;
+  font-style: italic;
+}
+
+/* Description Section */
+.member-description {
+  margin-bottom: 2rem;
+}
+
+.description-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #334d42;
+  margin: 0 0 1rem 0;
+  display: flex;
+  align-items: center;
+
+  &:before {
+    content: '';
+    width: 4px;
+    height: 20px;
+    background: #c5a751;
+    margin-right: 12px;
+    border-radius: 2px;
+  }
+}
+
+.description-text {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #4b5563;
+  margin: 0;
+  text-align: justify;
+}
+
+/* Social Section */
+.social-section {
+  margin-bottom: 2rem;
+}
+
+.social-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #334d42;
+  margin: 0 0 1rem 0;
+  display: flex;
+  align-items: center;
+
+  &:before {
+    content: '';
+    width: 4px;
+    height: 20px;
+    background: #c5a751;
+    margin-right: 12px;
+    border-radius: 2px;
+  }
+}
+
+.social-links {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.social-button {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 12px 24px !important;
+  border-radius: 8px !important;
+  font-weight: 500 !important;
+  text-transform: none !important;
+  transition: all 0.3s ease !important;
+
+  &.linkedin {
+    background: #0077b5 !important;
+    color: white !important;
+
+    &:hover {
+      background: #005885 !important;
+      transform: translateY(-1px);
+    }
+  }
+
+  &.email {
+    background: #ea4335 !important;
+    color: white !important;
+
+    &:hover {
+      background: #d33b2c !important;
+      transform: translateY(-1px);
+    }
+  }
+
+  mat-icon {
+    font-size: 18px !important;
+    width: 18px !important;
+    height: 18px !important;
+  }
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+.action-button {
+  padding: 12px 32px !important;
+  background: #334d42 !important;
+  color: white !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  text-transform: none !important;
+
+  &:hover {
+    background: #c5a751 !important;
+    transform: translateY(-1px);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .dialog-container {
+    max-width: 89vw;
+    max-height: 90vh;
+    margin: 1rem;
+    border-radius: 12px;
+  }
+
+  .member-photo-section {
+    padding: 1.5rem;
+  }
+
+  .member-photo {
+    width: 120px;
+    height: 120px;
+  }
+
+  .member-info-section {
+    padding: 1.5rem;
+  }
+
+  .member-name {
+    font-size: 1.5rem;
+  }
+
+  .social-links {
+    flex-direction: column;
+  }
+
+  .social-button {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .member-photo {
+    width: 100px;
+    height: 100px;
+  }
+
+  .member-name {
+    font-size: 1.25rem;
+  }
+
+  .member-department {
+    font-size: 1rem;
+  }
+
+  .description-text {
+    font-size: 0.9rem;
+  }
+}
+
+/* Custom scrollbar */
+.dialog-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.dialog-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.dialog-container::-webkit-scrollbar-thumb {
+  background: #c5a751;
+  border-radius: 3px;
+}
+
+.dialog-container::-webkit-scrollbar-thumb:hover {
+  background: #b8984a;
+}
+
+/* Animation classes */
+.dialog-container {
+  animation: slideInUp 0.3s ease-out;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

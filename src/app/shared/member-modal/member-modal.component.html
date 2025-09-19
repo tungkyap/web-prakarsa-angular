@@ -1,0 +1,72 @@
+<div class="dialog-container">
+  <!-- Close Button -->
+  <!-- <button
+    mat-icon-button
+    class="close-button"
+    (click)="onClose()"
+    aria-label="Close dialog">
+    <mat-icon>close</mat-icon>
+  </button> -->
+
+  <!-- Member Photo -->
+  <div class="member-photo-section">
+    <div class="photo-container">
+      <img
+        [src]="member.image"
+        [alt]="member.name"
+        class="member-photo"
+        loading="lazy">
+    </div>
+  </div>
+
+  <!-- Member Information -->
+  <div class="member-info-section">
+    <div class="member-header">
+      <h2 class="member-name">{{ member.name }}</h2>
+      <p class="member-department">{{ member.department }}</p>
+      <p class="member-position">{{ member.position }}</p>
+    </div>
+
+    <div class="member-description">
+      <h3 class="description-title">About</h3>
+      <p class="description-text">{{ member.description }}</p>
+    </div>
+
+    <!-- Social Links -->
+    <!-- <div class="social-section" *ngIf="member.social.linkedin || member.social.email">
+      <h3 class="social-title">Contact</h3>
+      <div class="social-links">
+        <button
+          *ngIf="member.social.linkedin"
+          mat-raised-button
+          class="social-button linkedin"
+          (click)="onSocialClick('linkedin', member.social.linkedin!, $event)"
+          title="LinkedIn Profile">
+          <mat-icon>link</mat-icon>
+          LinkedIn
+        </button>
+
+        <button
+          *ngIf="member.social.email"
+          mat-raised-button
+          class="social-button email"
+          (click)="onSocialClick('email', member.social.email!, $event)"
+          title="Send Email">
+          <mat-icon>email</mat-icon>
+          Email
+        </button>
+      </div>
+    </div> -->
+
+    <!-- Action Buttons -->
+    <div class="action-buttons">
+      <button
+        mat-raised-button
+        color="primary"
+        class="action-button"
+        (click)="onClose()">
+        Close
+      </button>
+    </div>
+  </div>
+</div>
