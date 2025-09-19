@@ -1,107 +1,82 @@
 import { CommonModule } from '@angular/common';
-import { Component, computed, EventEmitter, Input, Output, signal, WritableSignal } from '@angular/core';
-import { DetailModalComponent, ModalConfig } from '../detail-modal/detail-modal.component';
-
-export interface ProjectPortfolio {
-  id: number;
-  projectName: string;
-  projectDuration: string;
-  projectLocation: string;
-  image: string;
-  description?: string;
-  clientName?: string;
-  projectValue?: string;
-  projectScope?: string[];
-  additionalImages?: string[];
-  challenges?: string;
-  solutions?: string;
-  technologies?: string[];
-}
+import { Component, computed, inject, Inject, signal } from '@angular/core';
+import { ProjectPortfolio } from '../../pages/home/home.component';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { animate, style, transition, trigger } from '@angular/animations';
+import { MatButtonModule } from '@angular/material/button';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-project-modal',
-  imports: [CommonModule, DetailModalComponent],
+  imports: [CommonModule, MatDialogModule, MatButtonModule],
   templateUrl: './project-modal.component.html',
-  styleUrl: './project-modal.component.css'
+  styleUrl: './project-modal.component.css',
+  animations: [
+    trigger('imageFade', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'scale(0.95)' }),
+        animate('300ms ease-in-out', style({ opacity: 1, transform: 'scale(1)' })),
+      ]),
+      transition(':leave', [
+        animate('300ms ease-in-out', style({ opacity: 0, transform: 'scale(0.95)' })),
+      ]),
+    ]),
+  ],
 })
 export class ProjectModalComponent {
-  @Input() isOpen = signal(false);
-  @Input() project: WritableSignal<ProjectPortfolio | undefined> = signal(undefined);
-  title = computed(() => this.project()?.projectName ?? '');
-
-  @Output() closeModal = new EventEmitter<void>();
-  @Output() viewFullProject = new EventEmitter<number>();
-
-  // Image gallery state
+  readonly dialog = inject(MatDialog);
+  project = signal<ProjectPortfolio | null>(null);
   currentImageIndex = signal(0);
 
-  // Modal configuration
-  modalConfig = signal<ModalConfig>({
-    size: 'xl',
-    closable: true,
-    closeOnBackdrop: true,
-    closeOnEscape: true,
-    showHeader: true,
-    showFooter: false,
-    bodyClass: 'p-0' // Remove default padding for custom layout
-  });
+  constructor(
+    private router: Router,
+    private dialogRef: MatDialogRef<ProjectModalComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: ProjectPortfolio
+  ) {
+    this.project.set({
+      ...data,
+      images: data.images || [data.image], // Fallback to single image if no images array
+    });
+  }
 
-  // Computed properties
   modalImages = computed(() => {
     const proj = this.project();
-    if (!proj) return [];
-
-    const images = [proj.image];
-    if (proj.additionalImages) {
-      images.push(...proj.additionalImages);
-    }
-    return images;
+    return proj?.images || [];
   });
 
   hasMultipleImages = computed(() => this.modalImages().length > 1);
 
-  onCloseModal() {
-    this.currentImageIndex.set(0);
-    this.closeModal.emit();
-  }
-
-  onViewFullProject() {
-    const proj = this.project();
-    if (proj) {
-      this.viewFullProject.emit(proj.id);
-    }
-  }
-
-  // Image navigation
   previousImage() {
-    if (this.hasMultipleImages()) {
-      const images = this.modalImages();
-      const currentIndex = this.currentImageIndex();
-      const newIndex = currentIndex === 0 ? images.length - 1 : currentIndex - 1;
-      this.currentImageIndex.set(newIndex);
-    }
+    this.currentImageIndex.update((index) => {
+      const newIndex = index - 1;
+      return newIndex < 0 ? this.modalImages().length - 1 : newIndex;
+    });
   }
 
   nextImage() {
-    if (this.hasMultipleImages()) {
-      const images = this.modalImages();
-      const currentIndex = this.currentImageIndex();
-      const newIndex = currentIndex === images.length - 1 ? 0 : currentIndex + 1;
-      this.currentImageIndex.set(newIndex);
+    this.currentImageIndex.update((index) => {
+      const newIndex = index + 1;
+      return newIndex >= this.modalImages().length ? 0 : newIndex;
+    });
+  }
+
+  onImageKeydown(event: KeyboardEvent) {
+    if (event.key === 'ArrowLeft') {
+      this.previousImage();
+    } else if (event.key === 'ArrowRight') {
+      this.nextImage();
     }
   }
 
-  // Keyboard navigation for images
-  onImageKeydown(event: KeyboardEvent) {
-    switch (event.key) {
-      case 'ArrowLeft':
-        event.preventDefault();
-        this.previousImage();
-        break;
-      case 'ArrowRight':
-        event.preventDefault();
-        this.nextImage();
-        break;
-    }
+  closeModal() {
+    this.dialogRef.close();
   }
+
+  onViewMoreProject() {
+    this.dialogRef.close();
+    this.router.navigate(['/project-portfolio']).then(() => {
+      window.scroll(0,0);
+    });
+  }
+
 }

@@ -1,180 +1,151 @@
-<!-- components/project-modal/project-modal.component.html -->
-<app-detail-modal
-  [isOpen]="isOpen"
-  [title]="project()?.projectName ?? ''"
-  [config]="modalConfig"
-  (closeModal)="onCloseModal()">
+<h2 mat-dialog-title class="bg-[#334d42]" style="margin-top: 0;">
+  <div class="flex justify-between items-center">
+    <div class="flex-1">
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-white">
+        {{ data.projectName }}
+      </h2>
+    </div>
+    <span
+      class="px-3 py-1 text-sm font-semibold rounded-full ml-4"
+      [ngClass]="{
+        'bg-green-100 text-green-800': data.status === 'Completed',
+        'bg-yellow-100 text-yellow-800': data.status === 'Ongoing'
+      }"
+    >
+      {{ data.status || 'Completed' }}
+    </span>
+  </div>
+</h2>
 
-  <!-- Custom Modal Body Content -->
-  <div slot="body" class="flex flex-col lg:flex-row max-h-[calc(90vh-120px)] overflow-hidden">
-
-    <!-- Left Side - Images -->
-    <div class="lg:w-1/2 relative bg-gray-100">
-      <div class="relative h-64 lg:h-full" (keydown)="onImageKeydown($event)" tabindex="-1">
-        @if (modalImages().length > 0 && project(); as proj) {
+<mat-dialog-content class="p-6 sm:p-8">
+  <div class="p-6 sm:p-8 max-w-4xl mx-auto min-h-[60vh]">
+    <div class="flex-grow overflow-auto">
+      <div class="relative mb-6">
+        <div class="w-full h-64 sm:h-96 overflow-hidden rounded-lg shadow-md">
           <img
             [src]="modalImages()[currentImageIndex()]"
-            [alt]="proj.projectName + ' image'"
-            class="w-full h-full object-cover"
-            loading="lazy">
-
-          @if (hasMultipleImages()) {
-            <!-- Previous Button -->
-            <button (click)="previousImage()"
-                    class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-white/50"
-                    aria-label="Previous image"
-                    type="button">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-              </svg>
-            </button>
-
-            <!-- Next Button -->
-            <button (click)="nextImage()"
-                    class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-white/50"
-                    aria-label="Next image"
-                    type="button">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-              </svg>
-            </button>
-
-            <!-- Image Counter -->
-            <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/50 text-white px-3 py-1 rounded-full text-sm">
-              {{ currentImageIndex() + 1 }} / {{ modalImages().length }}
-            </div>
-
-            <!-- Image Dots Indicator -->
-            <div class="absolute bottom-12 left-1/2 transform -translate-x-1/2 flex space-x-2">
-              @for (image of modalImages(); track $index) {
-                <button (click)="currentImageIndex.set($index)"
-                        class="w-2 h-2 rounded-full transition-colors duration-200 focus:outline-none focus:ring-1 focus:ring-white/50"
-                        [class]="currentImageIndex() === $index ? 'bg-white' : 'bg-white/50'"
-                        [attr.aria-label]="'Go to image ' + ($index + 1)"
-                        type="button">
-                </button>
-              }
-            </div>
-          }
+            [alt]="data.projectName + ' image ' + (currentImageIndex() + 1)"
+            class="w-full h-full object-contain transition-transform duration-500"
+            @imageFade
+          />
+        </div>
+        @if (hasMultipleImages()) {
+          <button
+            (click)="previousImage()"
+            class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-[#c5a751] hover:bg-[#d8c48a] text-white p-2 rounded-full"
+            aria-label="Previous image"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          <button
+            (click)="nextImage()"
+            class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-[#c5a751] hover:bg-[#d8c48a] text-white p-2 rounded-full"
+            aria-label="Next image"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+          <div class="absolute bottom-4 left-0 right-0 flex justify-center gap-2">
+            @for (img of modalImages(); track $index) {
+              <button
+                (click)="currentImageIndex.set($index)"
+                class="w-3 h-3 rounded-full"
+                [ngClass]="{
+                  'bg-[#c5a751]': currentImageIndex() === $index,
+                  'bg-gray-300': currentImageIndex() !== $index
+                }"
+                [attr.aria-label]="'Go to image ' + ($index + 1)"
+              ></button>
+            }
+          </div>
         }
       </div>
-    </div>
-
-    <!-- Right Side - Project Details -->
-    <div class="lg:w-1/2 p-6 overflow-y-auto">
-      @if (project(); as proj) {
-        <div class="space-y-6">
-
-          <!-- Basic Info -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+        <div class="bg-gray-50 rounded-md p-4 border-l-4 border-[#c5a751] flex items-start gap-3">
+          <svg class="w-5 h-5 text-[#334d42]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
           <div>
-            <h3 class="text-lg font-semibold text-[#334d42] mb-3">Project Information</h3>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
-              <div>
-                <span class="font-medium text-gray-600">Duration:</span>
-                <p class="text-gray-800">{{ proj.projectDuration }}</p>
-              </div>
-              <div>
-                <span class="font-medium text-gray-600">Location:</span>
-                <p class="text-gray-800">{{ proj.projectLocation }}</p>
-              </div>
-              @if (proj.clientName) {
-                <div>
-                  <span class="font-medium text-gray-600">Client:</span>
-                  <p class="text-gray-800">{{ proj.clientName }}</p>
-                </div>
-              }
-              @if (proj.projectValue) {
-                <div>
-                  <span class="font-medium text-gray-600">Project Value:</span>
-                  <p class="font-semibold text-[#c5a751]">{{ proj.projectValue }}</p>
-                </div>
-              }
-            </div>
+            <h3 class="text-sm font-bold text-[#334d42] uppercase mb-1">Duration</h3>
+            <p class="text-gray-700">{{ data.projectDuration }}</p>
           </div>
-
-          <!-- Description -->
-          @if (proj.description) {
-            <div>
-              <h3 class="text-lg font-semibold text-[#334d42] mb-3">Project Description</h3>
-              <p class="text-gray-700 leading-relaxed">{{ proj.description }}</p>
-            </div>
-          }
-
-          <!-- Project Scope -->
-          @if (proj.projectScope && proj.projectScope.length > 0) {
-            <div>
-              <h3 class="text-lg font-semibold text-[#334d42] mb-3">Project Scope</h3>
-              <div class="flex flex-wrap gap-2">
-                @for (scope of proj.projectScope; track scope) {
-                  <span class="bg-[#c5a751]/20 text-[#334d42] px-3 py-1 rounded-full text-sm font-medium border border-[#c5a751]/30">
-                    {{ scope }}
-                  </span>
-                }
-              </div>
-            </div>
-          }
-
-          <!-- Challenges & Solutions -->
-          @if (proj.challenges || proj.solutions) {
-            <div class="space-y-4">
-              @if (proj.challenges) {
-                <div class="bg-red-50 border-l-4 border-red-400 p-4 rounded-r-lg">
-                  <h3 class="text-lg font-semibold text-red-800 mb-2 flex items-center">
-                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                      <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
-                    </svg>
-                    Challenges
-                  </h3>
-                  <p class="text-red-700 leading-relaxed">{{ proj.challenges }}</p>
-                </div>
-              }
-              @if (proj.solutions) {
-                <div class="bg-green-50 border-l-4 border-green-400 p-4 rounded-r-lg">
-                  <h3 class="text-lg font-semibold text-green-800 mb-2 flex items-center">
-                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                    </svg>
-                    Solutions
-                  </h3>
-                  <p class="text-green-700 leading-relaxed">{{ proj.solutions }}</p>
-                </div>
-              }
-            </div>
-          }
-
-          <!-- Technologies Used -->
-          @if (proj.technologies && proj.technologies.length > 0) {
-            <div>
-              <h3 class="text-lg font-semibold text-[#334d42] mb-3">Technologies & Tools Used</h3>
-              <div class="flex flex-wrap gap-2">
-                @for (tech of proj.technologies; track tech) {
-                  <span class="bg-gray-100 hover:bg-gray-200 text-gray-800 px-3 py-1 rounded-lg text-sm transition-colors duration-200 border">
-                    {{ tech }}
-                  </span>
-                }
-              </div>
-            </div>
-          }
-
-          <!-- Action Buttons -->
-          <div class="flex flex-col sm:flex-row gap-3 pt-4 border-t">
-            <button (click)="onViewFullProject()"
-                    class="flex-1 bg-[#334d42] hover:bg-[#456d5a] text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center space-x-2"
-                    type="button">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-              </svg>
-              <span>View Full Project Details</span>
-            </button>
-            <button (click)="onCloseModal()"
-                    class="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-3 px-6 rounded-lg transition-colors duration-200"
-                    type="button">
-              Close
-            </button>
-          </div>
-
         </div>
-      }
+        <div class="bg-gray-50 rounded-md p-4 border-l-4 border-[#c5a751] flex items-start gap-3">
+          <svg class="w-5 h-5 text-[#334d42]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+          </svg>
+          <div>
+            <h3 class="text-sm font-bold text-[#334d42] uppercase mb-1">Location</h3>
+            <p class="text-gray-700">{{ data.projectLocation }}</p>
+          </div>
+        </div>
+        @if (data.client) {
+          <div class="bg-gray-50 rounded-md p-4 border-l-4 border-[#c5a751] flex items-start gap-3">
+            <svg class="w-5 h-5 text-[#334d42]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+            </svg>
+            <div>
+              <h3 class="text-sm font-bold text-[#334d42] uppercase mb-1">Client</h3>
+              <p class="text-gray-700">{{ data.client }}</p>
+            </div>
+          </div>
+        }
+        @if (data.technologies) {
+          <div class="bg-gray-50 rounded-md p-4 border-l-4 border-[#c5a751] flex items-start gap-3">
+            <svg class="w-5 h-5 text-[#334d42]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+            <div>
+              <h3 class="text-sm font-bold text-[#334d42] uppercase mb-1">Technologies</h3>
+              <p class="text-gray-700">{{ data.technologies.join(', ') }}</p>
+            </div>
+          </div>
+        }
+      </div>
+      <!-- <div class="mb-6">
+        <h3 class="text-sm font-bold text-[#334d42] uppercase mb-2">Project Progress</h3>
+        <div class="w-full bg-gray-200 rounded-full h-2.5">
+          <div
+            class="bg-[#c5a751] h-2.5 rounded-full transition-all duration-500"
+            [style.width]="data.progress ? data.progress + '%' : '100%'"
+          ></div>
+        </div>
+        <p class="text-sm text-gray-600 mt-1">
+          {{ data.progress ? data.progress + '% Complete' : 'Completed' }}
+        </p>
+      </div> -->
+      <div class="mb-6">
+        <h3 class="text-sm font-bold text-[#334d42] uppercase mb-2">Description</h3>
+        <p class="text-gray-700 leading-relaxed">
+          {{ data.description || 'This project showcases our expertise in delivering innovative civil engineering and construction solutions tailored to client needs.' }}
+        </p>
+      </div>
     </div>
   </div>
-</app-detail-modal>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button
+    mat-dialog-close
+    class="px-5 py-2.5 rounded-md font-medium bg-gray-200 hover:bg-gray-300 text-[#334d42] transition flex items-center gap-2 cursor-pointer"
+  >
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+    </svg>
+    Close
+  </button>
+  &nbsp;&nbsp;
+  <button
+    (click)="onViewMoreProject()"
+    class="px-5 py-2.5 rounded-md font-medium bg-[#c5a751] hover:bg-[#d8c48a] text-white shadow-md transition flex items-center gap-2 cursor-pointer"
+  >
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+    </svg>
+    View More Projects
+  </button>
+</mat-dialog-actions>

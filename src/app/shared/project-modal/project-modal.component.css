@@ -1,0 +1,21 @@
+/* :host {
+  display: block;
+}
+
+::ng-deep .custom-dialog-container {
+  border-radius: 1rem !important;
+  padding: 0 !important;
+  max-width: 960px !important;
+  background: white !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+mat-dialog-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+mat-dialog-content .sticky {
+  position: sticky;
+} */
