@@ -5,5 +5,60 @@
   --font-display: "Poppins"
 }
 
-html, body { height: 100%; }
+html, body { height: 100%; scroll-behavior: smooth; }
 body { margin: 0; font-family: "Poppins", Roboto, "Helvetica Neue", sans-serif; }
+
+/* Add these styles to your global styles.css file */
+
+/* Member Detail Dialog Custom Styles */
+.member-detail-dialog .mat-mdc-dialog-container {
+  padding: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  border-radius: 16px !important;
+  overflow: hidden !important;
+}
+
+.member-detail-dialog .mat-mdc-dialog-surface {
+  border-radius: 16px !important;
+  overflow: hidden !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3) !important;
+  margin: 16px !important;
+}
+
+/* Dialog backdrop */
+.cdk-overlay-backdrop.cdk-overlay-backdrop-showing {
+  background: rgba(0, 0, 0, 0.6) !important;
+  backdrop-filter: blur(4px);
+}
+
+/* Animation for dialog */
+.mat-mdc-dialog-container {
+  animation: dialogFadeIn 0.3s ease-out !important;
+}
+
+@keyframes dialogFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Responsive dialog adjustments */
+@media (max-width: 768px) {
+  .member-detail-dialog .mat-mdc-dialog-container {
+    margin: 8px !important;
+    max-height: calc(100vh - 16px) !important;
+    width: calc(100vw - 16px) !important;
+  }
+
+  .member-detail-dialog .mat-mdc-dialog-surface {
+    margin: 0 !important;
+    width: 100% !important;
+    max-height: calc(100vh - 16px) !important;
+  }
+}
