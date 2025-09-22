@@ -63,7 +63,7 @@ export let client: Client[] = [
   },
   {
     name: 'SMP IT Salman Al Farisi',
-    url: '/images/clients/smp_it_saf_logo.jpg'
+    url: '/images/clients/smp_it_saf_logo.png'
   },
   {
     name: 'STMM MMTC',
@@ -72,5 +72,61 @@ export let client: Client[] = [
   {
     name: 'Universitas Gadjah Mada',
     url: '/images/clients/ugm_horizontal_logo.png'
+  },
+  {
+    name: 'Bhumi Kayu Studio',
+    url: '/images/clients/bhumi_kayu_studio_logo_modified.png'
+  },
+  {
+    name: 'Citra Paramedika',
+    url: '/images/clients/citra_paramedika_logo_modified.png'
+  },
+  {
+    name: 'Masjid Al-Marhamah',
+    url: '/images/clients/masjid_al_marhamah_logo.png'
+  },
+  {
+    name: 'PT Yoda Karya',
+    url: '/images/clients/pt_yoda_karya_logo.png'
+  },
+  {
+    name: 'RSKB An-Nur',
+    url: '/images/clients/rskb_annur_logo_modified.png'
+  },
+  {
+    name: 'RSKB Sinduadi',
+    url: '/images/clients/rskb_sinduadi_logo_modified.png'
+  },
+  {
+    name: 'Pondok Pesantren Rumah Sajada',
+    url: '/images/clients/rumah_sajada_logo_modified.png'
+  },
+  {
+    name: 'Sekolah Tinggi Maritim Yogyakarta',
+    url: '/images/clients/stmy_logo_edited.png'
+  },
+  {
+    name: 'Keluarga Alumni Teknik Sipil Universitas Gadjah Mada (Katsgama)',
+    url: '/images/clients/katsgama_logo_modified.png'
+  },
+  {
+    name: 'PT Bangun Cipta Consultant',
+    url: '/images/clients/pt_bangun_cipta_logo.png'
+  },
+  {
+    name: 'PT Anugerah Krida Pradana',
+    url: '/images/clients/pt_anugerah_krida_pradana_logo.png'
+  },
+  {
+    name: 'PT Scalaraindo Utama Consult',
+    url: '/images/clients/pt_scalarindo_utama_consult_logo_modified.png'
+  },
+  {
+    name: 'PT Surya Wijaya Sembada',
+    url: '/images/clients/pt_sws_logo_modified.png'
+  },
+  {
+    name: 'PJB Unit Pembakit Listrik Cirata',
+    url: '/images/clients/pjb_unit_pembangkit_cirata_logo_modified.png'
   },
 ]
