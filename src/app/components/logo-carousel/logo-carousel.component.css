@@ -1,0 +1,116 @@
+/* Define your color variables */
+:root {
+  --primary-dark: #334d42;
+  --primary-gold: #c5a751;
+  --white: #ffffff;
+  --gray-200: #e5e7eb;
+}
+
+/* Marquee Animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%); /* Move the full width of the container */
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: 500%; /* Double width to accommodate duplicated content */
+  animation: marquee 60s linear infinite; /* Increased duration for smoother flow */
+  will-change: transform; /* Optimize performance */
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Image and text styling */
+img {
+  height: 80px; /* Enlarged height */
+  max-width: 250px; /* Enlarged max-width */
+  object-fit: contain;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.group:hover img {
+  transform: scale(1.1);
+  opacity: 1;
+}
+
+p {
+  font-size: 1rem; /* Readable text size */
+  transition: color 0.3s ease;
+}
+
+/* Responsive adjustments */
+@media (min-width: 640px) {
+  img {
+    height: 100px; /* Larger height on tablet and up */
+    max-width: 300px; /* Larger max-width on tablet and up */
+  }
+
+  p {
+    font-size: 1.25rem; /* Larger text on tablet and up */
+  }
+}
+
+@media (max-width: 640px) {
+  .animate-marquee {
+    width: 300%; /* Adjust for smaller screens to ensure smooth looping */
+  }
+
+  img {
+    height: 60px; /* Adjusted height for mobile */
+    max-width: 180px; /* Adjusted max-width for mobile */
+  }
+
+  p {
+    font-size: 0.875rem; /* Adjusted text size for mobile */
+  }
+}
+
+/* Gradient overlay styling */
+div[class^="absolute"] {
+  z-index: 10;
+}
+
+/* This code is different */
+.logos__marquee {
+	display: flex;
+	overflow-x: hidden;
+	user-select: none;
+	mask-image: linear-gradient(
+		to right,
+		hsl(0 0% 0% / 0),
+		hsl(0 0% 0% / 1) 20%,
+		hsl(0 0% 0% / 1) 80%,
+		hsl(0 0% 0% / 0)
+	);
+}
+
+.marquee__logos {
+	flex-shrink: 0;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	gap: 1rem;
+	min-width: 100%;
+	animation: loop 60s linear infinite;
+}
+.marquee__logos img {
+	display: block;
+	margin-inline: 2rem;
+}
+
+@keyframes loop {
+	from {
+		transform: translateX(0);
+	}
+	to {
+		transform: translateX(-100%);
+	}
+}
+

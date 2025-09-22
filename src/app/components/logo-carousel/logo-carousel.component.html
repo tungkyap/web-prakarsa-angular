@@ -1,0 +1,11 @@
+<div class="logos__marquee">
+  <div class="marquee__logos">
+    @for(client of clientData; track client.name) {
+      <img [src]="client.url" width="222" height="30" loading="eager" [alt]="client.name || 'Client Logo'" class="intro-logos_logo">
+    }
+  </div>
+	<div class="marquee__logos" aria-hidden="true">
+    @for(client of clientData; track client.name) {
+      <img [src]="client.url" width="125" height="24" loading="eager" [alt]="client.name || 'Client Logo'" class="intro-logos_logo">
+    }
+</div>
