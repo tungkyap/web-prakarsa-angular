@@ -51,7 +51,6 @@ export class AboutUsComponent implements OnInit {
 
   ngOnInit(): void {
     window.scroll(0,0);
-    console.log('About component initialized');
     this.animateCounters();
   }
 
@@ -228,7 +227,9 @@ export class AboutUsComponent implements OnInit {
   startProject(): void {
     console.log('Start project clicked');
     // Navigate to contact form or project inquiry page
-    this.router.navigateByUrl('/contact-us');
+    this.router.navigate(['/contact-us']).then(() => {
+      window.scroll(0,0);
+    });
   }
 
   downloadProfile(): void {
