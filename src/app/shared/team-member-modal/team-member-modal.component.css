@@ -1,0 +1,49 @@
+:host {
+  display: block;
+}
+
+mat-dialog-content {
+  border-radius: 1rem;
+  overflow-y: auto;
+}
+
+img {
+  transition: transform 0.3s ease;
+}
+
+i {
+  transition: transform 0.3s ease;
+}
+
+a:hover i {
+  transform: scale(1.2);
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  mat-dialog-content {
+    padding: 4px;
+  }
+
+  .flex-col sm:flex-row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  img {
+    width: 120px;
+    height: 120px;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+  }
+
+  p {
+    font-size: 0.875rem;
+  }
+
+  i {
+    font-size: 1.5rem;
+  }
+}

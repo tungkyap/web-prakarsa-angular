@@ -1,0 +1,57 @@
+<div class="p-6 sm:p-8 max-w-2xl mx-auto bg-white text-[#334d42] rounded-xl shadow-lg overflow-y-auto max-h-[80vh]">
+  <!-- Close Button (Top Right) -->
+  <button class="absolute top-4 right-4 text-[#334d42] hover:text-[#c5a751] focus:outline-none transition-colors duration-300" aria-label="Close modal">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+    </svg>
+  </button>
+
+  <!-- Profile Card -->
+  <div class="flex flex-col sm:flex-row items-center gap-6 sm:gap-10">
+    <!-- Image -->
+    <div class="w-40 h-40 sm:w-48 sm:h-48 rounded-full overflow-hidden border-4 border-[#c5a751] shadow-md">
+      <img
+        [src]="data.image"
+        [alt]="data.name"
+        class="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+      />
+    </div>
+
+    <!-- Details -->
+    <div class="flex-1 text-center sm:text-left">
+      <h3 class="text-2xl sm:text-3xl font-semibold mb-2 text-[#334d42]">{{ data.name }}</h3>
+      <p class="text-lg text-[#c5a751] uppercase mb-2">{{ data.position }}</p>
+      <p class="text-md text-[#334d42] mb-4">{{ data.department }}</p>
+      <p class="text-gray-700 leading-relaxed mb-6">{{ data.description }}</p>
+
+      <!-- Social Links -->
+      <!-- <div class="flex justify-center sm:justify-start gap-4">
+        @if (data.social.linkedin) {
+          <a
+            href="{{ data.social.linkedin }}"
+            target="_blank"
+            class="text-white hover:text-[#c5a751] transition-colors duration-300"
+            aria-label="LinkedIn"
+          >
+            <i class="fab fa-linkedin-in text-2xl"></i>
+          </a>
+        }
+        @if (data.social.email) {
+          <a
+            href="mailto:{{ data.social.email }}"
+            class="text-white hover:text-[#c5a751] transition-colors duration-300"
+            aria-label="Email"
+          >
+            <i class="fas fa-envelope text-2xl"></i>
+          </a>
+        }
+      </div> -->
+    </div>
+  </div>
+
+  <div class="flex justify-end p-4">
+    <button (click)="closeModal()" class="cursor-pointer px-6 py-2 bg-[#c5a751] hover:bg-[#d8c48a] text-white rounded-md transition-all duration-300">
+      Close
+    </button>
+  </div>
+</div>

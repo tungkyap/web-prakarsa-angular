@@ -1,10 +1,11 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, inject, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { SwiperOptions } from 'swiper/types';
 import Swiper from 'swiper';
 import { Pagination, Navigation, Autoplay, EffectFade } from 'swiper/modules';
 import { RouterLink } from '@angular/router';
-import { MatDialog } from '@angular/material/dialog';
 import { MemberModalComponent } from '../../shared/member-modal/member-modal.component';
+import { Dialog } from '@angular/cdk/dialog';
+import { TeamMemberModalComponent } from '../../shared/team-member-modal/team-member-modal.component';
 Swiper.use([Pagination, Navigation, Autoplay, EffectFade])
 
 
@@ -163,7 +164,7 @@ export class TeamSwiperComponent implements OnInit, AfterViewInit {
     },
   ];
 
-  constructor(private dialog: MatDialog) {}
+  constructor() {}
 
   ngOnInit(): void {}
 
@@ -188,25 +189,29 @@ export class TeamSwiperComponent implements OnInit, AfterViewInit {
     }
   }
 
+  private cdkDialog = inject(Dialog);
+
   // Method to handle member card click (optional)
   onMemberClick(member: TeamMember): void {
     console.log('Member clicked:', member);
     // Add your logic here (e.g., open modal, navigate to detail page)
-    const dialogRef = this.dialog.open(MemberModalComponent, {
-      data: member,
-      width: '100%',
-      maxWidth: '600px',
-      maxHeight: '90vh',
-      panelClass: 'member-detail-dialog',
-      autoFocus: false,
-      restoreFocus: false,
-      hasBackdrop: true,
-      disableClose: false
-    });
+    // const dialogRef = this.dialog.open(MemberModalComponent, {
+    //   data: member,
+    //   width: '100%',
+    //   maxWidth: '600px',
+    //   maxHeight: '90vh',
+    //   panelClass: 'member-detail-dialog',
+    //   autoFocus: false,
+    //   restoreFocus: false,
+    //   hasBackdrop: true,
+    //   disableClose: false
+    // });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('Dialog closed:', result);
-    });
+    // dialogRef.afterClosed().subscribe(result => {
+    //   console.log('Dialog closed:', result);
+    // });
+
+    this.cdkDialog.open(TeamMemberModalComponent, {data: member});
   }
 
 }

@@ -5,7 +5,7 @@ import { FooterComponent } from '../../shared/footer/footer.component';
 import { TeamSwiperComponent } from '../../components/team-swiper/team-swiper.component';
 import { CommonModule } from '@angular/common';
 import { TypewriterComponent } from "../../components/typewriter/typewriter.component";
-import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { Dialog } from '@angular/cdk/dialog';
 import { ContactModalComponent } from '../../shared/contact-modal/contact-modal.component';
@@ -200,7 +200,6 @@ export class HomeComponent {
 
   constructor(
     private router: Router,
-    private dialog: MatDialog,
   ) {
     window.scroll(0,0);
   }
