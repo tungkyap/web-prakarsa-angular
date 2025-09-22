@@ -8,19 +8,21 @@
 
     <!-- Content -->
     <div class="relative p-4 sm:p-8 lg:p-16 z-10 flex flex-col items-start justify-center h-full text-left text-white max-w-5xl">
-      <!-- Company Title -->
-      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-4">
-        PT PRAKARSA MAHAKARYA ABADI
-      </h1>
+      <div>
+        <!-- Company Title -->
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-4">
+          PT PRAKARSA MAHAKARYA ABADI
+        </h1>
 
-      <!-- Tagline -->
-      <p class="text-lg sm:text-xl lg:text-2xl mb-8 text-[#c5a751] font-extrabold">
-        You dream it, we build it.
-      </p>
+        <!-- Tagline -->
+        <p class="text-lg sm:text-xl lg:text-2xl mb-8 text-[#c5a751] font-extrabold">
+          You dream it, we build it.
+        </p>
+      </div>
 
       <!-- Who We Are -->
       <div class="mt-6">
-        <h2 class="text-2xl sm:text-xl lg:text-4xl font-extrabold text-[#c5a751] mb-4">
+        <h2 class="text-lg sm:text-xl lg:text-2xl font-extrabold text-[#c5a751] mb-4">
           Who We Are ?
         </h2>
         <p class="text-xl sm:text-lg text-gray-200 leading-relaxed mb-6">
@@ -144,35 +146,19 @@
   </section>
 
   <!-- Our Clients Section -->
-  <section class="py-16 sm:py-20 bg-gray-50" aria-label="Our trusted clients">
+  <section class="py-16 sm:py-20 bg-gray-300" aria-label="Our trusted clients">
+    <!-- Section Header -->
+    <div class="text-center mb-12">
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-[#334d42] mb-4">
+        Our Trusted <span class="text-[#c5a751]">Clients</span>
+      </h2>
+      <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+        We are proud to partner with leading organizations across Indonesia
+      </p>
+    </div>
+    <!-- Clients Logo -->
+    <app-logo-slider></app-logo-slider>
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-
-      <!-- Section Header -->
-      <div class="text-center mb-12">
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-[#334d42] mb-4">
-          Our Trusted <span class="text-[#c5a751]">Clients</span>
-        </h2>
-        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-          We are proud to partner with leading organizations across Indonesia
-        </p>
-      </div>
-
-      <!-- Client Logos Grid -->
-      <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 mb-12">
-        @for (client of clients(); track client.id) {
-          <div
-            class="bg-white rounded-lg shadow-md p-6 flex items-center justify-center hover:shadow-lg transition-shadow duration-300 grayscale hover:grayscale-0"
-          >
-            <div class="text-center">
-              <div class="text-lg font-bold" [ngClass]="{'text-[#c5a751]': client.isHighlighted, 'text-[#334d42]': !client.isHighlighted}">
-                {{ client.name }}
-              </div>
-              <div class="text-xs text-gray-500">{{ client.subtext }}</div>
-            </div>
-          </div>
-        }
-      </div>
-
       <!-- Quick Stats -->
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 text-center">
         @for (stat of quickStats(); track stat.id) {
@@ -182,7 +168,6 @@
           </div>
         }
       </div>
-
     </div>
   </section>
 
@@ -192,7 +177,7 @@
   </section>
 
   <!-- Contact Us Section -->
-  <section class="py-16 sm:py-24 lg:py-32 bg-white" aria-label="Get in touch with the company">
+  <section class="py-16 sm:py-24 lg:py-32 bg-gray-50" aria-label="Get in touch with the company">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <div class="max-w-7xl mx-auto">
         <!-- Main Contact Banner with Background Image -->

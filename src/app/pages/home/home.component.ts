@@ -10,7 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { Dialog } from '@angular/cdk/dialog';
 import { ContactModalComponent } from '../../shared/contact-modal/contact-modal.component';
 import { ProjectModalComponent } from '../../shared/project-modal/project-modal.component';
-import { LogoCarouselComponent } from '../../components/logo-carousel/logo-carousel.component';
+import { LogoSliderComponent } from "../../components/logo-slider/logo-slider.component";
 
 export interface ProjectPortfolio {
   id: number;
@@ -57,7 +57,7 @@ export interface QuickStat {
     TypewriterComponent,
     MatDialogModule,
     MatIconModule,
-    LogoCarouselComponent
+    LogoSliderComponent
 ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
