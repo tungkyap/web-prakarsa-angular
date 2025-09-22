@@ -1,0 +1,24 @@
+<section class="py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Swiper Container -->
+    <div class="relative swiper-container">
+      <div #swiperContainer class="swiper client-slider">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide" *ngFor="let client of clients">
+            <div class="flex items-center justify-center h-20 px-4">
+              <img
+                [src]="client.url"
+                [alt]="client.name"
+                class="max-h-32 max-w-64 object-contain transition-all duration-300 filter opacity-70 hover:opacity-100"
+                [title]="client.name">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation arrows (optional) -->
+      <div class="swiper-button-next text-gray-400 hover:text-gray-600 transition-colors"></div>
+      <div class="swiper-button-prev text-gray-400 hover:text-gray-600 transition-colors"></div>
+    </div>
+  </div>
+</section>
