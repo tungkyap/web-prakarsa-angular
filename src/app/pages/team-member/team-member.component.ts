@@ -1,10 +1,11 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { HeaderComponent } from '../../shared/header/header.component';
 import { FooterComponent } from '../../shared/footer/footer.component';
-import { CommonModule, ViewportScroller } from '@angular/common';
-import { Router, Scroll } from '@angular/router';
-import { filter, map } from 'rxjs';
+import { CommonModule } from '@angular/common';
+import { Dialog } from '@angular/cdk/dialog';
+import { TeamMemberModalComponent } from '../../shared/team-member-modal/team-member-modal.component';
 
+// Unused
 interface TeamMember {
   id: number;
   name: string;
@@ -16,6 +17,20 @@ interface TeamMember {
   linkedin?: string;
   experience: string;
   specialties: string[];
+}
+
+export interface TeamMember2 {
+  id: number;
+  name: string;
+  position: string;
+  image?: string;
+  department: string;
+  description?: string;
+}
+
+export interface Department {
+  name: string;
+  members: TeamMember2[];
 }
 
 @Component({
@@ -34,6 +49,7 @@ export class TeamMemberComponent implements OnInit {
     window.scroll(0,0);
   }
 
+  // Unused
   juniorMembers = [
     { id: 1, name: 'Komang Ari Switara', role: 'Construction engineering & supervision, logistics planning & management', level: 'Junior', position: 'Logistic', image: '/images/team-member-profile/komang.jpeg'  },
     // { id: 2, name: 'Andhika Pratama', role: 'Construction engineering & supervision, drafting', level: 'Junior', position: 'Engineer' },
@@ -43,6 +59,7 @@ export class TeamMemberComponent implements OnInit {
     { id: 3, name: 'Ryan Muhammad Fajar', role: 'Construction logistics & support', level: 'Junior', position: 'Logistic', image: '/images/team-member-profile/ryan.jpeg' },
   ];
 
+  // Unused
   deliveryPartners = [
     { id: 1, name: 'Fariz Rachmana Putra', specialty: 'Architect' },
     { id: 2, name: 'I Made Sudirawan', specialty: 'Mechanical, Electrical, & Plumbing Engineer' },
@@ -163,6 +180,189 @@ export class TeamMemberComponent implements OnInit {
   }
 
   // End Claude
+
+  // Grok: New Design
+
+  departments2: Department[] = [
+    {
+      name: 'Director of Engineering',
+      members: [
+        {
+          id: 1,
+          name: 'Joko Sumiyanto',
+          position: 'Founder',
+          image: '/images/team-member-profile/joko_sumiyanto_zoom.png',
+          department: 'Director of Engineering',
+          description:
+            'Founder of Prakarsa with over 30 years of experience in structural engineering, forensic engineering, construction supervision, and concrete materials.'
+        },
+      ],
+    },
+    {
+      name: 'Director of Operations & Business Development',
+      members: [
+        {
+          id: 2,
+          name: 'Kemal Fardianto',
+          position: 'Engineer',
+          image: '/images/team-member-profile/kemal_fardianto_zoom.png',
+          department: 'Director of Operations & Business Development',
+          description:
+            'Specializes in transportation engineering, planning and financing engineering economics.'
+        },
+      ],
+    },
+    {
+      name: 'Head of Research & Development',
+      members: [
+        {
+          id: 3,
+          name: 'Gatra Dewa Oktananda',
+          position: 'Engineer',
+          image: '/images/team-member-profile/gatra_dewa_oktananda_zoom.png',
+          department: 'Head of Research & Development',
+          description:
+            'Expert in structural engineering, construction engineering and supervision, concrete materials, project logistics and planning.'
+        },
+        {
+          id: 7,
+          name: 'Tsalitsatul Husna',
+          position: 'Engineer',
+          image: '/images/team-member-profile/tsalitsatul_husna_zoom.png',
+          department: 'Head of Research & Development',
+          description:
+            'Expert in hydrologic engineering and administration.'
+        },
+        {
+          id: 6,
+          name: 'Irkhas Bayu Faveryan',
+          position: 'Academic Engineering Partner',
+          image: '/images/team-member-profile/irkhas_bayu_faveryan_zoom.png',
+          department: 'Head of Research & Development',
+          description:
+            'Expert in structural engineering, numerical analysis and modeling, and building information modeling (BIM).'
+        },
+      ],
+    },
+    {
+      name: 'Head of Construction',
+      members: [
+        {
+          id: 4,
+          name: 'Mochammad Murtadlo Najib',
+          position: 'Engineer',
+          image: '/images/team-member-profile/mochammad_murtadlo_najib_zoom.png',
+          department: 'Head of Construction',
+          description:
+            'Expert in construction engineering and supervision, project management, logistics, and cost estimation.'
+        },
+      ],
+    },
+    {
+      name: 'Head of Drafting',
+      members: [
+        {
+          id: 5,
+          name: 'Arif Tri Wijayanto',
+          position: 'Engineer',
+          image: '/images/team-member-profile/arif_tri_wijayanto_zoom.png',
+          department: 'Head of Drafting',
+          description:
+            'Expert in engineering drafting, construction engineering, project management, and cost estimation.'
+        },
+      ],
+    },
+    {
+      name: 'Logistic & Drafter',
+      members: [
+        {
+          id: 1,
+          name: 'Komang Ari Switara',
+          position: 'Logistic',
+          image: '/images/team-member-profile/komang.jpeg',
+          department: 'Logistic & Drafter',
+          description:
+            'Focused on construction engineering and supervision, logistics planning and management.'
+        },
+        {
+          id: 2,
+          name: 'Muhammad Luqmanul Hakim',
+          position: 'Drafter',
+          image: '/images/team-member-profile/muhammad.jpeg',
+          department: 'Logistic & Drafter',
+          description:
+            'Specializes in civil engineering and architectural drafting.'
+        },
+        {
+          id: 3,
+          name: 'Achmat Syakur Nuranto',
+          position: 'Logistic',
+          image: '/images/team-member-profile/achmat.jpeg',
+          department: 'Logistic & Drafter',
+          description:
+            'Provides support in construction logistics and operations.'
+        },
+        {
+          id: 4,
+          name: 'Ripki Aji Permana',
+          position: 'Drafter',
+          image: '/images/team-member-profile/ripki.jpeg',
+          department: 'Logistic & Drafter',
+          description:
+            'Specializes in civil engineering and architectural drafting.'
+        },
+        {
+          id: 5,
+          name: 'Ryan Muhammad Fajar',
+          position: 'Logistic',
+          image: '/images/team-member-profile/ryan.jpeg',
+          department: 'Logistic & Drafter',
+          description:
+            'Supports construction logistics and management operations.'
+        },
+      ],
+    },
+    {
+      name: 'Project Delivery Partners',
+      members: [
+        {
+          id: 1,
+          name: 'Fariz Rachmana Putra',
+          position: 'Partner',
+          image: '',
+          department: 'Project Delivery Partners',
+          description: 'Architect and design partner.'
+        },
+        {
+          id: 2,
+          name: 'I Made Sudirawan',
+          position: 'Partner',
+          image: '',
+          department: 'Project Delivery Partners',
+          description: 'Mechanical, electrical, and plumbing engineering partner.'
+        },
+        {
+          id: 3,
+          name: 'Holly Bilowo',
+          position: 'Partner',
+          image: '',
+          department: 'Project Delivery Partners',
+          description: 'Hydrologic engineering partner.'
+        },
+      ],
+    },
+  ];
+
+
+  private cdkDialog = inject(Dialog);
+
+  onViewMemberDetail(member: TeamMember2) {
+
+    this.cdkDialog.open(TeamMemberModalComponent, {data: member});
+  }
+
+  // End of Grok
+
 
 
 }

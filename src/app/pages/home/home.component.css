@@ -16,14 +16,6 @@
   background-size: cover;
 }
 
-.consulting-overlay {
-  background: linear-gradient(135deg, rgba(51, 77, 66, 0.9), rgba(51, 77, 66, 0.7));
-}
-
-.best-practices-overlay {
-  background: linear-gradient(135deg, rgba(197, 167, 81, 0.9), rgba(197, 167, 81, 0.7));
-}
-
 .bg-consulting {
   background-image: url('/images/engineering_consulting.jpeg');
   background-size: cover;
