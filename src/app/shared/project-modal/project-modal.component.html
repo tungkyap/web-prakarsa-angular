@@ -116,21 +116,29 @@
           }
       </div>
 
-      <div class="mt-10 flex items-center space-x-4">
-        <button (click)="closeModal()" class="px-5 py-2.5 rounded-md font-medium bg-gray-200 hover:bg-gray-300 text-[#334d42] transition flex items-center gap-2 cursor-pointer">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-          </svg>
-          <span class="text-[14px]">Close</span>
-        </button>
-        &nbsp;&nbsp;
-        <button (click)="onViewMoreProject()" class="px-5 py-2.5 rounded-md font-medium bg-[#c5a751] hover:bg-[#d8c48a] text-white shadow-md transition flex items-center gap-2 cursor-pointer">
-          <span class="text-[14px]">View More Projects</span>
-          <svg class="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-          </svg>
-        </button>
-      </div>
+      @if (isHomePage) {
+        <div class="mt-10 flex items-center space-x-4">
+          <button (click)="closeModal()" class="px-5 py-2.5 rounded-md font-medium bg-gray-200 hover:bg-gray-300 text-[#334d42] transition flex items-center gap-2 cursor-pointer">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+            <span class="text-[14px]">Close</span>
+          </button>
+          &nbsp;&nbsp;
+          <button (click)="onViewMoreProject()" class="px-5 py-2.5 rounded-md font-medium bg-[#c5a751] hover:bg-[#d8c48a] text-white shadow-md transition flex items-center gap-2 cursor-pointer">
+            <span class="text-[14px]">View More Projects</span>
+            <svg class="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </button>
+        </div>
+      } @else {
+        <div class="mt-10 flex justify-end p-4">
+          <button (click)="closeModal()" class="cursor-pointer px-6 py-2 bg-[#c5a751] hover:bg-[#d8c48a] text-white rounded-md transition-all duration-300">
+            Close
+          </button>
+        </div>
+      }
     </div>
   </div>
 </div>

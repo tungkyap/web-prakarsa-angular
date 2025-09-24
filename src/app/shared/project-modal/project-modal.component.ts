@@ -1,7 +1,7 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { DIALOG_DATA, DialogRef } from '@angular/cdk/dialog';
 import { CommonModule } from '@angular/common';
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProjectPortfolio } from '../../pages/home/home.component';
 
@@ -22,17 +22,28 @@ import { ProjectPortfolio } from '../../pages/home/home.component';
     ]),
   ],
 })
-export class ProjectModalComponent {
+export class ProjectModalComponent implements OnInit {
   private dialogRef = inject(DialogRef);
   data = inject(DIALOG_DATA);
+
   project = signal<ProjectPortfolio | null>(null);
   currentImageIndex = signal(0);
+
+  isHomePage: boolean = true;
 
   constructor(private router: Router) {
     this.project.set({
       ...this.data,
       images: this.data.images || [this.data.image],
     });
+  }
+
+  ngOnInit(): void {
+    if (this.router.url === '/project-portfolio') {
+      this.isHomePage = false;
+    } else {
+      this.isHomePage = true;
+    }
   }
 
   modalImages = computed(() => {

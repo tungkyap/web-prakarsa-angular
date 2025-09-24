@@ -169,9 +169,9 @@ export class HomeComponent {
     },
     {
       id: 4,
-      projectName: "Front One Hotel Pamekasan Construction",
+      projectName: "Front One Hotel Pamekasan & Gresik Construction",
       projectDuration: "2018",
-      projectLocation: "Gresik, Indonesia",
+      projectLocation: "Pamekasan & Gresik, Indonesia",
       image: "/images/project-portfolio/front_one_hotel.png",
       description: "Our scope covered the project's critical engineering phases. We conducted a comprehensive structural analysis to ensure the 9-story building's integrity and safety, followed by meticulous on-site construction supervision to guarantee all work adhered to the approved designs and highest quality standards.",
       status: "Completed",

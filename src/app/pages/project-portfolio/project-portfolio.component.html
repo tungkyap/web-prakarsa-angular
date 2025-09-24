@@ -54,7 +54,7 @@
 
     <!-- Results Count -->
     <div class="mt-6 text-gray-600">
-      Showing {{ filteredProjects2().length }} of {{ projects().length }} projects
+      Showing {{ filteredProjects().length }} of {{ projects().length }} projects
     </div>
   </div>
 </section>
@@ -64,9 +64,9 @@
   <div class="container mx-auto px-4 sm:px-6 lg:px-8">
 
     <!-- Projects Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8" *ngIf="filteredProjects2().length > 0; else noResults">
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8" *ngIf="filteredProjects().length > 0; else noResults">
       <div
-        *ngFor="let project of filteredProjects2(); trackBy: trackByProjectId2"
+        *ngFor="let project of filteredProjects(); trackBy: trackByProjectId"
         class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 group">
 
         <!-- Project Image -->
@@ -93,10 +93,10 @@
           </div>
 
           <!-- Overlay on Hover -->
-          <div class="absolute inset-0 bg-[#334d42]/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+          <div class="cursor-pointer absolute inset-0 bg-[#334d42]/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
             <button
               (click)="openProjectModal(project)"
-              class="bg-[#c5a751] text-white px-6 py-2 rounded-lg font-medium hover:bg-[#b8984a] transition-colors">
+              class="cursor-pointer bg-[#c5a751] text-white px-6 py-2 rounded-lg font-medium hover:bg-[#b8984a] transition-colors">
               View Details
             </button>
           </div>
@@ -104,20 +104,20 @@
 
         <!-- Project Info -->
         <div class="p-6">
-          <div class="mb-3">
+          <div class="mb-3 text-center">
             <h3 class="text-lg font-bold text-gray-900">{{ project.title }}</h3>
-            <p class="text-[#c5a751] font-semibold text-sm">{{ project.year }}</p>
+            <p class="text-[#c5a751] font-semibold text-sm mt-2">{{ project.year }}</p>
           </div>
 
-          <div class="flex items-center text-gray-600 mb-3">
+          <!-- <div class="flex items-center text-gray-600 mb-3">
             <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
             </svg>
             <span class="text-sm">{{ project.location }}</span>
-          </div>
+          </div> -->
 
-          <p class="text-gray-700 text-sm mb-4">{{ project.description }}</p>
+          <!-- <p class="text-gray-700 text-sm mb-4">{{ project.description }}</p> -->
 
           <!-- Project Tags -->
           <!-- <div class="flex flex-wrap gap-2 mb-4">
@@ -167,15 +167,77 @@
     </ng-template>
 
     <!-- Load More Button -->
-    <div class="text-center mt-12" *ngIf="filteredProjects2().length > 0 && hasMoreProjects()">
+    <div class="text-center mt-12" *ngIf="filteredProjects().length > 0 && hasMoreProjects()">
       <button
         (click)="loadMoreProjects()"
-        class="bg-[#334d42] text-white px-8 py-3 rounded-lg font-medium hover:bg-[#2a3f35] transition-colors transform hover:scale-105">
+        class="cursor-pointer bg-[#334d42] text-white px-8 py-3 rounded-lg font-medium hover:bg-[#2a3f35] transition-colors transform hover:scale-105">
         Load More Projects
       </button>
     </div>
   </div>
 </section>
+
+
+<!-- Project List -->
+<section class="bg-gray-50 min-h-screen py-12 px-4">
+  <div class="max-w-4xl mx-auto">
+    <h1 class="text-4xl font-bold text-center text-gray-800 mb-12">Project Portfolio List</h1>
+
+    <!-- Dynamic Year Groups -->
+    <div *ngFor="let yearGroup of projectsByYear" class="mb-12">
+      <div class="flex items-center mb-8">
+        <div class="bg-[#334d42] text-white px-6 py-3 rounded-lg font-bold text-xl shadow-lg">
+          {{ yearGroup.year }}
+        </div>
+      </div>
+
+      <div class="space-y-6 ml-4">
+        <div *ngFor="let project of yearGroup.projects; let i = index"
+              class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 p-6 border-l-4 border-[#334d42]">
+          <div class="flex items-start">
+            <div class="bg-[#c5a751] text-white rounded-full w-8 h-8 flex items-center justify-center font-bold mr-6 mt-1 flex-shrink-0">
+              {{ i + 1 }}
+            </div>
+            <div class="flex-grow">
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div>
+                  <span class="text-sm font-semibold text-gray-500 uppercase tracking-wide">Project</span>
+                  <p class="text-lg font-semibold text-gray-800 mt-1">{{ project.name }}</p>
+                </div>
+                <div>
+                  <span class="text-sm font-semibold text-gray-500 uppercase tracking-wide">Client</span>
+                  <p class="text-lg text-gray-700 mt-1">{{ project.client }}</p>
+                </div>
+                <div>
+                  <span class="text-sm font-semibold text-gray-500 uppercase tracking-wide">Type</span>
+                  <p class="text-lg text-gray-700 mt-1">{{ project.type }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Load More Button -->
+    <div *ngIf="hasMoreProjects2" class="text-center mt-12">
+      <button
+        (click)="loadMore()"
+        class="cursor-pointer bg-[#334d42] text-white px-8 py-3 rounded-lg font-medium hover:bg-[#2a3f35] transition-colors transform hover:scale-105">
+        Load More Projects
+      </button>
+    </div>
+
+    <!-- End of Projects Message -->
+    <div *ngIf="!hasMoreProjects2 && projectsList.length > projectsPerPage" class="text-center mt-12">
+      <p class="text-gray-600 font-medium">All {{ projectsList.length }} projects loaded</p>
+    </div>
+  </div>
+</section>
+
+<!-- End of Claude -->
+
+
 
 
 <app-footer></app-footer>

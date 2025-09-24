@@ -1,9 +1,11 @@
-import { Component, computed, OnInit, signal } from '@angular/core';
+import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { HeaderComponent } from '../../shared/header/header.component';
 import { FooterComponent } from '../../shared/footer/footer.component';
 import { CommonModule } from '@angular/common';
 import { trigger, transition, query, style, stagger, animate } from '@angular/animations';
-import { RouterLink } from '@angular/router';
+import { Project, ProjectList, projectListData, projectsData } from './project-data';
+import { Dialog } from '@angular/cdk/dialog';
+import { ProjectModalComponent } from '../../shared/project-modal/project-modal.component';
 
 interface ProjectPortfolio {
   id: number;
@@ -12,28 +14,6 @@ interface ProjectPortfolio {
   projectLocation: string;
   image: string;
   description: string;
-}
-
-interface Project {
-  id: number;
-  title: string;
-  location: string;
-  category: string;
-  year: string;
-  description: string;
-  image: string;
-  status: 'completed' | 'ongoing' | 'planning';
-  value: string;
-  duration: string;
-  client: string;
-  tags: string[];
-  gallery?: string[];
-}
-
-interface ProjectFilter {
-  category: string;
-  status?: string;
-  year?: string;
 }
 
 @Component({
@@ -65,7 +45,6 @@ export class ProjectPortfolioComponent implements OnInit {
   }
 
   // Grok
-  filter: string = 'all';
   projectPortfolio: ProjectPortfolio[] = [
     {
       id: 1,
@@ -101,33 +80,6 @@ export class ProjectPortfolioComponent implements OnInit {
     },
   ];
 
-  gridPatternUrl = "url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><defs><pattern id=\"grid\" width=\"10\" height=\"10\" patternUnits=\"userSpaceOnUse\"><path d=\"M 10 0 L 0 0 0 10\" fill=\"none\" stroke=\"white\" stroke-width=\"0.5\"/></pattern></defs><rect width=\"100\" height=\"100\" fill=\"url(%23grid)\"/></svg>')";
-
-  get uniqueYears(): string[] {
-    const years = new Set<string>();
-    this.projectPortfolio.forEach(project => {
-      const year = project.projectDuration.split(' - ')[0] || project.projectDuration;
-      years.add(year);
-    });
-    return ['all', ...Array.from(years).sort()];
-  }
-
-  get filteredProjects(): ProjectPortfolio[] {
-    return this.filter === 'all'
-      ? this.projectPortfolio
-      : this.projectPortfolio.filter(project =>
-          project.projectDuration.includes(this.filter)
-        );
-  }
-
-  setFilter(filter: string): void {
-    this.filter = filter;
-  }
-
-  trackByProjectId(index: number, project: ProjectPortfolio): number {
-    return project.id;
-  }
-
   // Claude
 
   // Signals
@@ -153,142 +105,13 @@ export class ProjectPortfolioComponent implements OnInit {
     'Residential',
     'Commercial',
     'Infrastructure',
-    'Industrial',
-    'Government'
   ]);
 
   // Sample projects data
-  projects = signal<Project[]>([
-    {
-      id: 1,
-      title: 'STMM - MMTC Construction',
-      location: 'Yogyakarta, Indonesia',
-      category: 'Commercial',
-      year: '2023-2024',
-      description: 'In the construction project of the STMM - MMTC Building (November 2023 – October 2024), Prakarsa served as a site engineer, responsible for managing work schedules, ensuring smooth construction progress, conducting daily evaluations, and preparing both shop drawings and as-built drawings.',
-      image: '/images/project-portfolio/stmm_mmtc_1.png',
-      status: 'completed',
-      value: 'Rp 500 Billion',
-      duration: '36 months',
-      client: 'PT. Modern Development',
-      tags: ['High-rise', 'Smart Building', 'LEED Certified', 'Office Tower']
-    },
-    {
-      id: 2,
-      title: 'Railway Station Infrastructure Structure Design',
-      location: 'Jakarta, Indonesia',
-      category: 'Infrastructure',
-      year: '2023-2024',
-      description: 'Prakarsa is an experienced structural engineering consultant specializing in building design, including strategic projects such as the new building development at Tanah Abang Station, Jakarta. From October 2023 to March 2024, Prakarsa was entrusted with the structural planning, which included structural calculations based on the architectural design and the preparation of efficient and economical Detailed Engineering Design (DED) drawings for both the superstructure and substructure.',
-      image: '/images/project-portfolio/railway_station_infrastructure_design.png',
-      status: 'completed',
-      value: 'Rp 300 Billion',
-      duration: '24 months',
-      client: 'Bali Resort Group',
-      tags: ['Resort', 'Eco-friendly', 'Luxury', 'Traditional Design']
-    },
-    {
-      id: 3,
-      title: 'Bespoke Residential Unit, Renovation Project Construction',
-      location: 'Yogyakarta, Indonesia',
-      category: 'Residential',
-      year: '2024',
-      description: 'Large-scale industrial manufacturing facility with modern production lines and worker facilities.',
-      image: '/images/project-portfolio/bespoke_residential_unit_2.jpeg',
-      status: 'completed',
-      value: 'Rp 750 Billion',
-      duration: '30 months',
-      client: 'PT. Indo Manufacturing',
-      tags: ['Factory', 'Manufacturing', 'Large Scale', 'Industrial']
-    },
-    {
-      id: 4,
-      title: 'Al-Meena Mixed Use 9-Story Precast Building (Hotel, Residence, & Office)',
-      location: 'Yogyakarta, Indonesia',
-      category: 'Commercial',
-      year: '2023',
-      description: 'Cable-stayed bridge connecting two major districts, designed to reduce traffic congestion.',
-      image: '/images/project-portfolio/al_meena.jpeg',
-      status: 'ongoing',
-      value: 'Rp 1.2 Trillion',
-      duration: '48 months',
-      client: 'Ministry of Public Works',
-      tags: ['Bridge', 'Infrastructure', 'Public Works', 'Transportation']
-    },
-    {
-      id: 5,
-      title: 'Semarang-Demak Toll Road Construction',
-      location: 'Central Java',
-      category: 'Infrastructure',
-      year: '2022',
-      description: 'Multi-level shopping center with retail spaces, restaurants, and entertainment facilities.',
-      image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80',
-      status: 'completed',
-      value: 'Rp 400 Billion',
-      duration: '28 months',
-      client: 'Medan Development Corp',
-      tags: ['Mall', 'Retail', 'Entertainment', 'Multi-level']
-    },
-    {
-      id: 6,
-      title: 'AstraWorld Call Center Building',
-      location: 'Semarang, Central Java',
-      category: 'Commercial',
-      year: '2022',
-      description: 'In the construction project of the STMM - MMTC Building (November 2023 – October 2024), Prakarsa served as a site engineer, responsible for managing work schedules, ensuring smooth construction progress, conducting daily evaluations, and preparing both shop drawings and as-built drawings.',
-      image: '/images/project-portfolio/stmm_mmtc_1.png',
-      status: 'completed',
-      value: 'Rp 500 Billion',
-      duration: '36 months',
-      client: 'PT. Modern Development',
-      tags: ['High-rise', 'Smart Building', 'LEED Certified', 'Office Tower']
-    },
-    {
-      id: 7,
-      title: 'Manohara Hotel',
-      location: 'Yogyakarta, Indonesia',
-      category: 'Government',
-      year: '2020',
-      description: 'Modern government office complex designed to serve citizens with efficient and transparent services.',
-      image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80',
-      status: 'planning',
-      value: 'Rp 200 Billion',
-      duration: '18 months',
-      client: 'Yogyakarta Provincial Government',
-      tags: ['Government', 'Public Service', 'Modern Design', 'Civic Architecture']
-    },
-    {
-      id: 8,
-      title: 'South Java Railway Double Track Construction',
-      location: 'Kebumen & Banyumas, Central Java',
-      category: 'Government',
-      year: '2019',
-      description: 'Modern government office complex designed to serve citizens with efficient and transparent services.',
-      image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80',
-      status: 'planning',
-      value: 'Rp 200 Billion',
-      duration: '18 months',
-      client: 'Yogyakarta Provincial Government',
-      tags: ['Government', 'Public Service', 'Modern Design', 'Civic Architecture']
-    },
-    {
-      id: 9,
-      title: 'KMTS Building - Precast Dept. of Civil & Enviro. Engineering UGM',
-      location: 'Kebumen & Banyumas, Central Java',
-      category: 'Yogyakarta, Indonesia',
-      year: '2019',
-      description: 'Modern government office complex designed to serve citizens with efficient and transparent services.',
-      image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80',
-      status: 'planning',
-      value: 'Rp 200 Billion',
-      duration: '18 months',
-      client: 'Yogyakarta Provincial Government',
-      tags: ['Government', 'Public Service', 'Modern Design', 'Civic Architecture']
-    },
-  ]);
+  projects = projectsData;
 
   // Computed properties
-  filteredProjects2 = computed(() => {
+  filteredProjects = computed(() => {
     let filtered = this.projects();
 
     // Filter by category
@@ -302,8 +125,7 @@ export class ProjectPortfolioComponent implements OnInit {
       filtered = filtered.filter(p =>
         p.title.toLowerCase().includes(term) ||
         p.location.toLowerCase().includes(term) ||
-        p.description.toLowerCase().includes(term) ||
-        p.tags.some(tag => tag.toLowerCase().includes(term))
+        p.description.toLowerCase().includes(term)
       );
     }
 
@@ -369,18 +191,21 @@ export class ProjectPortfolioComponent implements OnInit {
       filtered = filtered.filter(p =>
         p.title.toLowerCase().includes(term) ||
         p.location.toLowerCase().includes(term) ||
-        p.description.toLowerCase().includes(term) ||
-        p.tags.some(tag => tag.toLowerCase().includes(term))
+        p.description.toLowerCase().includes(term)
       );
     }
 
     return filtered.length;
   }
 
+  private cdkDialog = inject(Dialog);
+
   openProjectModal(project: Project): void {
     console.log('Opening project modal for:', project.title);
     // In a real app, this would open a detailed modal or navigate to project page
-    alert(`Project Details:\n${project.title}\nLocation: ${project.location}\nStatus: ${project.status}`);
+    // alert(`Project Details:\n${project.title}\nLocation: ${project.location}\nStatus: ${project.status}`);
+
+    this.cdkDialog.open(ProjectModalComponent, {data: project});
   }
 
   getStatusClass(status: string): string {
@@ -392,7 +217,60 @@ export class ProjectPortfolioComponent implements OnInit {
     return classes[status as keyof typeof classes] || 'bg-gray-100 text-gray-800';
   }
 
-  trackByProjectId2(index: number, project: Project): number {
+  trackByProjectId(index: number, project: Project): number {
     return project.id;
   }
+
+  // Pagination settings
+  private readonly PROJECTS_PER_PAGE = 5;
+  currentPage = 1;
+
+  // Single data source for all projects
+  projectsList = projectListData;
+
+  // Get projects to display based on current page
+  get displayedProjects(): ProjectList[] {
+    return this.projectsList.slice(0, this.currentPage * this.PROJECTS_PER_PAGE);
+  }
+
+  // Check if there are more projects to load
+  get hasMoreProjects2(): boolean {
+    return this.displayedProjects.length < this.projectsList.length;
+  }
+
+  // Get remaining projects count
+  get remainingProjectsCount(): number {
+    return this.projectsList.length - this.displayedProjects.length;
+  }
+
+  // Computed property to group displayed projects by year dynamically
+  get projectsByYear() {
+    const grouped = this.displayedProjects.reduce((acc, project) => {
+      if (!acc[project.year]) {
+        acc[project.year] = [];
+      }
+      acc[project.year].push(project);
+      return acc;
+    }, {} as { [key: number]: ProjectList[] });
+
+    // Convert to array and sort by year (newest first)
+    return Object.keys(grouped)
+      .map(year => ({
+        year: parseInt(year),
+        projects: grouped[parseInt(year)]
+      }))
+      .sort((a, b) => b.year - a.year);
+  }
+
+  // Load more projects
+  loadMore(): void {
+    this.currentPage++;
+  }
+
+  // Make PROJECTS_PER_PAGE accessible in template
+  get projectsPerPage() {
+    return this.PROJECTS_PER_PAGE;
+  }
+
+
 }
