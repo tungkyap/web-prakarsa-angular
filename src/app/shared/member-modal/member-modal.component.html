@@ -1,45 +1,49 @@
-<div class="dialog-container">
+<div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
   <!-- Close Button -->
   <!-- <button
     mat-icon-button
-    class="close-button"
+    class="absolute top-4 right-4 z-10 bg-white bg-opacity-90 text-gray-600 hover:bg-white hover:text-[#c5a751] focus:outline-none transition-colors duration-300 w-10 h-10 shadow-md"
     (click)="onClose()"
     aria-label="Close dialog">
     <mat-icon>close</mat-icon>
   </button> -->
 
   <!-- Member Photo -->
-  <div class="member-photo-section">
-    <div class="photo-container">
+  <div class="bg-gradient-to-br from-[#334d42] to-[#4a6b5a] p-8 text-center relative">
+    <div class="inline-block relative">
       <img
         [src]="member.image"
         [alt]="member.name"
-        class="member-photo"
+        class="w-40 h-40 rounded-full object-cover border-6 border-[#c5a751] shadow-lg transition-transform duration-300 hover:scale-105 sm:w-48 sm:h-48 md:w-60 md:h-60 lg:w-64 lg:h-64 xs:w-32 xs:h-32"
         loading="lazy">
     </div>
   </div>
 
   <!-- Member Information -->
-  <div class="member-info-section">
-    <div class="member-header">
-      <h2 class="member-name">{{ member.name }}</h2>
-      <p class="member-department">{{ member.department }}</p>
-      <p class="member-position">{{ member.position }}</p>
+  <div class="p-8 flex-1 sm:p-8 md:p-8 lg:p-8 xs:p-6">
+    <div class="text-center mb-8 border-b border-gray-200 pb-6 sm:text-center md:text-center lg:text-center xs:text-center">
+      <h2 class="text-3xl font-bold text-[#334d42] mb-2 leading-tight sm:text-3xl md:text-4xl lg:text-4xl xs:text-2xl">{{ member.name }}</h2>
+      <p class="text-lg font-semibold text-[#c5a751] mb-1 uppercase tracking-wide sm:text-lg md:text-lg lg:text-lg xs:text-base">{{ member.department }}</p>
+      <p class="text-base text-gray-500 italic sm:text-base md:text-base lg:text-base xs:text-sm">{{ member.position }}</p>
     </div>
 
-    <div class="member-description">
-      <h3 class="description-title">About</h3>
-      <p class="description-text">{{ member.description }}</p>
+    <div class="mb-8 sm:mb-8 md:mb-8 lg:mb-8 xs:mb-6">
+      <h3 class="text-xl font-semibold text-[#334d42] mb-4 flex items-center sm:text-xl md:text-xl lg:text-xl xs:text-lg">
+        <span class="w-1 h-5 bg-[#c5a751] mr-3 rounded"></span>About
+      </h3>
+      <p class="text-base leading-loose text-gray-600 text-justify sm:text-base md:text-base lg:text-base xs:text-sm">{{ member.description }}</p>
     </div>
 
     <!-- Social Links -->
-    <!-- <div class="social-section" *ngIf="member.social.linkedin || member.social.email">
-      <h3 class="social-title">Contact</h3>
-      <div class="social-links">
+    <!-- <div class="mb-8 sm:mb-8 md:mb-8 lg:mb-8 xs:mb-6" *ngIf="member.social.linkedin || member.social.email">
+      <h3 class="text-xl font-semibold text-[#334d42] mb-4 flex items-center sm:text-xl md:text-xl lg:text-xl xs:text-lg">
+        <span class="w-1 h-5 bg-[#c5a751] mr-3 rounded"></span>Contact
+      </h3>
+      <div class="flex gap-3 flex-wrap sm:flex-row md:flex-row lg:flex-row xs:flex-col">
         <button
           *ngIf="member.social.linkedin"
           mat-raised-button
-          class="social-button linkedin"
+          class="flex items-center gap-2 px-6 py-3 rounded-lg font-medium text-white bg-[#0077b5] hover:bg-[#005885] hover:translate-y-[-0.25rem] transition-all duration-300 sm:w-auto sm:justify-start md:w-auto md:justify-start lg:w-auto lg:justify-start xs:w-full xs:justify-center"
           (click)="onSocialClick('linkedin', member.social.linkedin!, $event)"
           title="LinkedIn Profile">
           <mat-icon>link</mat-icon>
@@ -49,7 +53,7 @@
         <button
           *ngIf="member.social.email"
           mat-raised-button
-          class="social-button email"
+          class="flex items-center gap-2 px-6 py-3 rounded-lg font-medium text-white bg-[#ea4335] hover:bg-[#d33b2c] hover:translate-y-[-0.25rem] transition-all duration-300 sm:w-auto sm:justify-start md:w-auto md:justify-start lg:w-auto lg:justify-start xs:w-full xs:justify-center"
           (click)="onSocialClick('email', member.social.email!, $event)"
           title="Send Email">
           <mat-icon>email</mat-icon>
@@ -59,11 +63,10 @@
     </div> -->
 
     <!-- Action Buttons -->
-    <div class="action-buttons">
+    <div class="flex justify-center gap-3 pt-6 border-t border-gray-200 sm:justify-start">
       <button
-        mat-raised-button
         color="primary"
-        class="action-button"
+        class="px-8 py-3 bg-[#334d42] text-white rounded-lg font-semibold hover:bg-[#c5a751] hover:translate-y-[-0.25rem] transition-all duration-300 sm:px-8 sm:py-3 md:px-8 md:py-3 lg:px-8 lg:py-3 xs:px-6 xs:py-2"
         (click)="onClose()">
         Close
       </button>
