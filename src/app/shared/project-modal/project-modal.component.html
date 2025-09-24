@@ -1,8 +1,11 @@
-<div class="max-w-7xl mx-auto bg-white rounded-lg">
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center py-16 px-8 lg:px-16">
+<!-- <div class="max-w-7xl mx-auto bg-white rounded-lg"> -->
+<div class="w-full max-w-7xl mx-auto bg-white rounded-lg max-h-[90vh] overflow-y-auto">
+  <!-- <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center py-16 px-8 lg:px-16"> -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center py-8 sm:py-12 md:py-16 px-4 sm:px-8 lg:px-16">
     <!-- project images carousel -->
     <div class="relative mb-6">
-      <div class="w-full h-64 sm:h-96 overflow-hidden rounded-lg shadow-md">
+      <!-- <div class="w-full h-64 sm:h-96 overflow-hidden rounded-lg shadow-md"> -->
+      <div class="w-full h-56 sm:h-72 md:h-96 overflow-hidden rounded-lg shadow-md">
         <img
           [src]="modalImages()[currentImageIndex()]"
           [alt]="data.projectName + ' image ' + (currentImageIndex() + 1)"
@@ -59,7 +62,8 @@
           {{ data.status || 'Completed' }}
         </div>
       </div>
-      <p class="mt-4 text-lg text-gray-700 leading-relaxed h-40 overflow-y-auto">
+      <!-- <p class="mt-4 text-lg text-gray-700 leading-relaxed h-40 overflow-y-auto"> -->
+      <p class="mt-4 text-base sm:text-lg text-gray-700 leading-relaxed max-h-40 sm:max-h-60 overflow-y-auto">
           {{ data.description }}
       </p>
 
@@ -117,14 +121,14 @@
       </div>
 
       @if (isHomePage) {
-        <div class="mt-10 flex items-center space-x-4">
+        <!-- <div class="mt-10 flex items-center space-x-4"> -->
+        <div class="mt-8 flex flex-col sm:flex-row items-center sm:justify-start gap-4">
           <button (click)="closeModal()" class="px-5 py-2.5 rounded-md font-medium bg-gray-200 hover:bg-gray-300 text-[#334d42] transition flex items-center gap-2 cursor-pointer">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
             </svg>
             <span class="text-[14px]">Close</span>
           </button>
-          &nbsp;&nbsp;
           <button (click)="onViewMoreProject()" class="px-5 py-2.5 rounded-md font-medium bg-[#c5a751] hover:bg-[#d8c48a] text-white shadow-md transition flex items-center gap-2 cursor-pointer">
             <span class="text-[14px]">View More Projects</span>
             <svg class="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -133,7 +137,8 @@
           </button>
         </div>
       } @else {
-        <div class="mt-10 flex justify-end p-4">
+        <!-- <div class="mt-10 flex justify-end p-4"> -->
+        <div class="mt-8 flex flex-col sm:flex-row items-center sm:justify-start gap-4">
           <button (click)="closeModal()" class="cursor-pointer px-6 py-2 bg-[#c5a751] hover:bg-[#d8c48a] text-white rounded-md transition-all duration-300">
             Close
           </button>
