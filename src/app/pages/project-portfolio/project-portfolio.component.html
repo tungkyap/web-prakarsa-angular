@@ -187,7 +187,11 @@
     <div *ngFor="let yearGroup of projectsByYear" class="mb-12">
       <div class="flex items-center mb-8">
         <div class="bg-[#334d42] text-white px-6 py-3 rounded-lg font-bold text-xl shadow-lg">
-          {{ yearGroup.year }}
+          @if(yearGroup.year !== 2013) {
+            {{ yearGroup.year }}
+          } @else {
+            {{ '2013 - 2015' }}
+          }
         </div>
       </div>
 

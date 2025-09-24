@@ -116,8 +116,8 @@ export class HomeComponent {
       image: '/images/project-portfolio/stmm_mmtc_1.png',
       description: 'In the construction project of the STMM - MMTC Building (November 2023 – October 2024), Prakarsa served as a site engineer, responsible for managing work schedules, ensuring smooth construction progress, conducting daily evaluations, and preparing both shop drawings and as-built drawings.',
       status: 'Completed',
-      client: 'STMM University',
-      scopes: ['Site Engineer', 'Construction Project Management'],
+      client: 'Kemenkominfo',
+      scopes: ['Construction', 'Construction Supervision'],
       technologies: ['Concrete Framework', 'Green Building Tech'],
       progress: 100,
       images: [
@@ -137,7 +137,7 @@ export class HomeComponent {
       description: "Prakarsa is an experienced structural engineering consultant specializing in building design, including strategic projects such as the new building development at Tanah Abang Station, Jakarta. From October 2023 to March 2024, Prakarsa was entrusted with the structural planning, which included structural calculations based on the architectural design and the preparation of efficient and economical Detailed Engineering Design (DED) drawings for both the superstructure and substructure.",
       status: "Completed",
       client: "PT. Kereta Api Indonesia",
-      scopes: ['Structural Design (DED)', 'Structural Planning'],
+      scopes: ['Detailed Engineering Design'],
       technologies: ["Steel Framing", "Structural Analysis Software", "BIM"],
       progress: 85,
       images: [
@@ -157,8 +157,8 @@ export class HomeComponent {
       image: "/images/project-portfolio/bespoke_residential_unit_3.jpeg",
       description: "Our role encompassed end-to-end construction engineering and supervision. We began by assessing the existing building and designing safe, efficient structural modifications. On-site, our team provided meticulous construction supervision to ensure that every detail of the bespoke design was executed with precision and the highest standards of quality.",
       status: "Completed",
-      client: "Private Client",
-      scopes: ['Construction Engineer', 'Construction Supervision'],
+      client: "Personal Private Client",
+      scopes: ['Construction', 'Design', 'Build'],
       technologies: ["Interior Design", "Custom Cabinetry", "Smart Home Integration"],
       progress: 100,
       images: [
@@ -176,7 +176,7 @@ export class HomeComponent {
       description: "Our scope covered the project's critical engineering phases. We conducted a comprehensive structural analysis to ensure the 9-story building's integrity and safety, followed by meticulous on-site construction supervision to guarantee all work adhered to the approved designs and highest quality standards.",
       status: "Completed",
       client: "Front One Hotels",
-      scopes: ['Structural Analysis', 'Construction Supervision'],
+      scopes: ['Engineering', 'Structural Analysis', 'Construction Supervision'],
       technologies: ["Reinforced Concrete", "HVAC Systems", "Facade Installation"],
       progress: 100,
       images: [
