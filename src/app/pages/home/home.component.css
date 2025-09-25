@@ -118,3 +118,156 @@
   width: 25px;
   height: 25px;
 }
+
+/* CSS Animation */
+
+/* Hero section */
+/* Slide-in animation */
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-in {
+  animation: slideIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Our services */
+/* Bottom to top animation for header */
+@keyframes fromBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Slide in from left */
+@keyframes slideInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Fade in */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Slide in from right */
+@keyframes slideInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Default state for animations */
+.animate-from-bottom,
+.animate-slide-in-left,
+.animate-slide-in-right,
+.animate-fade-in {
+  opacity: 0;
+}
+
+/* Active state when in viewport */
+.animate-from-bottom.animate-active {
+  animation: fromBottom 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animate-slide-in-left.animate-active {
+  animation: slideInLeft 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animate-fade-in.animate-active {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.animate-slide-in-right.animate-active {
+  animation: slideInRight 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Our Portfolio section */
+/* Fade and slide up animation for header */
+@keyframes fadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Scale-in animation for button */
+@keyframes scaleIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Zoom-in animation for grid items */
+@keyframes zoomIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Default state for animations */
+.animate-fade-slide-up,
+.animate-scale-in,
+.animate-zoom-in {
+  opacity: 0;
+}
+
+/* Active state when in viewport */
+.animate-fade-slide-up.animate-active {
+  animation: fadeSlideUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animate-scale-in.animate-active {
+  animation: scaleIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animate-zoom-in.animate-active {
+  animation: zoomIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Enhance hover effect for grid items */
+.group:hover .group-hover\:scale-105 {
+  transform: scale(1.05); /* Subtle zoom on hover */
+}

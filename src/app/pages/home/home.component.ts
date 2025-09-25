@@ -1,4 +1,4 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { AfterViewInit, Component, computed, ElementRef, inject, OnInit, signal, ViewChild } from '@angular/core';
 import { HeaderComponent } from '../../shared/header/header.component';
 import { Router, RouterLink } from '@angular/router';
 import { FooterComponent } from '../../shared/footer/footer.component';
@@ -63,7 +63,79 @@ export interface QuickStat {
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit, AfterViewInit {
+
+  // Animation trigger on scroll
+  @ViewChild('servicesSection') servicesSection!: ElementRef;
+  @ViewChild('portfolioSection') portfolioSection!: ElementRef;
+
+  ngOnInit(): void {
+    // Check if section is in viewport on init
+    if (this.portfolioSection) {
+      this.checkVisibility();
+    }
+  }
+
+  // Check if section is in viewport
+  private checkVisibility() {
+    const rect = this.portfolioSection.nativeElement.getBoundingClientRect();
+    const isVisible =
+      rect.top >= 0 &&
+      rect.left >= 0 &&
+      rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+      rect.right <= (window.innerWidth || document.documentElement.clientWidth);
+
+    if (isVisible) {
+      this.triggerAnimations();
+    }
+  }
+
+  // Trigger animations by adding animate-active class
+  private triggerAnimations() {
+    const elements = this.portfolioSection.nativeElement.querySelectorAll(
+      '.animate-fade-slide-up, .animate-scale-in, .animate-zoom-in'
+    );
+    elements.forEach((el: HTMLElement) => {
+      el.classList.add('animate-active');
+    });
+  }
+
+  ngAfterViewInit() {
+    // Our services
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.querySelectorAll('.animate-from-bottom, .animate-slide-in-left, .animate-fade-in, .animate-slide-in-right').forEach((el) => {
+              el.classList.add('animate-active');
+            });
+            observer.unobserve(entry.target); // Stop observing once animated
+          }
+        });
+      },
+      { threshold: 0.1 } // Trigger when 10% of the section is visible
+    );
+
+    observer.observe(this.servicesSection.nativeElement);
+
+    // Portfolio
+    const observer2 = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.querySelectorAll('.animate-fade-slide-up, .animate-scale-in, .animate-zoom-in').forEach((el) => {
+              el.classList.add('animate-active');
+            });
+            observer.unobserve(entry.target); // Stop observing once animated
+          }
+        });
+      },
+      { threshold: 0.1 } // Trigger when 10% of the section is visible
+    );
+
+    observer2.observe(this.portfolioSection.nativeElement);
+  }
+
   private cdkDialog = inject(Dialog);
   protected openContactModal() {
     this.cdkDialog.open(ContactModalComponent);

@@ -10,25 +10,25 @@
     <div class="relative p-4 sm:p-8 lg:p-16 z-10 flex flex-col items-start justify-center h-full text-left text-white max-w-5xl">
       <div>
         <!-- Company Title -->
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-4 text-center sm:text-left">
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-4 text-center sm:text-left animate-slide-in" style="animation-delay: 0s;">
           PT PRAKARSA MAHAKARYA ABADI
         </h1>
 
         <!-- Tagline -->
-        <p class="text-lg sm:text-xl lg:text-2xl mb-8 text-[#c5a751] font-extrabold text-center sm:text-left">
+        <p class="text-lg sm:text-xl lg:text-2xl mb-8 text-[#c5a751] font-extrabold text-center sm:text-left animate-slide-in" style="animation-delay: 0.2s;">
           You dream it, we build it.
         </p>
       </div>
 
       <!-- Who We Are -->
-      <div class="mt-6 max-w-2xl mx-auto sm:mx-0 text-center sm:text-left">
-        <h2 class="text-lg sm:text-xl lg:text-2xl font-extrabold text-[#c5a751] mb-4 ">
+      <div class="mt-6 max-w-2xl mx-auto sm:mx-0 text-center sm:text-left animate-slide-in" style="animation-delay: 0.4s;">
+        <h2 class="text-lg sm:text-xl lg:text-2xl font-extrabold text-[#c5a751] mb-4">
           Who We Are ?
         </h2>
         <p class="text-xl sm:text-lg text-gray-200 leading-relaxed mb-6">
           <strong class="text-[#c5a751]">Prakarsa</strong> is an engineering firm based in Yogyakarta, Indonesia that provides civil engineering consulting and construction services.
         </p>
-        <div class="flex flex-wrap justify-center sm:justify-start gap-4">
+        <div class="flex flex-wrap justify-center sm:justify-start gap-4 animate-slide-in" style="animation-delay: 0.4s;">
           <a href="#our-services" class="inline-block bg-[#c5a751] hover:bg-[#d8c48a] text-white font-bold py-3 px-8 rounded-md transition duration-300">
             Explore Our Services
           </a>
@@ -41,11 +41,10 @@
   </section>
 
   <!-- Our Services Section -->
-  <section id="our-services" class="relative py-20 bg-gray-100" aria-label="Our services overview">
+  <section #servicesSection id="our-services" class="relative py-20 bg-gray-100" aria-label="Our services overview">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-
       <!-- Header -->
-      <div class="text-center mb-16">
+      <div class="text-center mb-16 animate-from-bottom">
         <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#c5a751]">
           <span class="text-[#334d42]">We Offer</span> Our Services <span class="text-[#334d42]">for Your Business</span>
         </h2>
@@ -53,9 +52,8 @@
 
       <!-- Services Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 px-4 sm:px-0">
-
         <!-- Service 1: Engineering Consultant -->
-        <div class="bg-white rounded-2xl shadow-lg overflow-hidden relative">
+        <div class="bg-white rounded-2xl shadow-lg overflow-hidden relative animate-slide-in-left">
           <div class="bg-consulting h-48 bg-cover bg-center"></div>
           <div class="p-6">
             <h3 class="text-2xl font-bold text-[#334d42] mb-4">Engineering Consultant</h3>
@@ -66,7 +64,7 @@
         </div>
 
         <!-- Service 2: Construction Service -->
-        <div class="bg-white rounded-2xl shadow-lg overflow-hidden relative">
+        <div class="bg-white rounded-2xl shadow-lg overflow-hidden relative animate-fade-in">
           <div class="bg-construction h-48 bg-cover bg-center"></div>
           <div class="p-6">
             <h3 class="text-2xl font-bold text-[#334d42] mb-4">Construction Service</h3>
@@ -77,7 +75,7 @@
         </div>
 
         <!-- Service 3: Assessment & Building Certification -->
-        <div class="bg-white rounded-2xl shadow-lg overflow-hidden relative">
+        <div class="bg-white rounded-2xl shadow-lg overflow-hidden relative animate-slide-in-right">
           <div class="bg-assessment h-48 bg-cover bg-center"></div>
           <div class="p-6">
             <h3 class="text-2xl font-bold text-[#334d42] mb-4">Assessment & Building Certification</h3>
@@ -86,45 +84,43 @@
             </p>
           </div>
         </div>
-
       </div>
 
       <!-- Global Button -->
-      <div class="text-center mt-12">
+      <div class="text-center mt-12 animate-fade-in" style="animation-delay: 0.2s;">
         <a routerLink="/our-services"
           class="inline-block bg-[#c5a751] hover:bg-[#d8c48a] text-white font-bold py-3 px-10 rounded-md shadow-lg transition duration-300">
           Explore All Services
         </a>
       </div>
-
     </div>
   </section>
 
   <!-- Portfolio section -->
-  <section class="py-12 sm:py-16 lg:py-20 text-white bg-[#334d42]" aria-label="Our project portfolio">
+  <section #portfolioSection class="py-12 sm:py-16 lg:py-20 text-white bg-[#334d42]" aria-label="Our project portfolio">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Section Header -->
       <div class="flex flex-col sm:flex-row justify-between items-center mb-8 sm:mb-12 gap-6">
         <div>
-          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold">Our Project <span class="text-[#c5a751]">Portfolio</span></h2>
-          <p class="mt-2 text-base sm:text-lg text-white max-w-2xl">
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold animate-fade-slide-up" style="animation-delay: 0s;">
+            Our Project <span class="text-[#c5a751]">Portfolio</span>
+          </h2>
+          <p class="mt-2 text-base sm:text-lg text-white max-w-2xl animate-fade-slide-up" style="animation-delay: 0.2s;">
             Discover our diverse range of civil engineering and construction projects, showcasing innovation and excellence.
           </p>
         </div>
-        <a routerLink="/project-portfolio" class="inline-block bg-[#c5a751] hover:bg-[#d8c48a] text-white font-bold py-3 px-8 rounded-md transition duration-300 shadow-lg">
+        <a routerLink="/project-portfolio" class="inline-block bg-[#c5a751] hover:bg-[#d8c48a] text-white font-bold py-3 px-8 rounded-md transition duration-300 shadow-lg animate-scale-in" style="animation-delay: 0.4s;">
           View Projects
         </a>
       </div>
 
       <!-- Portfolio Grid -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 text-white">
-        @for (project of projectPortfolio; track project.id) {
-          <!-- <div class="relative bg-cover bg-center h-72 sm:h-120 rounded-none overflow-hidden border-r border-b sm:border-b-0 sm:border-r border-[#334d42]" -->
-          <div class="relative bg-cover bg-center h-72 sm:h-120 rounded-none overflow-hidden shadow-lg group border-r border-b sm:border-b-0 sm:border-r border-[#334d42]"
-            [style]="{'background-image': 'url('+ project.image +')' }">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-6 transition-opacity duration-300 group-hover:bg-black/50 group-hover:cursor-pointer">
+        @for (project of projectPortfolio; track project.id; let i = $index) {
+          <div class="relative bg-cover bg-center h-72 sm:h-120 rounded-none overflow-hidden shadow-lg group border-r border-b sm:border-b-0 sm:border-r border-[#334d42] animate-zoom-in" [style]="{'background-image': 'url('+ project.image +')', 'animation-delay': (0.6 + i * 0.1) + 's'}">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-6 transition-all duration-300 group-hover:bg-black/50">
               <div class="w-full mb-2">
-                <button (click)="openProjectModal(project)" class="opacity-0 group-hover:opacity-100 inline-block bg-[#c5a751] hover:bg-[#d8c48a] text-white text-sm font-semibold py-2 px-4 rounded-md transition duration-300">
+                <button (click)="openProjectModal(project)" class="cursor-pointer opacity-0 group-hover:opacity-100 inline-block bg-[#c5a751] hover:bg-[#d8c48a] text-white text-sm font-semibold py-2 px-4 rounded-md transition duration-300">
                   View Details
                 </button>
               </div>
@@ -136,7 +132,7 @@
             </div>
           </div>
         } @empty {
-          <p>Project Portfolio not available</p>
+          <p class="text-center text-white">Project Portfolio not available</p>
         }
       </div>
     </div>
