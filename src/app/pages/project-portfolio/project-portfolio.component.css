@@ -37,3 +37,7 @@
   animation: slideInUp 0.6s ease-out forwards;
 }
 
+.cdk-menu-item:hover, .cdk-menu-item:focus {
+  outline: none;
+}
+

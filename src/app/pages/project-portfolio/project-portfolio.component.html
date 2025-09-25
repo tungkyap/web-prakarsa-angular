@@ -13,42 +13,83 @@
 
 <!-- Claude -->
 <!-- Filter Section -->
-<section class="py-8 bg-white border-b border-gray-200">
+<section class="py-8 bg-white border-b border-gray-200 w-full">
   <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
       <!-- Filter Buttons -->
-      <div class="flex flex-wrap gap-2">
-        <button
-          *ngFor="let category of categories()"
-          (click)="setActiveFilter(category)"
-          class="px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 hover:scale-105"
-          [class]="activeFilter() === category ?
-            'bg-[#334d42] text-white shadow-lg' :
-            'bg-gray-100 text-gray-700 hover:bg-gray-200'">
-          {{ category }}
-        </button>
+      <div class="flex flex-wrap gap-4">
+        @for (category of categories(); track category) {
+          <button
+            (click)="setActiveFilter(category)"
+            class="px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 hover:scale-105"
+            [class]="activeFilter() === category ?
+              'bg-[#334d42] text-white shadow-lg' :
+              'bg-gray-100 text-gray-700 hover:bg-gray-200'">
+            {{ category }}
+          </button>
+        }
       </div>
 
       <!-- Search & Sort -->
-      <div class="flex items-center gap-4">
-        <div class="relative">
+      <div class="flex items-center gap-4 w-full flex-col sm:flex-row">
+        <!-- Search Input with Icon -->
+        <div class="relative w-full flex-grow">
           <input
             type="text"
             placeholder="Search projects..."
-            class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#334d42] focus:border-transparent"
+            class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-gray-800 bg-white
+                  focus:outline-none focus:ring-2 focus:ring-[#334d42] focus:border-transparent
+                  placeholder-gray-500 transition-colors duration-200"
             (input)="onSearchChange($event)">
-          <svg class="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
           </svg>
         </div>
 
-        <select
-          class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#334d42] focus:border-transparent"
-          (change)="onSortChange($event)">
-          <option value="newest">Newest First</option>
-          <option value="oldest">Oldest First</option>
-          <option value="alphabetical">A-Z</option>
-        </select>
+        <!-- The cdkMenu-based dropdown select -->
+        <div class="relative w-full sm:w-lg">
+          <!-- The trigger button, styled to look like a <select> element -->
+          <button
+            [cdkMenuTriggerFor]="sortMenu"
+            class="relative w-full text-left px-4 py-2 border border-gray-300 rounded-lg text-gray-800 bg-white
+                    focus:outline-none focus:ring-2 focus:ring-[#334d42] focus:border-transparent
+                    transition-all duration-200">
+            <!-- Display the current selected option -->
+            {{ getDisplayValue() }}
+
+            <!-- Dropdown arrow icon -->
+            <svg
+              class="absolute right-4 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-600"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+
+          <!-- The menu content, styled to look like the dropdown list -->
+          <ng-template #sortMenu>
+            <div
+              class="bg-white shadow-xl rounded-lg py-1 mt-2 min-w-[10rem] border border-gray-300 overflow-hidden"
+              cdkMenu>
+              @for (option of sortOptions; track option.value) {
+                <button
+                  class="block w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-200
+                          transition-colors duration-200 focus:outline-none focus:bg-gray-200
+                          cdk-menu-item"
+                  [class.bg-gray-200]="selectedSortOption() === option.value"
+                  cdkMenuItem
+                  (click)="onSortChange(option.value)">
+                  {{ option.display }}
+                </button>
+              }
+            </div>
+          </ng-template>
+        </div>
       </div>
     </div>
 

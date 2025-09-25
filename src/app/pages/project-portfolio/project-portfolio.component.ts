@@ -1,4 +1,4 @@
-import { Component, computed, inject, OnInit, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, OnInit, signal } from '@angular/core';
 import { HeaderComponent } from '../../shared/header/header.component';
 import { FooterComponent } from '../../shared/footer/footer.component';
 import { CommonModule } from '@angular/common';
@@ -6,6 +6,7 @@ import { trigger, transition, query, style, stagger, animate } from '@angular/an
 import { Project, ProjectList, projectListData, projectsData } from './project-data';
 import { Dialog } from '@angular/cdk/dialog';
 import { ProjectModalComponent } from '../../shared/project-modal/project-modal.component';
+import {CdkMenu, CdkMenuItem, CdkMenuTrigger} from '@angular/cdk/menu';
 
 interface ProjectPortfolio {
   id: number;
@@ -22,9 +23,13 @@ interface ProjectPortfolio {
     HeaderComponent,
     FooterComponent,
     CommonModule,
+    CdkMenuTrigger,
+    CdkMenu,
+    CdkMenuItem
   ],
   templateUrl: './project-portfolio.component.html',
   styleUrl: './project-portfolio.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [
     trigger('cardAnimation', [
       transition(':enter', [
@@ -40,6 +45,23 @@ interface ProjectPortfolio {
 
 })
 export class ProjectPortfolioComponent implements OnInit {
+  // A signal to hold the currently selected sort option.
+  selectedSortOption = signal<string>('newest');
+
+  // The array of options for the dropdown.
+  sortOptions = [
+    { value: 'newest', display: 'Newest First' },
+    { value: 'oldest', display: 'Oldest First' },
+    { value: 'alphabetical', display: 'A-Z' },
+  ];
+
+  /**
+   * Finds and returns the display text for the current selected value.
+   */
+  getDisplayValue(): string {
+    const selected = this.sortOptions.find(option => option.value === this.selectedSortOption());
+    return selected ? selected.display : 'Select an option';
+  }
   ngOnInit(): void {
     window.scroll(0,0);
   }
@@ -158,9 +180,9 @@ export class ProjectPortfolioComponent implements OnInit {
     this.displayCount.set(9); // Reset display count when searching
   }
 
-  onSortChange(event: Event): void {
-    const target = event.target as HTMLSelectElement;
-    this.sortBy.set(target.value);
+  onSortChange(event: any): void {
+    this.selectedSortOption.set(event);
+    this.sortBy.set(event);
   }
 
   resetFilters(): void {
