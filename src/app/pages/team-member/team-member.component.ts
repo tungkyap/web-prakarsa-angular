@@ -273,14 +273,14 @@ export class TeamMemberComponent implements OnInit {
       ],
     },
     {
-      name: 'Logistic & Drafter',
+      name: 'Supervisor, Logistic & Drafter',
       members: [
         {
           id: 1,
           name: 'Komang Ari Switara',
-          position: 'Logistic',
+          position: 'Site Engineer',
           image: '/images/team-member-profile/komang.jpeg',
-          department: 'Logistic & Drafter',
+          department: 'Supervisor,Logistic & Drafter',
           description:
             'Focused on construction engineering and supervision, logistics planning and management.'
         },
@@ -289,7 +289,7 @@ export class TeamMemberComponent implements OnInit {
           name: 'Muhammad Luqmanul Hakim',
           position: 'Drafter',
           image: '/images/team-member-profile/muhammad.jpeg',
-          department: 'Logistic & Drafter',
+          department: 'Supervisor,Logistic & Drafter',
           description:
             'Specializes in civil engineering and architectural drafting.'
         },
@@ -298,7 +298,7 @@ export class TeamMemberComponent implements OnInit {
           name: 'Achmat Syakur Nuranto',
           position: 'Logistic',
           image: '/images/team-member-profile/achmat.jpeg',
-          department: 'Logistic & Drafter',
+          department: 'Supervisor,Logistic & Drafter',
           description:
             'Provides support in construction logistics and operations.'
         },
@@ -307,7 +307,7 @@ export class TeamMemberComponent implements OnInit {
           name: 'Ripki Aji Permana',
           position: 'Drafter',
           image: '/images/team-member-profile/ripki.jpeg',
-          department: 'Logistic & Drafter',
+          department: 'Supervisor,Logistic & Drafter',
           description:
             'Specializes in civil engineering and architectural drafting.'
         },
@@ -316,7 +316,7 @@ export class TeamMemberComponent implements OnInit {
           name: 'Ryan Muhammad Fajar',
           position: 'Logistic',
           image: '/images/team-member-profile/ryan.jpeg',
-          department: 'Logistic & Drafter',
+          department: 'Supervisor,Logistic & Drafter',
           description:
             'Supports construction logistics and management operations.'
         },

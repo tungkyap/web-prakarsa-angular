@@ -18,12 +18,8 @@ export let client: Client[] = [
     url: '/images/clients/astraworld_logo.png'
   },
   {
-    name: 'Bandara Internasional Batam',
-    url: '/images/clients/bandara_internasional_batam_logo.webp'
-  },
-  {
     name: 'PT Cipta Graha Kanaka',
-    url: '/images/clients/asanka_logo.webp'
+    url: '/images/clients/pt_cgk_logo.png'
   },
   {
     name: 'Front One Hotel',
@@ -46,28 +42,24 @@ export let client: Client[] = [
     url: '/images/clients/magelang_kota_logo.png'
   },
   {
-    name: 'Manohara Hotel Yogyakarta',
-    url: '/images/clients/manohara_yk_logo.png'
-  },
-  {
     name: 'PT Multi Niaga Nusantara Indonesia',
     url: '/images/clients/multi_niaga_nusantara_logo.png'
   },
   {
-    name: 'PT Kereta Api Indonesia',
-    url: '/images/clients/pt_kai_logo.png'
+    name: 'PT Adiguna Mitra Terpercaya',
+    url: '/images/clients/pt_amt_logo.png'
   },
   {
-    name: 'Kementerian Pekerjaan Umum dan Perumahan Rakyat',
-    url: '/images/clients/pupr_logo.png'
+    name: 'PU BBWS Citarum',
+    url: '/images/clients/pu_bbws_citarum_logo.png'
   },
   {
     name: 'SMP IT Salman Al Farisi',
     url: '/images/clients/smp_it_saf_logo.png'
   },
   {
-    name: 'STMM MMTC',
-    url: '/images/clients/stmm_mmtc_logo.png'
+    name: 'PT Global Karya Sejahtera Raya',
+    url: '/images/clients/pt_gks_logo.png'
   },
   {
     name: 'Universitas Gadjah Mada',
@@ -98,10 +90,6 @@ export let client: Client[] = [
     url: '/images/clients/rskb_sinduadi_logo_modified.png'
   },
   {
-    name: 'Pondok Pesantren Rumah Sajada',
-    url: '/images/clients/rumah_sajada_logo_modified.png'
-  },
-  {
     name: 'Sekolah Tinggi Maritim Yogyakarta',
     url: '/images/clients/stmy_logo_edited.png'
   },
@@ -126,7 +114,11 @@ export let client: Client[] = [
     url: '/images/clients/pt_sws_logo_modified.png'
   },
   {
-    name: 'PJB Unit Pembakit Listrik Cirata',
-    url: '/images/clients/pjb_unit_pembangkit_cirata_logo_modified.png'
+    name: 'Rumah Sakit Akademik UGM',
+    url: '/images/clients/rsa_ugm_logo.png'
+  },
+  {
+    name: 'Fakultas Teknik UNY',
+    url: '/images/clients/ft_uny_logo.png'
   },
 ]
