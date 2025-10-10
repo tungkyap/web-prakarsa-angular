@@ -21,10 +21,10 @@ export let client: Client[] = [
     name: 'PT Cipta Graha Kanaka',
     url: '/images/clients/pt_cgk_logo.png'
   },
-  {
-    name: 'Front One Hotel',
-    url: '/images/clients/frontone_hotel_logo.png'
-  },
+  // {
+  //   name: 'Front One Hotel',
+  //   url: '/images/clients/frontone_hotel_logo.png'
+  // },
   {
     name: 'PT Inti Beton',
     url: '/images/clients/intibeton_logo.webp'
@@ -50,8 +50,8 @@ export let client: Client[] = [
     url: '/images/clients/pt_amt_logo.png'
   },
   {
-    name: 'PU BBWS Citarum',
-    url: '/images/clients/pu_bbws_citarum_logo.png'
+    name: 'PU BBWS Serayu Opak',
+    url: '/images/clients/pu_bbws_serayu_opak.png'
   },
   {
     name: 'SMP IT Salman Al Farisi',

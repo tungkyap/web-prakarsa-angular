@@ -12,6 +12,7 @@ interface TeamMember {
   position: string;
   department: string;
   image: string;
+  hoverImage: string;
   bio: string;
   email?: string;
   linkedin?: string;
@@ -24,6 +25,7 @@ export interface TeamMember2 {
   name: string;
   position: string;
   image?: string;
+  hoverImage?: string;
   department: string;
   description?: string;
 }
@@ -73,7 +75,8 @@ export class TeamMemberComponent implements OnInit {
       name: 'Joko Sumiyanto',
       position: 'Founder | Director of Engineering',
       department: 'Technical',
-      image: '/images/team-member-profile/joko_sumiyanto.jpeg',
+      image: '/images/team-member-profile/joko_sumiyanto.jpg',
+      hoverImage: '/images/team-member-profile/joko_sumiyanto_hover.jpg',
       bio: 'Joko Sumiyanto is the founder of Prakarsa and brings over 30 years of experience in structural engineering, forensic engineering, construction supervision, concrete materials.',
       email: 'john.smith@prakarsa.com',
       linkedin: 'https://linkedin.com/in/johnsmith',
@@ -85,7 +88,8 @@ export class TeamMemberComponent implements OnInit {
       name: 'Kemal Fardianto',
       position: 'Engineer | Director of Operations & Business Development',
       department: 'Technical',
-      image: '/images/team-member-profile/kemal_fardianto_zoom.png',
+      image: '/images/team-member-profile/kemal_fardianto.jpg',
+      hoverImage: '/images/team-member-profile/kemal_fardianto_hover.jpg',
       bio: 'Kemal Fardianto specializes in in transportation engineering, planning & financing engineering economics.',
       email: 'sarah.johnson@prakarsa.com',
       linkedin: '/images/team-member-profile/kemal_fardianto_zoom.png',
@@ -97,7 +101,8 @@ export class TeamMemberComponent implements OnInit {
       name: 'Gatra Dewa Oktananda',
       position: 'Engineer | Head of Research & Development',
       department: 'Technical',
-      image: '/images/team-member-profile/gatra_dewa_oktananda.jpeg',
+      image: '/images/team-member-profile/gatra_dewa_oktananda.jpg',
+      hoverImage: '/images/team-member-profile/gatra_dewa_oktananda_hover.jpg',
       bio: 'Gatra Dewa Oktananda is an expert in structural engineering, construction engineering & supervision, concrete materials, project logistics & planning.',
       email: 'michael.chen@prakarsa.com',
       experience: '5+ Years',
@@ -108,7 +113,8 @@ export class TeamMemberComponent implements OnInit {
       name: 'Mochammad Murtadlo Najib',
       position: 'Engineer | Head of Construction',
       department: 'Technical',
-      image: '/images/team-member-profile/mochammad_murtadlo_najib_zoom.png',
+      image: '/images/team-member-profile/mochammad_murtadlo_najib.jpg',
+      hoverImage: '/images/team-member-profile/mochammad_murtadlo_najib_hover.jpg',
       bio: 'Mochammad Murtadlo Najib is an expert in construction engineering & supervision, project management, logistics & supervision, cost estimator.',
       email: 'emily.rodriguez@prakarsa.com',
       experience: '10+ Years',
@@ -119,7 +125,8 @@ export class TeamMemberComponent implements OnInit {
       name: 'Arif Tri Wijayanto',
       position: 'Engineer | Head of Drafting',
       department: 'Technical',
-      image: '/images/team-member-profile/arif_tri_wijayanto_zoom.png',
+      image: '/images/team-member-profile/arif_tri_wijayanto.jpg',
+      hoverImage: '/images/team-member-profile/arif_tri_wijayanto_hover.jpg',
       bio: 'Arif Tri Wijayanto is an expert in engineering drafting, construction engineering, project management, cost estimator.',
       email: 'david.wilson@prakarsa.com',
       experience: '10+ Years',
@@ -130,7 +137,8 @@ export class TeamMemberComponent implements OnInit {
       name: 'Irkhas Bayu Faveryan',
       position: 'Academic Engineering Partner | Research & Development',
       department: 'Support',
-      image: '/images/team-member-profile/irkhas_bayu_faveryan_zoom2.png',
+      image: '/images/team-member-profile/irkhas_bayu_faveryan.jpg',
+      hoverImage: '/images/team-member-profile/irkhas_bayu_faveryan_hover.jpg',
       bio: 'Irkhas Bayu Faveryan is an expert in structural engineering, numerical analysis & modeling, building information modeling (BIM).',
       email: 'lisa.thompson@prakarsa.com',
       experience: '5+ Years',
@@ -141,7 +149,8 @@ export class TeamMemberComponent implements OnInit {
       name: 'Tsalitsatul Husna',
       position: 'Engineer | Research & Development',
       department: 'Support',
-      image: '/images/team-member-profile/tsalitsatul_husna_zoom.png',
+      image: '/images/team-member-profile/tsalitsatul_husna.jpg',
+      hoverImage: '/images/team-member-profile/tsalitsatul_husna_hover.jpg',
       bio: 'Tsalitastul Husna is an expert in hydrologic engineering, administrator',
       email: 'lisa.thompson@prakarsa.com',
       experience: '10+ Years',
@@ -191,7 +200,8 @@ export class TeamMemberComponent implements OnInit {
           id: 1,
           name: 'Joko Sumiyanto',
           position: 'Founder',
-          image: '/images/team-member-profile/joko_sumiyanto_zoom.png',
+          image: '/images/team-member-profile/joko_sumiyanto.jpg',
+          hoverImage: '/images/team-member-profile/joko_sumiyanto_hover.jpg',
           department: 'Director of Engineering',
           description:
             'Founder of Prakarsa with over 30 years of experience in structural engineering, forensic engineering, construction supervision, and concrete materials.'
@@ -205,7 +215,8 @@ export class TeamMemberComponent implements OnInit {
           id: 2,
           name: 'Kemal Fardianto',
           position: 'Engineer',
-          image: '/images/team-member-profile/kemal_fardianto_zoom.png',
+          image: '/images/team-member-profile/kemal_fardianto.jpg',
+          hoverImage: '/images/team-member-profile/kemal_fardianto_hover.jpg',
           department: 'Director of Operations & Business Development',
           description:
             'Specializes in transportation engineering, planning and financing engineering economics.'
@@ -219,7 +230,8 @@ export class TeamMemberComponent implements OnInit {
           id: 3,
           name: 'Gatra Dewa Oktananda',
           position: 'Engineer',
-          image: '/images/team-member-profile/gatra_dewa_oktananda_zoom.png',
+          image: '/images/team-member-profile/gatra_dewa_oktananda.jpg',
+          hoverImage: '/images/team-member-profile/gatra_dewa_oktananda_hover.jpg',
           department: 'Head of Research & Development',
           description:
             'Expert in structural engineering, construction engineering and supervision, concrete materials, project logistics and planning.'
@@ -228,7 +240,8 @@ export class TeamMemberComponent implements OnInit {
           id: 7,
           name: 'Tsalitsatul Husna',
           position: 'Engineer',
-          image: '/images/team-member-profile/tsalitsatul_husna_zoom.png',
+          image: '/images/team-member-profile/tsalitsatul_husna.jpg',
+          hoverImage: '/images/team-member-profile/tsalitsatul_husna_hover.jpg',
           department: 'Head of Research & Development',
           description:
             'Expert in hydrologic engineering and administration.'
@@ -237,7 +250,8 @@ export class TeamMemberComponent implements OnInit {
           id: 6,
           name: 'Irkhas Bayu Faveryan',
           position: 'Academic Engineering Partner',
-          image: '/images/team-member-profile/irkhas_bayu_faveryan_zoom.png',
+          image: '/images/team-member-profile/irkhas_bayu_faveryan.jpg',
+          hoverImage: '/images/team-member-profile/irkhas_bayu_faveryan_hover.jpg',
           department: 'Head of Research & Development',
           description:
             'Expert in structural engineering, numerical analysis and modeling, and building information modeling (BIM).'
@@ -251,7 +265,8 @@ export class TeamMemberComponent implements OnInit {
           id: 4,
           name: 'Mochammad Murtadlo Najib',
           position: 'Engineer',
-          image: '/images/team-member-profile/mochammad_murtadlo_najib_zoom.png',
+          image: '/images/team-member-profile/mochammad_murtadlo_najib.jpg',
+          hoverImage: '/images/team-member-profile/mochammad_murtadlo_najib_hover.jpg',
           department: 'Head of Construction',
           description:
             'Expert in construction engineering and supervision, project management, logistics, and cost estimation.'
@@ -265,7 +280,8 @@ export class TeamMemberComponent implements OnInit {
           id: 5,
           name: 'Arif Tri Wijayanto',
           position: 'Engineer',
-          image: '/images/team-member-profile/arif_tri_wijayanto_zoom.png',
+          image: '/images/team-member-profile/arif_tri_wijayanto.jpg',
+          hoverImage: '/images/team-member-profile/arif_tri_wijayanto_hover.jpg',
           department: 'Head of Drafting',
           description:
             'Expert in engineering drafting, construction engineering, project management, and cost estimation.'
@@ -279,7 +295,8 @@ export class TeamMemberComponent implements OnInit {
           id: 1,
           name: 'Komang Ari Switara',
           position: 'Site Engineer',
-          image: '/images/team-member-profile/komang.jpeg',
+          image: '/images/team-member-profile/komang.jpg',
+          hoverImage: '/images/team-member-profile/komang_hover.jpg',
           department: 'Supervisor,Logistic & Drafter',
           description:
             'Focused on construction engineering and supervision, logistics planning and management.'
@@ -288,7 +305,8 @@ export class TeamMemberComponent implements OnInit {
           id: 2,
           name: 'Muhammad Luqmanul Hakim',
           position: 'Drafter',
-          image: '/images/team-member-profile/muhammad.jpeg',
+          image: '/images/team-member-profile/luqman.jpg',
+          hoverImage: '/images/team-member-profile/luqman_hover.jpg',
           department: 'Supervisor,Logistic & Drafter',
           description:
             'Specializes in civil engineering and architectural drafting.'
@@ -297,7 +315,8 @@ export class TeamMemberComponent implements OnInit {
           id: 3,
           name: 'Achmat Syakur Nuranto',
           position: 'Logistic',
-          image: '/images/team-member-profile/achmat.jpeg',
+          image: '/images/team-member-profile/achmat.jpg',
+          hoverImage: '/images/team-member-profile/achmat_hover.jpg',
           department: 'Supervisor,Logistic & Drafter',
           description:
             'Provides support in construction logistics and operations.'
@@ -306,7 +325,8 @@ export class TeamMemberComponent implements OnInit {
           id: 4,
           name: 'Ripki Aji Permana',
           position: 'Drafter',
-          image: '/images/team-member-profile/ripki.jpeg',
+          image: '/images/team-member-profile/ripki.jpg',
+          hoverImage: '/images/team-member-profile/ripki_hover.jpeg',
           department: 'Supervisor,Logistic & Drafter',
           description:
             'Specializes in civil engineering and architectural drafting.'
@@ -315,7 +335,8 @@ export class TeamMemberComponent implements OnInit {
           id: 5,
           name: 'Ryan Muhammad Fajar',
           position: 'Logistic',
-          image: '/images/team-member-profile/ryan.jpeg',
+          image: '/images/team-member-profile/ryan.jpg',
+          hoverImage: '/images/team-member-profile/ryan_hover.jpg',
           department: 'Supervisor,Logistic & Drafter',
           description:
             'Supports construction logistics and management operations.'
