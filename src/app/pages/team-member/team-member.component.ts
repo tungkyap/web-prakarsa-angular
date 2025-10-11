@@ -326,7 +326,7 @@ export class TeamMemberComponent implements OnInit {
           name: 'Ripki Aji Permana',
           position: 'Drafter',
           image: '/images/team-member-profile/ripki.jpg',
-          hoverImage: '/images/team-member-profile/ripki_hover.jpeg',
+          hoverImage: '/images/team-member-profile/ripki_hover.jpg',
           department: 'Supervisor,Logistic & Drafter',
           description:
             'Specializes in civil engineering and architectural drafting.'

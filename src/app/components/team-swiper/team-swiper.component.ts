@@ -84,7 +84,7 @@ export class TeamSwiperComponent implements OnInit, AfterViewInit {
       position: 'Founder',
       department: 'Director of Engineering',
       description: '30+ years of experience in structural engineering, forensic engineering, construction supervision, concrete materials.',
-      image: '/images/team-member-profile/joko_sumiyanto_zoom.png',
+      image: '/images/team-member-profile/joko_sumiyanto.jpg',
       social: {
         linkedin: '#',
         email: 'budi@prakarsa.com',
@@ -96,7 +96,7 @@ export class TeamSwiperComponent implements OnInit, AfterViewInit {
       position: 'Engineer',
       department: 'Director of Operations & Business Development',
       description: '5+ years of experience in transportation engineering, planning & financing engineering economics.',
-      image: '/images/team-member-profile/kemal_fardianto_zoom.png',
+      image: '/images/team-member-profile/kemal_fardianto.jpg',
       social: {
         linkedin: '#',
         email: 'sari@prakarsa.com',
@@ -108,7 +108,7 @@ export class TeamSwiperComponent implements OnInit, AfterViewInit {
       position: 'Engineer',
       department: 'Head of Research & Development',
       description: '5+ years of experience in structural engineering, construction engineering & supervision, concrete materials, project logistics & planning.',
-      image: '/images/team-member-profile/gatra_dewa_oktananda_zoom.png',
+      image: '/images/team-member-profile/gatra_dewa_oktananda.jpg',
       social: {
         linkedin: '#',
         email: 'ahmad@prakarsa.com',
@@ -120,7 +120,7 @@ export class TeamSwiperComponent implements OnInit, AfterViewInit {
       position: 'Engineer',
       department: 'Head of Construction',
       description: '10+ years of experience in construction engineering & supervision, project management, logistics & supervision, cost estimator.',
-      image: '/images/team-member-profile/mochammad_murtadlo_najib_zoom.png',
+      image: '/images/team-member-profile/mochammad_murtadlo_najib.jpg',
       social: {
         linkedin: '#',
         email: 'maya@prakarsa.com',
@@ -132,7 +132,7 @@ export class TeamSwiperComponent implements OnInit, AfterViewInit {
       position: 'Engineer',
       department: 'Head of Drafting',
       description: '10+ years of experience in engineering drafting, construction engineering, project management, cost estimator.',
-      image: '/images/team-member-profile/arif_tri_wijayanto_zoom.png',
+      image: '/images/team-member-profile/arif_tri_wijayanto.jpg',
       social: {
         linkedin: '#',
         email: 'dedi@prakarsa.com',
@@ -144,7 +144,7 @@ export class TeamSwiperComponent implements OnInit, AfterViewInit {
       position: 'Academic Engineering Partner',
       department: 'Research & Development',
       description: '5+ years of experience in structural engineering, numerical analysis & modeling, building information modeling (BIM).',
-      image: '/images/team-member-profile/irkhas_bayu_faveryan_zoom.png',
+      image: '/images/team-member-profile/irkhas_bayu_faveryan.jpg',
       social: {
         linkedin: '#',
         email: 'rini@prakarsa.com',
@@ -156,7 +156,7 @@ export class TeamSwiperComponent implements OnInit, AfterViewInit {
       position: 'Engineer',
       department: 'Research & Development',
       description: '10+ years of experience in hydrologic engineering, admin.',
-      image: '/images/team-member-profile/tsalitsatul_husna_zoom.png',
+      image: '/images/team-member-profile/tsalitsatul_husna.jpg',
       social: {
         linkedin: '#',
         email: 'rini@prakarsa.com',

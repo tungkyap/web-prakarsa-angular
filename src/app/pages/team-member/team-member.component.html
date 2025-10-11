@@ -12,9 +12,6 @@
 </section>
 
 <!-- Grok: New Design -->
-<!-- End of Grok: New Design -->
-
-<!-- Claude -->
 <section class="py-10 bg-gray-50">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
     <!-- Dynamic Department Sections -->
@@ -28,12 +25,25 @@
           <!-- Single Member Layout (for directors) -->
           <div class="flex justify-center">
             <div class="text-center max-w-sm">
-              <div class="relative mx-auto mb-6 cursor-pointer" (click)="onViewMemberDetail(department.members[0])" (keyup)="onViewMemberDetail(department.members[0])">
-                <img
-                  [src]="department.members[0].image"
-                  [alt]="department.members[0].name"
-                  class="border-2 border-[#c5a751]  w-28 h-28 sm:w-32 sm:h-32 lg:w-40 lg:h-40 rounded-full object-cover shadow-lg mx-auto hover:scale-105 transition-transform duration-300"
-                >
+              <div class="relative mx-auto mb-6 cursor-pointer group" (click)="onViewMemberDetail(department.members[0])" (keyup)="onViewMemberDetail(department.members[0])">
+                @if(department.members[0].image) {
+                  <div class="relative w-28 h-28 sm:w-32 sm:h-32 lg:w-40 lg:h-40 rounded-full overflow-hidden shadow-lg mx-auto group-hover:scale-105 transition-transform duration-300">
+                    <img
+                      [src]="department.members[0].image"
+                      [alt]="department.members[0].name"
+                      class="absolute inset-0 w-full h-full object-cover border-2 border-[#c5a751] rounded-full transition-opacity duration-300 group-hover:opacity-0"
+                    >
+                    <img
+                      [src]="department.members[0].hoverImage"
+                      [alt]="department.members[0].name + ' hover'"
+                      class="absolute inset-0 w-full h-full object-cover border-2 border-[#c5a751] rounded-full transition-opacity duration-300 opacity-0 group-hover:opacity-100"
+                    >
+                  </div>
+                } @else {
+                  <div class="text-3xl font-bold border-2 border-[#c5a751] w-28 h-28 sm:w-32 sm:h-32 lg:w-40 lg:h-40 rounded-full shadow-lg mx-auto group-hover:scale-105 transition-transform duration-300 flex justify-center items-center">
+                    <div>{{ department.members[0].name.charAt(0) }}</div>
+                  </div>
+                }
               </div>
               <h3 class="text-lg sm:text-xl lg:text-2xl font-bold text-gray-800 mb-2 px-2">{{ department.members[0].name }}</h3>
               <p class="text-yellow-600 font-medium uppercase tracking-wide text-xs sm:text-sm lg:text-base">{{ department.members[0].position }}</p>
@@ -42,7 +52,6 @@
         } @else if (department.members.length > 1) {
           <!-- Multiple Members Layout -->
           <div class="max-w-6xl mx-auto">
-            <!-- Mobile: 2 columns, Tablet: 3 columns, Desktop: up to 5 columns based on member count -->
             <div
               class="grid gap-6 sm:gap-8 lg:gap-10"
               [ngClass]="{
@@ -54,17 +63,24 @@
                 'xl:grid-cols-5': department.members.length >= 5
               }"
             >
-            @for(member of department.members; track member.id) {
+              @for(member of department.members; track member.id) {
                 <div class="text-center group">
                   <div class="relative mx-auto mb-4 sm:mb-6 cursor-pointer" (click)="onViewMemberDetail(member)" (keyup)="onViewMemberDetail(member)">
                     @if(member.image) {
-                      <img
-                        [src]="member.image"
-                        [alt]="member.name"
-                        class="border-2 border-[#c5a751] w-20 h-20 sm:w-28 sm:h-28 lg:w-32 lg:h-32 xl:w-36 xl:h-36 rounded-full object-cover shadow-lg mx-auto group-hover:scale-105 transition-transform duration-300"
-                      >
+                      <div class="relative w-20 h-20 sm:w-28 sm:h-28 lg:w-32 lg:h-32 xl:w-36 xl:h-36 rounded-full overflow-hidden shadow-lg mx-auto group-hover:scale-105 transition-transform duration-300">
+                        <img
+                          [src]="member.image"
+                          [alt]="member.name"
+                          class="absolute inset-0 w-full h-full object-cover border-2 border-[#c5a751] rounded-full transition-opacity duration-300 group-hover:opacity-0"
+                        >
+                        <img
+                          [src]="member.hoverImage"
+                          [alt]="member.name + ' hover'"
+                          class="absolute inset-0 w-full h-full object-cover border-2 border-[#c5a751] rounded-full transition-opacity duration-300 opacity-0 group-hover:opacity-100"
+                        >
+                      </div>
                     } @else {
-                      <div class="text-3xl font-bold border-2 border-[#c5a751] w-20 h-20 sm:w-28 sm:h-28 lg:w-32 lg:h-32 xl:w-36 xl:h-36 rounded-full object-cover shadow-lg mx-auto group-hover:scale-105 transition-transform duration-300 flex justify-center items-center">
+                      <div class="text-3xl font-bold border-2 border-[#c5a751] w-20 h-20 sm:w-28 sm:h-28 lg:w-32 lg:h-32 xl:w-36 xl:h-36 rounded-full shadow-lg mx-auto group-hover:scale-105 transition-transform duration-300 flex justify-center items-center">
                         <div>{{ member.name.charAt(0) }}</div>
                       </div>
                     }
@@ -79,8 +95,11 @@
       </section>
     }
   </div>
-
 </section>
+<!-- End of Grok: New Design -->
+
+<!-- Claude -->
+<!-- End of Claude -->
 
 
 
